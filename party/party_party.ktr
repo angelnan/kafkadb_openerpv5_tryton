@@ -112,7 +112,46 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>code</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Group by</to><enabled>Y</enabled> </hop>  <hop> <from>Group by</from><to>code</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>code 2</to><enabled>Y</enabled> </hop>  <hop> <from>code 2</from><to>Sort rows</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>code</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Group by</to><enabled>Y</enabled> </hop>  <hop> <from>Group by</from><to>code</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>code 2</to><enabled>Y</enabled> </hop>  <hop> <from>code 2</from><to>Sort rows</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>write_uid 2</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid 2</from><to>union</to><enabled>Y</enabled> </hop>  </order>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <all_rows>Y</all_rows>
+      <ignore_aggregate>N</ignore_aggregate>
+      <field_ignore/>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>grp</prefix>
+      <add_linenr>N</add_linenr>
+      <linenr_fieldname/>
+      <give_back_row>N</give_back_row>
+      <group>
+        <field>
+          <name>code</name>
+        </field>
+      </group>
+      <fields>
+        <field>
+          <aggregate>duplicated</aggregate>
+          <subject>code</subject>
+          <type>COUNT_ALL</type>
+          <valuefield/>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>569</xloc>
+      <yloc>198</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -123,47 +162,94 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>create_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_uid_target</name>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <remove>        <name>lang</name>
+      </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>active</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>vat</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>vat</name>
         <rename>vat_number</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>code</name>
-        <rename/>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>lang_id</name>
+        <rename>lang</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>730</xloc>
+      <xloc>768</xloc>
       <yloc>194</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>code</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>499</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -265,6 +351,40 @@ if(duplicated &gt; 1){
     </step>
 
   <step>
+    <name>code 2</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+code = ref
+
+if( code == null || code == &quot;&quot; )
+	code = id+&quot;&quot;
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
+        <rename>code</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>448</xloc>
+      <yloc>200</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>create_uid</name>
     <type>DBLookup</type>
     <description/>
@@ -299,8 +419,8 @@ if(duplicated &gt; 1){
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>218</xloc>
-      <yloc>200</yloc>
+      <xloc>202</xloc>
+      <yloc>201</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -394,113 +514,49 @@ if(duplicated &gt; 1){
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>313</xloc>
+      <xloc>289</xloc>
       <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
+    <name>write_uid 2</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>1</copies>
+    <copies>4</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>code</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-    </fields>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>ir_lang</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>lang</name>
+        <field>code</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>lang_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>499</xloc>
-      <yloc>200</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <all_rows>Y</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>N</give_back_row>
-      <group>
-        <field>
-          <name>code</name>
-        </field>
-      </group>
-      <fields>
-        <field>
-          <aggregate>duplicated</aggregate>
-          <subject>code</subject>
-          <type>COUNT_ALL</type>
-          <valuefield/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>569</xloc>
-      <yloc>198</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>code 2</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#47;&#47;Script here
-code = ref
-
-if( code == null || code == &quot;&quot; )
-	code = id+&quot;&quot;
-</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
-        <rename>code</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>448</xloc>
-      <yloc>200</yloc>
+      <xloc>344</xloc>
+      <yloc>201</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

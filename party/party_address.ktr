@@ -133,7 +133,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>country</to><enabled>Y</enabled> </hop>  <hop> <from>country</from><to>country target</to><enabled>Y</enabled> </hop>  <hop> <from>subdivision_target</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>country target</from><to>state origin</to><enabled>Y</enabled> </hop>  <hop> <from>state origin</from><to>subdivision_target</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>country</to><enabled>Y</enabled> </hop>  <hop> <from>country</from><to>country_dest</to><enabled>Y</enabled> </hop>  <hop> <from>subdivision</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>country_dest</from><to>state origin</to><enabled>Y</enabled> </hop>  <hop> <from>state origin</from><to>subdivision</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -144,64 +144,80 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>create_date</name>
-        <rename>create_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_date</name>
-        <rename>write_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_uid_target</name>
-        <rename>create_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>id</name>
-        <rename>id</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>active</name>
-        <rename>active</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>name</name>
-        <rename>name</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>partner_id</name>
-        <rename>party</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>street2</name>
-        <rename>streetbis</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>street</name>
-        <rename>street</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>zip</name>
-        <rename>zip</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>city</name>
-        <rename>city</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>country_id_target</name>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>country_id_target</name>
         <rename>country</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>subdivision_id_target</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>create_uid_target</name>
+        <rename>create_uid</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>partner_id</name>
+        <rename>party</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>street2</name>
+        <rename>streetbis</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>subdivision_id_target</name>
         <rename>subdivision</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>795</xloc>
       <yloc>162</yloc>
@@ -449,7 +465,7 @@
     </step>
 
   <step>
-    <name>country target</name>
+    <name>country_dest</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -490,7 +506,7 @@
     </step>
 
   <step>
-    <name>subdivision_target</name>
+    <name>subdivision</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
