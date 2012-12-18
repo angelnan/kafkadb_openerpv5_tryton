@@ -1,0 +1,10 @@
+Account Payment Type
+====================
+
+Install account_payment_type and account_payment_type_extension.
+
+
+Test
+====
+
+party_party.ktr add ir_properties. Attention if you reload this ktr because create new ir.properties (not mapping)
