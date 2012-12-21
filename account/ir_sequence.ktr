@@ -112,7 +112,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>source 2</from><to>code</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source 2</to><enabled>N</enabled> </hop>  <hop> <from>code</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source 2</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>source 2</from><to>code</to><enabled>Y</enabled> </hop>  <hop> <from>code</from><to>replace</to><enabled>Y</enabled> </hop>  <hop> <from>replace</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Table input</name>
     <type>TableInput</type>
@@ -169,8 +169,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>449</xloc>
-      <yloc>202</yloc>
+      <xloc>623</xloc>
+      <yloc>201</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -186,30 +186,30 @@
            <schema_name/>
            </partitioning>
     <field_to_use>code</field_to_use>
-    <target_field/>
+    <target_field>target_code</target_field>
     <non_match_default/>
     <fields>
       <field>
-        <source_value> account.invoice.in_invoice</source_value>
+        <source_value>account.invoice.in_invoice</source_value>
         <target_value>account.invoice</target_value>
       </field>
       <field>
-        <source_value> account.invoice.out_refund</source_value>
+        <source_value>account.invoice.out_refund</source_value>
         <target_value>account.invoice</target_value>
       </field>
       <field>
-        <source_value> account.invoice.in_refund</source_value>
+        <source_value>account.invoice.in_refund</source_value>
         <target_value>account.invoice</target_value>
       </field>
       <field>
-        <source_value> account.invoice.out_invoice</source_value>
+        <source_value>account.invoice.out_invoice</source_value>
         <target_value>account.invoice</target_value>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>263</xloc>
-      <yloc>202</yloc>
+      <xloc>257</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -244,8 +244,59 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>356</xloc>
-      <yloc>202</yloc>
+      <xloc>530</xloc>
+      <yloc>201</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>replace</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+
+code = target_code || code</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
+        <rename>code</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>340</xloc>
+      <yloc>199</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>target_code</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>424</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

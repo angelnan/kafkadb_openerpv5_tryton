@@ -71,8 +71,8 @@
       <note>1. Remember to create a new sequence in Tryton:
  * post_move_sequence =&gt; type =&gt; account.move
 (same as account.period)</note>
-      <xloc>361</xloc>
-      <yloc>278</yloc>
+      <xloc>106</xloc>
+      <yloc>565</yloc>
       <width>305</width>
       <heigth>58</heigth>
       <fontname>Arial</fontname>
@@ -99,7 +99,7 @@
     <database>${source}</database>
     <port>5432</port>
     <username>${source_user}</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb16be75d097bdca</password>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -121,7 +121,7 @@
     <database>${target}</database>
     <port>5432</port>
     <username>${target_user}</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ba62c786a0d4</password>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -136,7 +136,49 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>post_move_sequence</from><to>union 2</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>post_move_sequence</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>post_move_sequence 2</from><to>seq_map</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>post_move_sequence 2</to><enabled>Y</enabled> </hop>  <hop> <from>seq_map</from><to>union 2</to><enabled>Y</enabled> </hop>  </order>
+  <step>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>standard</nullif>
+        <length>0</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>sequence</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>account.journal</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>463</xloc>
+      <yloc>182</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -147,60 +189,92 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>create_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_uid_target</name>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>code</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>date_start</name>
-        <rename>start_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>date_stop</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>date_stop</name>
         <rename>end_date</rename>
+        <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>state_result</name>
-        <rename>state</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>fiscalyear_id</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>fiscalyear_id</name>
         <rename>fiscalyear</rename>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>type</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>post_move_sequence_target</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>post_move_sequence_target</name>
         <rename>post_move_sequence</rename>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>date_start</name>
+        <rename>start_date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>state_result</name>
+        <rename>state</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>815</xloc>
       <yloc>178</yloc>
@@ -381,7 +455,7 @@ if(state == &quot;draft&quot;)
     </step>
 
   <step>
-    <name>union</name>
+    <name>union 2</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -392,8 +466,8 @@ if(state == &quot;draft&quot;)
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>550</xloc>
-      <yloc>178</yloc>
+      <xloc>746</xloc>
+      <yloc>177</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -440,49 +514,7 @@ if(state == &quot;draft&quot;)
     </step>
 
   <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>standard</nullif>
-        <length>0</length>
-        <precision>0</precision>
-      </field>
-      <field>
-        <name>sequence</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>account.move</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>463</xloc>
-      <yloc>182</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>post_move_sequence</name>
+    <name>post_move_sequence 2</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -491,7 +523,7 @@ if(state == &quot;draft&quot;)
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>target</connection>
+    <connection>source</connection>
     <cache>Y</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
@@ -509,22 +541,22 @@ if(state == &quot;draft&quot;)
       </key>
       <value>
         <name>id</name>
-        <rename>post_move_sequence_target</rename>
+        <rename>post_move_sequence_source</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>646</xloc>
+      <xloc>568</xloc>
       <yloc>179</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>union 2</name>
-    <type>Dummy</type>
+    <name>seq_map</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -532,9 +564,32 @@ if(state == &quot;draft&quot;)
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>ir_sequence_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>post_move_sequence_source</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>post_move_sequence</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>746</xloc>
+      <xloc>658</xloc>
       <yloc>177</yloc>
       <draw>Y</draw>
       </GUI>

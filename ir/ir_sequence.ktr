@@ -113,7 +113,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>ir_seq</from><to>exists 2</to><enabled>Y</enabled> </hop>  <hop> <from>exists 2</from><to>prep 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Add sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>  <hop> <from>Modified Java Script Value</from><to>Execute SQL script</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>prep 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>prep 2</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>prep 2 2</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>mapping</to><enabled>Y</enabled> </hop>  <hop> <from>ir_seq_type</from><to>exists</to><enabled>Y</enabled> </hop>  <hop> <from>exists</from><to>ir_seq</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>ir_seq</from><to>not exist</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>code</to><enabled>Y</enabled> </hop>  <hop> <from>code</from><to>ir_seq_type</to><enabled>Y</enabled> </hop>  <hop> <from>not exist</from><to>Add constants</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>ir_seq</from><to>exists 2</to><enabled>Y</enabled> </hop>  <hop> <from>exists 2</from><to>prep 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Add sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>  <hop> <from>Modified Java Script Value</from><to>Execute SQL script</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>prep 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>prep 2</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>prep 2 2</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>mapping</to><enabled>Y</enabled> </hop>  <hop> <from>ir_seq_type</from><to>exists</to><enabled>Y</enabled> </hop>  <hop> <from>exists</from><to>ir_seq</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>ir_seq</from><to>not exist</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>code</to><enabled>Y</enabled> </hop>  <hop> <from>not exist</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>code</from><to>replace</to><enabled>Y</enabled> </hop>  <hop> <from>replace</from><to>ir_seq_type</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -314,6 +314,85 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
     </step>
 
   <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>create_uid</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>create_date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>write_date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>code</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>number_next_internal</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>padding</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>number_increment</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>prefix</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>active</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>suffix</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>type</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>timestamp_rounding</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>timestamp_offset</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1144</xloc>
+      <yloc>282</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
@@ -371,6 +450,33 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1030</xloc>
       <yloc>359</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>code</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>code</field_to_use>
+    <target_field>target_code</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>account.journal</source_value>
+        <target_value>account.move</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>217</xloc>
+      <yloc>236</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -513,8 +619,8 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>274</xloc>
-      <yloc>237</yloc>
+      <xloc>326</xloc>
+      <yloc>236</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -625,7 +731,7 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
         <rename>source</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>target_sequence_id</name>
+      </field>      <field>        <name>id</name>
         <rename>target</rename>
         <length>-2</length>
         <precision>-2</precision>
@@ -693,87 +799,8 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
     </step>
 
   <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>create_uid</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>code</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>number_next_internal</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>padding</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>number_increment</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>prefix</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>active</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>suffix</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>type</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>timestamp_rounding</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>timestamp_offset</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1144</xloc>
-      <yloc>282</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>code</name>
-    <type>ValueMapper</type>
+    <name>replace</name>
+    <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -781,30 +808,22 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <field_to_use>code</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value> account.invoice.in_invoice</source_value>
-        <target_value>account.invoice</target_value>
-      </field>
-      <field>
-        <source_value> account.invoice.out_refund</source_value>
-        <target_value>account.invoice</target_value>
-      </field>
-      <field>
-        <source_value> account.invoice.in_refund</source_value>
-        <target_value>account.invoice</target_value>
-      </field>
-      <field>
-        <source_value> account.invoice.out_invoice</source_value>
-        <target_value>account.invoice</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+
+code = target_code || code</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
+        <rename>code</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>217</xloc>
+      <xloc>272</xloc>
       <yloc>236</yloc>
       <draw>Y</draw>
       </GUI>
