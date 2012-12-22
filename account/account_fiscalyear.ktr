@@ -410,7 +410,7 @@ company -&gt; ID 1
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>1</copies>
+    <copies>4</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>

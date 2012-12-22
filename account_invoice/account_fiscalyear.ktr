@@ -475,7 +475,7 @@
     <cache_size>0</cache_size>
     <lookup>
       <schema>migration</schema>
-      <table>ir_sequence_mapping</table>
+      <table>ir_sequence_strict_mapping</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
@@ -495,7 +495,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>530</xloc>
-      <yloc>280</yloc>
+      <yloc>282</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -112,7 +112,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Add constants 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>fisca_year_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Row denormaliser</from><to>target 2</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Row denormaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>source 2</to><enabled>N</enabled> </hop>  <hop> <from>default_sequence</from><to>sequence</to><enabled>Y</enabled> </hop>  <hop> <from>fisca_year_sequence</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>seq_map</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>sequence</from><to>seq_map</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>fisca_year_sequence</to><enabled>N</enabled> </hop>  <hop> <from>source 2</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>target 2</from><to>Table output 2</to><enabled>N</enabled> </hop>  </order>
+  <hop> <from>Add constants 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>fisca_year_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Row denormaliser</from><to>target 2</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Row denormaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>source 2</to><enabled>N</enabled> </hop>  <hop> <from>default_sequence</from><to>sequence</to><enabled>Y</enabled> </hop>  <hop> <from>fisca_year_sequence</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>seq_map</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>sequence</from><to>seq_map</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>fisca_year_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>source 2</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>target 2</from><to>Table output 2</to><enabled>N</enabled> </hop>  </order>
   <step>
     <name>Add constants 2</name>
     <type>Constant</type>
@@ -474,7 +474,7 @@
     <cache_size>0</cache_size>
     <lookup>
       <schema>migration</schema>
-      <table>ir_sequence_mapping</table>
+      <table>ir_sequence_strict_mapping</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
