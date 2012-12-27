@@ -1,0 +1,17 @@
+Party Bank
+==========
+
+PreImport
+=========
+
+Install l10n_es_partner module in OpenERP. This module add Long Name and Vat fields in res_bank (more information in yours banks).
+
+
+Import
+======
+
+1. Run kafkadb --migrate whitout party_bank (bank_bank and bank_account).
+2. After import parties, install modules whom add banks in Tryton (example, party_bank_es)
+3. Run kafkadb --migrate with party_bank (only bank_bank and bank_account). 
+
+bank_bank.ktr import banks related in your customers (available in res_partner_bank). Only create banks in Tryton when are not available.
