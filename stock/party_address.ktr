@@ -176,8 +176,8 @@
     </step>
 
   <step>
-    <name>source</name>
-    <type>Dummy</type>
+    <name>delivery</name>
+    <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -185,28 +185,19 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <field_to_use>type</field_to_use>
+    <target_field>delivery</target_field>
+    <non_match_default>False</non_match_default>
+    <fields>
+      <field>
+        <source_value>delivery</source_value>
+        <target_value>True</target_value>
+      </field>
+    </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>150</xloc>
-      <yloc>246</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>target</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>641</xloc>
-      <yloc>251</yloc>
+      <xloc>422</xloc>
+      <yloc>249</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -239,8 +230,8 @@
     </step>
 
   <step>
-    <name>delivery</name>
-    <type>ValueMapper</type>
+    <name>source</name>
+    <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -248,19 +239,28 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <field_to_use>type</field_to_use>
-    <target_field>delivery</target_field>
-    <non_match_default>False</non_match_default>
-    <fields>
-      <field>
-        <source_value>delivery</source_value>
-        <target_value>True</target_value>
-      </field>
-    </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>422</xloc>
-      <yloc>249</yloc>
+      <xloc>150</xloc>
+      <yloc>246</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>target</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>641</xloc>
+      <yloc>251</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
