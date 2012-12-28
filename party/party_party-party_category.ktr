@@ -112,9 +112,80 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Filter rows</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output 2</to><enabled>N</enabled> </hop>  <hop> <from>Select values 2</from><to>target 2</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>source 2</to><enabled>N</enabled> </hop>  <hop> <from>party</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>source 2</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>target 2</from><to>Table output 2</to><enabled>N</enabled> </hop>  <hop> <from>union</from><to>Filter rows</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Table input</name>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>party_target</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>388</xloc>
+      <yloc>146</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>party_target</name>
+        <rename>party</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>category_id</name>
+        <rename>category</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>466</xloc>
+      <yloc>145</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table input 2</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -132,14 +203,14 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>161</xloc>
-      <yloc>334</yloc>
+      <xloc>186</xloc>
+      <yloc>229</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Table output</name>
+    <name>Table output 2</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -169,14 +240,55 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>576</xloc>
-      <yloc>391</yloc>
+      <xloc>565</xloc>
+      <yloc>234</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>source</name>
+    <name>party</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_party_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>partner_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>party_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>259</xloc>
+      <yloc>145</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>source 2</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -187,14 +299,14 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>222</xloc>
-      <yloc>215</yloc>
+      <xloc>185</xloc>
+      <yloc>142</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>target</name>
+    <name>target 2</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -205,15 +317,15 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>535</xloc>
-      <yloc>213</yloc>
+      <xloc>561</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
+    <name>union</name>
+    <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
     <copies>1</copies>
@@ -221,19 +333,10 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>partner_id</name>
-        <rename>party</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>category_id</name>
-        <rename>category</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>396</xloc>
-      <yloc>217</yloc>
+      <xloc>326</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
