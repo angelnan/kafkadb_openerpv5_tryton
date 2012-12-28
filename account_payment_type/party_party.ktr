@@ -76,7 +76,7 @@
     <database>${source}</database>
     <port>5432</port>
     <username>${source_user}</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb16be75d097bdca</password>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -98,7 +98,7 @@
     <database>${target}</database>
     <port>5432</port>
     <username>${target_user}</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ba62c786a0d4</password>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -113,7 +113,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>Select values</to><enabled>N</enabled> </hop>  <hop> <from>payment_type</from><to>find</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>target</to><enabled>N</enabled> </hop>  <hop> <from>find</from><to>relation</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2 2</from><to>property 2</to><enabled>Y</enabled> </hop>  <hop> <from>field_ids</from><to>un 2</to><enabled>Y</enabled> </hop>  <hop> <from>model 2</from><to>field_ids</to><enabled>Y</enabled> </hop>  <hop> <from>relation 2</from><to>model 2</to><enabled>Y</enabled> </hop>  <hop> <from>un 2</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>find 2</from><to>relation 2</to><enabled>Y</enabled> </hop>  <hop> <from>payment_type</from><to>find 2</to><enabled>Y</enabled> </hop>  <hop> <from>relation</from><to>model 2</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>payment_type</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>Select values</to><enabled>N</enabled> </hop>  <hop> <from>payment_type</from><to>find</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>find</from><to>relation</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2 2</from><to>property 2</to><enabled>Y</enabled> </hop>  <hop> <from>field_ids</from><to>un 2</to><enabled>Y</enabled> </hop>  <hop> <from>model 2</from><to>field_ids</to><enabled>Y</enabled> </hop>  <hop> <from>relation 2</from><to>model 2</to><enabled>Y</enabled> </hop>  <hop> <from>un 2</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>find 2</from><to>relation 2</to><enabled>Y</enabled> </hop>  <hop> <from>payment_type</from><to>find 2</to><enabled>Y</enabled> </hop>  <hop> <from>relation</from><to>model 2</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>payment_type</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -386,6 +386,47 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>556</xloc>
       <yloc>207</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>party</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_party_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>party_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>235</xloc>
+      <yloc>212</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -681,47 +722,6 @@ field_name = &apos;customer_payment_type&apos;</jsScript_script>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>703</xloc>
       <yloc>205</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>party</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_party_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>party_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>235</xloc>
-      <yloc>212</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

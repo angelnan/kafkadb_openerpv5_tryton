@@ -264,6 +264,8 @@ code = ref
 
 if( code == null || code == &quot;&quot; )
 	code = target_id+&quot;&quot;
+else
+	code = code +&quot;-&quot;+target_id
 </jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
         <rename>code</rename>
@@ -273,8 +275,8 @@ if( code == null || code == &quot;&quot; )
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>602</xloc>
-      <yloc>215</yloc>
+      <xloc>601</xloc>
+      <yloc>216</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
