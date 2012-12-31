@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>account_move_line</name>
+    <name>account_tax_line</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -61,9 +61,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2012&#47;12&#47;23 08:42:11.365</created_date>
+  <created_date>2012&#47;12&#47;30 09:49:15.792</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2012&#47;12&#47;23 08:42:11.365</modified_date>
+  <modified_date>2012&#47;12&#47;30 09:49:15.792</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -112,9 +112,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>journal</to><enabled>Y</enabled> </hop>  <hop> <from>journal</from><to>account</to><enabled>Y</enabled> </hop>  <hop> <from>credit&#47;debit</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>credit&#47;debit</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>account</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>credit&#47;debit</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>account_tax_code</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>account_tax</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>account_tax_code</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>account_tax</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Filter rows</name>
+    <name>Filter rows 2</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -128,15 +128,27 @@
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>target_account_id</leftvalue>
- <function>IS NULL</function>
- <rightvalue/>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>tax_code_id</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>OR</operator>
+   <leftvalue>account_tax_id</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  </conditions>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>854</xloc>
-      <yloc>284</yloc>
+      <xloc>163</xloc>
+      <yloc>228</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -152,8 +164,8 @@
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>target_account_id</name>
-        <rename>account</rename>
+      <meta>        <name>target_account_tax</name>
+        <rename>tax</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -164,68 +176,8 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>create_uid_target</name>
-        <rename>create_uid</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>ref</name>
-        <rename>description</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>openerp_id</name>
-        <rename>id</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>date_maturity</name>
-        <rename>maturity_date</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>move_id</name>
-        <rename>move</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>party_target</name>
-        <rename>party</rename>
+      </meta>      <meta>        <name>target_account_tax_code</name>
+        <rename>code</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -248,9 +200,33 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>reconcile_id</name>
-        <rename>reconciliation</rename>
+      </meta>      <meta>        <name>create_uid_target</name>
+        <rename>create_uid</rename>
         <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>openerp_id</name>
+        <rename>move_line</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>tax_amount</name>
+        <rename>amount</rename>
+        <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -262,8 +238,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>822</xloc>
-      <yloc>93</yloc>
+      <xloc>778</xloc>
+      <yloc>225</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -329,8 +305,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>983</xloc>
-      <yloc>192</yloc>
+      <xloc>1012</xloc>
+      <yloc>323</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -354,8 +330,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>88</xloc>
-      <yloc>197</yloc>
+      <xloc>84</xloc>
+      <yloc>391</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -372,7 +348,7 @@
            </partitioning>
     <connection>target</connection>
     <schema/>
-    <table>account_move_line</table>
+    <table>account_tax_line</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -391,14 +367,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>979</xloc>
-      <yloc>288</yloc>
+      <xloc>1008</xloc>
+      <yloc>419</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>account</name>
+    <name>account_tax</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -408,32 +384,73 @@
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <cache>Y</cache>
+    <cache>N</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema>migration</schema>
-      <table>account_account_mapping</table>
+      <table>account_tax_mapping</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>account_id</name>
+        <name>source_tax</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
         <name>target</name>
-        <rename>target_account_id</rename>
+        <rename>target_account_tax</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>537</xloc>
-      <yloc>89</yloc>
+      <xloc>672</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>account_tax_code</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>account_tax_code_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>tax_code_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>target_account_tax_code</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>492</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -473,126 +490,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>280</xloc>
-      <yloc>92</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>credit&#47;debit</name>
-    <type>IfNull</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <replaceAllByValue/>
-      <replaceAllMask/>
-      <selectFields>Y</selectFields>
-      <selectValuesType>N</selectValuesType>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>credit</name>
-        <value>0</value>
-        <mask/>
-        </field>
-      <field>
-        <name>debit</name>
-        <value>0</value>
-        <mask/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>744</xloc>
-      <yloc>92</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>journal</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>account_journal_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>journal_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>target_journal_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>448</xloc>
-      <yloc>92</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>party</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_party_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>partner_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>party_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>617</xloc>
-      <yloc>89</yloc>
+      <xloc>309</xloc>
+      <yloc>223</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -622,8 +521,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>197</xloc>
-      <yloc>94</yloc>
+      <xloc>230</xloc>
+      <yloc>230</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -640,8 +539,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>130</xloc>
-      <yloc>97</yloc>
+      <xloc>100</xloc>
+      <yloc>228</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -658,8 +557,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>939</xloc>
-      <yloc>133</yloc>
+      <xloc>900</xloc>
+      <yloc>221</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -699,8 +598,138 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>363</xloc>
-      <yloc>91</yloc>
+      <xloc>392</xloc>
+      <yloc>222</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table input 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT * FROM account_tax;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>98</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>id</name>
+        <rename>tax_id</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ref_base_code_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ref_tax_code_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>base_code_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>tax_code_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>193</xloc>
+      <yloc>51</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Row Normaliser</name>
+    <type>Normaliser</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <typefield>type</typefield>
+    <fields>      <field>        <name>ref_base_code_id</name>
+        <value>ref_base_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      <field>        <name>ref_tax_code_id</name>
+        <value>ref_tax_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      <field>        <name>base_code_id</name>
+        <value>base_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      <field>        <name>tax_code_id</name>
+        <value>tax_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>583</xloc>
+      <yloc>56</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Row Normaliser</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>tax_code_id</name>
+        <field>tax_code_id_1</field>
+      </key>
+      <value>
+        <name>tax_id</name>
+        <rename>source_tax</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>580</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

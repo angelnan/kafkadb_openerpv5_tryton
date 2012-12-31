@@ -114,6 +114,37 @@
   <order>
   <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>account_tax_id</from><to>prep2</to><enabled>Y</enabled> </hop>  <hop> <from>account_tax_id</from><to>wait</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>exist</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>not_exist</from><to>account_tax_id</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>prep2</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>target_account_tax</from><to>union 2</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>mapping</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>exist</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>not_exist</to><enabled>Y</enabled> </hop>  <hop> <from>wait</from><to>parent</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>target_account_tax</to><enabled>Y</enabled> </hop>  <hop> <from>code1</from><to>code 2</to><enabled>Y</enabled> </hop>  <hop> <from>code 2</from><to>code 3</to><enabled>Y</enabled> </hop>  <hop> <from>code 3</from><to>code 4</to><enabled>Y</enabled> </hop>  <hop> <from>code 4</from><to>account_invoice</to><enabled>Y</enabled> </hop>  <hop> <from>account_invoice</from><to>account_credit_note</to><enabled>Y</enabled> </hop>  <hop> <from>account_credit_note</from><to>tax_grup</to><enabled>Y</enabled> </hop>  <hop> <from>tax_grup</from><to>If description is null</to><enabled>Y</enabled> </hop>  <hop> <from>If description is null</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>type</from><to>code1</to><enabled>Y</enabled> </hop>  <hop> <from>parent</from><to>type</to><enabled>Y</enabled> </hop>  </order>
   <step>
+    <name>If description is null</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <replaceAllByValue/>
+      <replaceAllMask/>
+      <selectFields>Y</selectFields>
+      <selectValuesType>N</selectValuesType>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>description</name>
+        <value>fill description</value>
+        <mask/>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>907</xloc>
+      <yloc>260</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
@@ -402,6 +433,88 @@
     </step>
 
   <step>
+    <name>account_credit_note</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>account_account_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>account_collected_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>credit_note_account</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>738</xloc>
+      <yloc>257</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>account_invoice</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>account_account_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>account_paid_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>invoice_account</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>737</xloc>
+      <yloc>355</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>account_tax_id</name>
     <type>Sequence</type>
     <description/>
@@ -425,6 +538,170 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>645</xloc>
       <yloc>285</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>code 2</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>account_tax_code_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>base_code_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>invoice_base_code</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>740</xloc>
+      <yloc>583</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>code 3</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>account_tax_code_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>ref_tax_code_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>credit_note_tax_code</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>737</xloc>
+      <yloc>507</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>code 4</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>account_tax_code_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>tax_code_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>invoice_tax_code</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>735</xloc>
+      <yloc>427</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>code1</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>account_tax_code_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>ref_base_code_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>credit_note_base_code</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>739</xloc>
+      <yloc>668</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -510,7 +787,7 @@
            </partitioning>
     <connection>target</connection>
     <schema>migration</schema>
-    <table>account_account_mapping</table>
+    <table>account_tax_mapping</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -773,6 +1050,78 @@
     </step>
 
   <step>
+    <name>tax_grup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>account_tax_group</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>tax_group</name>
+        <field>name</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>tax_group_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>829</xloc>
+      <yloc>259</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>type</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>type</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>fix</source_value>
+        <target_value>fix</target_value>
+      </field>
+      <field>
+        <source_value>percent</source_value>
+        <target_value>percentage</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>639</xloc>
+      <yloc>662</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>union</name>
     <type>Dummy</type>
     <description/>
@@ -869,355 +1218,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>370</xloc>
       <yloc>197</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>code1</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>account_tax_code_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>ref_base_code_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>credit_note_base_code</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>739</xloc>
-      <yloc>668</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>code 2</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>account_tax_code_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>base_code_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>invoice_base_code</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>740</xloc>
-      <yloc>583</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>code 3</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>account_tax_code_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>ref_tax_code_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>credit_note_tax_code</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>737</xloc>
-      <yloc>507</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>code 4</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>account_tax_code_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>tax_code_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>invoice_tax_code</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>735</xloc>
-      <yloc>427</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>account_invoice</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>account_account_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>account_paid_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>invoice_account</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>737</xloc>
-      <yloc>355</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>account_credit_note</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>account_account_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>account_collected_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>credit_note_account</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>738</xloc>
-      <yloc>257</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>tax_grup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>account_tax_group</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>tax_group</name>
-        <field>name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>tax_group_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>829</xloc>
-      <yloc>259</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>If description is null</name>
-    <type>IfNull</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <replaceAllByValue/>
-      <replaceAllMask/>
-      <selectFields>Y</selectFields>
-      <selectValuesType>N</selectValuesType>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>description</name>
-        <value>fill description</value>
-        <mask/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>907</xloc>
-      <yloc>260</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>type</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>type</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>fix</source_value>
-        <target_value>fix</target_value>
-      </field>
-      <field>
-        <source_value>percent</source_value>
-        <target_value>percentage</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>639</xloc>
-      <yloc>662</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
