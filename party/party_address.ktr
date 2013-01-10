@@ -68,10 +68,10 @@
   <notepads>
     <notepad>
       <note>LOSE ALL ADDRESS WITHOUT PARTY</note>
-      <xloc>459</xloc>
-      <yloc>273</yloc>
-      <width>248</width>
-      <heigth>25</heigth>
+      <xloc>476</xloc>
+      <yloc>274</yloc>
+      <width>255</width>
+      <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -96,7 +96,7 @@
     <database>${source}</database>
     <port>5432</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -118,7 +118,7 @@
     <database>${target}</database>
     <port>5432</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -133,9 +133,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>country</to><enabled>Y</enabled> </hop>  <hop> <from>country</from><to>country_dest</to><enabled>Y</enabled> </hop>  <hop> <from>subdivision</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>country_dest</from><to>state origin</to><enabled>Y</enabled> </hop>  <hop> <from>state origin</from><to>subdivision</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>target_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>nothing</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>mapping</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>nothing</to><enabled>Y</enabled> </hop>  <hop> <from>nothing</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>rename</to><enabled>Y</enabled> </hop>  <hop> <from>rename</from><to>target_id</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>country</to><enabled>Y</enabled> </hop>  <hop> <from>country</from><to>country_dest</to><enabled>Y</enabled> </hop>  <hop> <from>subdivision</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>country_dest</from><to>state origin</to><enabled>Y</enabled> </hop>  <hop> <from>state origin</from><to>subdivision</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>target_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>nothing</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>mapping</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>nothing</to><enabled>Y</enabled> </hop>  <hop> <from>nothing</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>rename</to><enabled>Y</enabled> </hop>  <hop> <from>rename</from><to>target_id</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Filter rows 2</name>
+    <name>Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -197,7 +197,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>partner_id</name>
+      </meta>      <meta>        <name>party_target</name>
         <rename>party</rename>
         <type>Integer</type>
         <length>-2</length>
@@ -321,8 +321,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1068</xloc>
-      <yloc>302</yloc>
+      <xloc>1081</xloc>
+      <yloc>263</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -362,8 +362,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>440</xloc>
-      <yloc>167</yloc>
+      <xloc>450</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -403,8 +403,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>507</xloc>
-      <yloc>163</yloc>
+      <xloc>520</xloc>
+      <yloc>159</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -444,8 +444,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>274</xloc>
-      <yloc>161</yloc>
+      <xloc>300</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -567,8 +567,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>891</xloc>
-      <yloc>51</yloc>
+      <xloc>898</xloc>
+      <yloc>47</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -598,8 +598,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>147</xloc>
-      <yloc>157</yloc>
+      <xloc>162</xloc>
+      <yloc>158</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -657,8 +657,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>591</xloc>
-      <yloc>164</yloc>
+      <xloc>604</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -704,8 +704,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>687</xloc>
-      <yloc>160</yloc>
+      <xloc>690</xloc>
+      <yloc>163</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -750,8 +750,8 @@
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>198</xloc>
-      <yloc>163</yloc>
+      <xloc>223</xloc>
+      <yloc>157</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -768,8 +768,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>763</xloc>
-      <yloc>157</yloc>
+      <xloc>766</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -809,8 +809,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>360</xloc>
-      <yloc>161</yloc>
+      <xloc>371</xloc>
+      <yloc>159</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
