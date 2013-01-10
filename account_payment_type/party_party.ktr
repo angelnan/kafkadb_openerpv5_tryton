@@ -76,7 +76,7 @@
     <database>${source}</database>
     <port>5432</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -98,7 +98,7 @@
     <database>${target}</database>
     <port>5432</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -391,6 +391,47 @@
     </step>
 
   <step>
+    <name>party</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_party_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>party_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>314</xloc>
+      <yloc>211</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>payment_type</name>
     <type>ScriptValueMod</type>
     <description/>
@@ -485,7 +526,7 @@ if(payment_type_supplier)
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>&#47;&#47;Script here
 
-res = &apos;party.party,&apos;+id;
+res = &apos;party.party,&apos;+party_target;
 value = &apos;account.payment.type,&apos;+payment_type_supplier;
 create_date = new Date();
 create_uid = 0;
@@ -566,7 +607,7 @@ field_name = &apos;supplier_payment_type&apos;</jsScript_script>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>&#47;&#47;Script here
 
-res = &apos;party.party,&apos;+id;
+res = &apos;party.party,&apos;+party_target;
 value = &apos;account.payment.type,&apos;+payment_type_customer;
 create_date = new Date();
 create_uid = 0;
@@ -681,47 +722,6 @@ field_name = &apos;customer_payment_type&apos;</jsScript_script>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>786</xloc>
       <yloc>208</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>party</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_party_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>party_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>314</xloc>
-      <yloc>211</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
