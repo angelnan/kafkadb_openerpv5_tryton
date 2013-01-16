@@ -74,8 +74,8 @@
 2. Add constants:
 company -&gt; ID 1
 </note>
-      <xloc>921</xloc>
-      <yloc>14</yloc>
+      <xloc>750</xloc>
+      <yloc>31</yloc>
       <width>305</width>
       <heigth>106</heigth>
       <fontname>Arial</fontname>
@@ -102,7 +102,7 @@ company -&gt; ID 1
     <database>${source}</database>
     <port>5432</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -124,7 +124,7 @@ company -&gt; ID 1
     <database>${target}</database>
     <port>5432</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -158,7 +158,7 @@ company -&gt; ID 1
         <currency/>
         <decimal/>
         <group/>
-        <nullif>account.journal</nullif>
+        <nullif>account.move</nullif>
         <length>0</length>
         <precision>0</precision>
       </field>
@@ -243,6 +243,18 @@ company -&gt; ID 1
         <storage_type/>
       </meta>      <meta>        <name>write_uid_target</name>
         <rename>write_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>post_move_sequence_source</name>
+        <rename>post_move_sequence</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -374,7 +386,7 @@ company -&gt; ID 1
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>source</connection>
+    <connection>target</connection>
     <cache>Y</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
@@ -440,8 +452,8 @@ company -&gt; ID 1
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>705</xloc>
-      <yloc>204</yloc>
+      <xloc>722</xloc>
+      <yloc>206</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
