@@ -155,7 +155,9 @@
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>target_account_id</name>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>target_account_id</name>
         <rename>account</rename>
         <type>Integer</type>
         <length>-2</length>
@@ -169,6 +171,18 @@
         <storage_type/>
       </meta>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -230,18 +244,6 @@
       </meta>      <meta>        <name>price_unit_disc</name>
         <rename>unit_price</rename>
         <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -605,6 +607,41 @@
     </step>
 
   <step>
+    <name>price_unit</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+total = quantity*price_unit
+discount = total*10&#47;100
+total_discount = total-discount
+
+price_unit_disc = total_discount&#47;quantity
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>price_unit_disc</name>
+        <rename>price_unit_disc</rename>
+        <type>BigNumber</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>910</xloc>
+      <yloc>89</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>product_uom_mapping</name>
     <type>DBLookup</type>
     <description/>
@@ -718,41 +755,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>294</xloc>
       <yloc>92</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>price_unit</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#47;&#47;Script here
-total = quantity*price_unit
-discount = total*10&#47;100
-total_discount = total-discount
-
-price_unit_disc = total_discount&#47;quantity
-</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>price_unit_disc</name>
-        <rename>price_unit_disc</rename>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>910</xloc>
-      <yloc>89</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
