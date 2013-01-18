@@ -241,7 +241,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>price_unit_disc</name>
+      </meta>      <meta>        <name>price_unit_dsc</name>
         <rename>unit_price</rename>
         <type>Number</type>
         <length>-2</length>
@@ -621,15 +621,10 @@
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>&#47;&#47;Script here
-total = quantity*price_unit
-discount = total*10&#47;100
-total_discount = total-discount
-
-price_unit_disc = total_discount&#47;quantity
-</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>price_unit_disc</name>
-        <rename>price_unit_disc</rename>
-        <type>BigNumber</type>
+price_unit_dsc = price_unit*(1-discount&#47;100)</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>price_unit_dsc</name>
+        <rename>price_unit_dsc</rename>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
