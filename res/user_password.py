@@ -66,6 +66,9 @@ if __name__ == '__main__':
         login = user[0]
         password = user[1]
 
+        if not password:
+            continue
+
         password = password+salt
         pswd = hashlib.sha1(password).hexdigest()
         targetCR.execute("UPDATE res_user SET password = '%(password)s', salt = '%(salt)s' WHERE login = '%(login)s';" % {
