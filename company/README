@@ -1,0 +1,10 @@
+Company
+=======
+
+When you create a new database, you must create a company. At the end, this company create this values:
+
+ * party_party. id=1
+ * company_company. id=1. party=1
+
+Usually OpenERP (v5) works a single company (one company). If you use multicompany, after migration, 
+you need review ID from party/company is the same than OpenERP.

@@ -1,0 +1,18 @@
+= About account statement OpenERP to Tryton =
+
+Account Statement in Tryton is related to account.statement.journal, not account.journal.
+
+1. Create account.statement.journal from account.bank.statement (only journals use in account.bank.statement)
+2. Create account.statement related at account.statement.journal
+3. Create account.statement.line
+
+= Notes =
+
+Default transformation values in account.statement.journal:
+
+ * Currency: EUR
+ * Company: ID 1
+
+Default transformation values in account.statement:
+
+ * Company: ID 1
