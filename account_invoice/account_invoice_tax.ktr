@@ -73,7 +73,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>5432</port>
+    <port>${source_port}</port>
     <username>${source_user}</username>
     <password>Encrypted </password>
     <servername/>
@@ -83,7 +83,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -95,7 +95,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>5432</port>
+    <port>${target_port}</port>
     <username>${target_user}</username>
     <password>Encrypted </password>
     <servername/>
@@ -105,7 +105,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -113,6 +113,37 @@
   </connection>
   <order>
   <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>account</to><enabled>Y</enabled> </hop>  <hop> <from>account</from><to>base_code</to><enabled>Y</enabled> </hop>  <hop> <from>base_code</from><to>tax_code</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>account_tax</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>sign</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>account_tax</from><to>invoice</to><enabled>Y</enabled> </hop>  <hop> <from>invoice</from><to>sign</to><enabled>Y</enabled> </hop>  <hop> <from>tax_code</from><to>un</to><enabled>Y</enabled> </hop>  <hop> <from>un</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  </order>
+  <step>
+    <name>Row Normaliser</name>
+    <type>Normaliser</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <typefield>type</typefield>
+    <fields>      <field>        <name>ref_base_code_id</name>
+        <value>ref_base_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      <field>        <name>ref_tax_code_id</name>
+        <value>ref_tax_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      <field>        <name>base_code_id</name>
+        <value>base_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      <field>        <name>tax_code_id</name>
+        <value>tax_code_id</value>
+        <norm>tax_code_id</norm>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>578</xloc>
+      <yloc>45</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -380,6 +411,65 @@
     </step>
 
   <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Row Normaliser</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>tax_code_id</name>
+        <field>tax_code_id_1</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>source_tax</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>tax_sign</name>
+        <rename>tax_sign</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>base_sign</name>
+        <rename>base_sign</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>ref_base_sign</name>
+        <rename>ref_base_sign</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>ref_tax_sign</name>
+        <rename>ref_tax_sign</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>591</xloc>
+      <yloc>180</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
@@ -400,6 +490,31 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>64</xloc>
       <yloc>318</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table input 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT * FROM account_tax;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>450</xloc>
+      <yloc>50</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -483,7 +598,7 @@
     </step>
 
   <step>
-    <name>create_uid</name>
+    <name>account_tax</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -493,109 +608,32 @@
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <cache>Y</cache>
+    <cache>N</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema>migration</schema>
-      <table>user_mapping</table>
+      <table>account_tax_mapping</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>create_uid</name>
+        <name>source_tax</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
         <name>target</name>
-        <rename>create_uid_target</rename>
+        <rename>target_tax</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>162</xloc>
-      <yloc>177</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>source</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>70</xloc>
-      <yloc>177</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>target</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>891</xloc>
-      <yloc>369</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>write_uid</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>user_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>write_uid</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>write_uid_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>254</xloc>
-      <yloc>177</yloc>
+      <xloc>671</xloc>
+      <yloc>180</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -642,7 +680,7 @@
     </step>
 
   <step>
-    <name>tax_code</name>
+    <name>create_uid</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -657,148 +695,33 @@
     <cache_size>0</cache_size>
     <lookup>
       <schema>migration</schema>
-      <table>account_tax_code_mapping</table>
+      <table>user_mapping</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>tax_code_id</name>
+        <name>create_uid</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
         <name>target</name>
-        <rename>target_tax_code</rename>
+        <rename>create_uid_target</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>498</xloc>
+      <xloc>162</xloc>
       <yloc>177</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Row Normaliser</name>
-    <type>Normaliser</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-   <typefield>type</typefield>
-    <fields>      <field>        <name>ref_base_code_id</name>
-        <value>ref_base_code_id</value>
-        <norm>tax_code_id</norm>
-        </field>      <field>        <name>ref_tax_code_id</name>
-        <value>ref_tax_code_id</value>
-        <norm>tax_code_id</norm>
-        </field>      <field>        <name>base_code_id</name>
-        <value>base_code_id</value>
-        <norm>tax_code_id</norm>
-        </field>      <field>        <name>tax_code_id</name>
-        <value>tax_code_id</value>
-        <norm>tax_code_id</norm>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>578</xloc>
-      <yloc>45</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Table input 2</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <sql>SELECT * FROM account_tax;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>450</xloc>
-      <yloc>50</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>Row Normaliser</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>tax_code_id</name>
-        <field>tax_code_id_1</field>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>source_tax</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>tax_sign</name>
-        <rename>tax_sign</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>base_sign</name>
-        <rename>base_sign</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>ref_base_sign</name>
-        <rename>ref_base_sign</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>ref_tax_sign</name>
-        <rename>ref_tax_sign</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>591</xloc>
-      <yloc>180</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>account_tax</name>
+    <name>invoice</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -807,33 +730,33 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>target</connection>
+    <connection>source</connection>
     <cache>N</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
-      <schema>migration</schema>
-      <table>account_tax_mapping</table>
+      <schema/>
+      <table>account_invoice</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>source_tax</name>
-        <field>source</field>
+        <name>invoice_id</name>
+        <field>id</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>target</name>
-        <rename>target_tax</rename>
+        <name>type</name>
+        <rename>invoice_type</rename>
         <default/>
-        <type>Integer</type>
+        <type>String</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>671</xloc>
-      <yloc>180</yloc>
+      <xloc>781</xloc>
+      <yloc>182</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -881,7 +804,43 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
     </step>
 
   <step>
-    <name>invoice</name>
+    <name>source</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>70</xloc>
+      <yloc>177</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>target</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>891</xloc>
+      <yloc>369</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>tax_code</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -890,33 +849,33 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>source</connection>
-    <cache>N</cache>
+    <connection>target</connection>
+    <cache>Y</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
-      <schema/>
-      <table>account_invoice</table>
+      <schema>migration</schema>
+      <table>account_tax_code_mapping</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>invoice_id</name>
-        <field>id</field>
+        <name>tax_code_id</name>
+        <field>source</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>type</name>
-        <rename>invoice_type</rename>
+        <name>target</name>
+        <rename>target_tax_code</rename>
         <default/>
-        <type>String</type>
+        <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>781</xloc>
-      <yloc>182</yloc>
+      <xloc>498</xloc>
+      <yloc>177</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -935,6 +894,47 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>544</xloc>
       <yloc>178</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>write_uid</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>user_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>write_uid</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>write_uid_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>254</xloc>
+      <yloc>177</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

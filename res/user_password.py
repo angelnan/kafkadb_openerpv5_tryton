@@ -42,8 +42,9 @@ config = {}
 
 def get_target_connection(config):
     return psycopg2.connect(
-        dbname = config['target'],
+        database = config['target'],
         host = config['target_host'],
+        port = config['target_port'],
         user = config['target_user'],
         password = config['target_password'])
 
@@ -58,7 +59,7 @@ if __name__ == '__main__':
             config[tokens[0].strip()] = "=".join([x.strip() for x in tokens[1:]])
 
     target_db = get_target_connection(config)
-    target_db.set_session(deferrable=True)
+    #~ target_db.set_session(deferrable=True)
     targetCR = target_db.cursor()
 
     targetCR.execute('SELECT login, password from res_user where id > 2')          
