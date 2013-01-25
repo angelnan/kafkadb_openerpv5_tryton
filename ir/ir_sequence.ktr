@@ -291,7 +291,9 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>number_next</name>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>number_next</name>
         <rename>number_next_internal</rename>
         <type>Integer</type>
         <length>-2</length>
