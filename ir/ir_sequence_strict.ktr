@@ -76,7 +76,7 @@
     <database>${source}</database>
     <port>${source_port}</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -98,7 +98,7 @@
     <database>${target}</database>
     <port>${target_port}</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -155,6 +155,28 @@
         <decimal/>
         <group/>
         <nullif>incremental</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>create_uid_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>write_uid_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -269,7 +291,9 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>number_next</name>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>number_next</name>
         <rename>number_next_internal</rename>
         <type>Integer</type>
         <length>-2</length>
@@ -295,6 +319,30 @@ sequence_name = &quot;ir_sequence_&quot; + id</jsScript_script>
         <storage_type/>
       </meta>      <meta>        <name>id</name>
         <rename>openerp_id</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>create_uid_id</name>
+        <rename>create_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_id</name>
+        <rename>write_uid</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
