@@ -285,9 +285,7 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>create_uid</name>
-      </remove>      <remove>        <name>write_uid</name>
-      </remove>      <meta>        <name>target_id</name>
+      <meta>        <name>target_id</name>
         <rename>id</rename>
         <type>Integer</type>
         <length>-2</length>
