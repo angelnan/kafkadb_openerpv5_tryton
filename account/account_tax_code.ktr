@@ -75,7 +75,7 @@
     <database>${source}</database>
     <port>${source_port}</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -97,7 +97,7 @@
     <database>${target}</database>
     <port>${target_port}</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -158,12 +158,12 @@
         <rename>id</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>      <field>        <name>create_uid_target</name>
         <rename>create_uid</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>parent</name>

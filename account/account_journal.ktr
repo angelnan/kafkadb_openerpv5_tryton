@@ -75,7 +75,7 @@
     <database>${source}</database>
     <port>${source_port}</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -97,7 +97,7 @@
     <database>${target}</database>
     <port>${target_port}</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -124,9 +124,11 @@
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>centralisation</name>
-        <rename>centralised</rename>
-        <type>Boolean</type>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>account_journal_id</name>
+        <rename>id</rename>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -148,8 +150,8 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>account_journal_id</name>
-        <rename>id</rename>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -160,9 +162,9 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <type>Integer</type>
+      </meta>      <meta>        <name>centralisation</name>
+        <rename>centralised</rename>
+        <type>Boolean</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
