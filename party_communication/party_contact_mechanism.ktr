@@ -98,7 +98,7 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
     <database>${source}</database>
     <port>${source_port}</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -120,7 +120,7 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
     <database>${target}</database>
     <port>${target_port}</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -285,7 +285,9 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>target_id</name>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>target_id</name>
         <rename>id</rename>
         <type>Integer</type>
         <length>-2</length>
