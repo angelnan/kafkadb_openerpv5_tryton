@@ -66,29 +66,6 @@
   <modified_date>2012&#47;12&#47;04 12:57:56.580</modified_date>
   </info>
   <notepads>
-    <notepad>
-      <note>Another ktr file, party_contact_mechanism_todo.ktr, inherit and add address field, but I don&apos;t get successfully result.
-This ktr replace party&#47;party_contact_mechanism.ktr (base)
-Remember in migration.cfg to change trasnformation and add only this ktr.</note>
-      <xloc>270</xloc>
-      <yloc>356</yloc>
-      <width>682</width>
-      <heigth>58</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>165</backgroundcolorgreen>
-      <backgroundcolorblue>0</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>source</name>
@@ -96,9 +73,9 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>${source_port}</port>
+    <port>5432</port>
     <username>${source_user}</username>
-    <password>${source_password}</password>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -106,7 +83,7 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -118,9 +95,9 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>${target_port}</port>
+    <port>5432</port>
     <username>${target_user}</username>
-    <password>${target_password}</password>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -128,152 +105,14 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>union</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Execute SQL script</to><enabled>Y</enabled> </hop>  <hop> <from>Execute SQL script</from><to>Switch &#47; Case</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>union</to><enabled>N</enabled> </hop>  <hop> <from>Filter rows 2</from><to>target_id</to><enabled>Y</enabled> </hop>  <hop> <from>target_id</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>N</enabled> </hop>  <hop> <from>party</from><to>party_address</to><enabled>Y</enabled> </hop>  <hop> <from>party_address</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  </order>
-  <step>
-    <name>Execute SQL script</name>
-    <type>ExecSQL</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <execute_each_row>Y</execute_each_row>
-    <single_statement>Y</single_statement>
-    <replace_variables>N</replace_variables>
-    <sql>select state as base_contact_state from ir_module_module where name = &apos;base_contact&apos;;</sql>
-    <insert_field/>
-    <update_field/>
-    <delete_field/>
-    <read_field>base_contanct_state</read_field>
-    <arguments>
-       <argument><name>id</name></argument>
-       <argument><name>create_uid</name></argument>
-       <argument><name>create_date</name></argument>
-       <argument><name>write_date</name></argument>
-       <argument><name>write_uid</name></argument>
-       <argument><name>function</name></argument>
-       <argument><name>fax</name></argument>
-       <argument><name>street2</name></argument>
-       <argument><name>phone</name></argument>
-       <argument><name>street</name></argument>
-       <argument><name>active</name></argument>
-       <argument><name>partner_id</name></argument>
-       <argument><name>city</name></argument>
-       <argument><name>name</name></argument>
-       <argument><name>zip</name></argument>
-       <argument><name>title</name></argument>
-       <argument><name>mobile</name></argument>
-       <argument><name>country_id</name></argument>
-       <argument><name>birthdate</name></argument>
-       <argument><name>state_id</name></argument>
-       <argument><name>type</name></argument>
-       <argument><name>email</name></argument>
-    </arguments>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>76</xloc>
-      <yloc>253</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>partner_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>188</xloc>
-      <yloc>163</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>value</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>732</xloc>
-      <yloc>166</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Row Normaliser</name>
-    <type>Normaliser</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-   <typefield>type</typefield>
-    <fields>      <field>        <name>fax</name>
-        <value>fax</value>
-        <norm>value</norm>
-        </field>      <field>        <name>phone</name>
-        <value>phone</value>
-        <norm>value</norm>
-        </field>      <field>        <name>mobile</name>
-        <value>mobile</value>
-        <norm>value</norm>
-        </field>      <field>        <name>email</name>
-        <value>email</value>
-        <norm>value</norm>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>637</xloc>
-      <yloc>166</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
+  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>search_party</to><enabled>Y</enabled> </hop>  <hop> <from>search_party</from><to>union</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -285,92 +124,8 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>target_id</name>
-        <rename>id</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>create_uid_target</name>
-        <rename>create_uid</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>party_target</name>
-        <rename>party</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>address_target</name>
+      <meta>        <name>address</name>
         <rename>address</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>active</name>
-        <rename>active</rename>
-        <type>-</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>type</name>
-        <rename>type</rename>
-        <type>-</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>value</name>
-        <rename>value</rename>
         <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -383,94 +138,8 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>902</xloc>
-      <yloc>169</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>create_uid_target</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_uid_target</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>party_target</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>address_target</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>active</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>fax</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>phone</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>mobile</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>birthdate</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>email</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>537</xloc>
-      <yloc>167</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Switch &#47; Case</name>
-    <type>SwitchCase</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<fieldname>base_contanct_state</fieldname>
-<use_contains>N</use_contains>
-<case_value_type>Integer</case_value_type>
-<case_value_format/>
-<case_value_decimal/>
-<case_value_group/>
-<default_target_step/>
-<cases><case><value>0</value>
-<target_step>Filter rows</target_step>
-</case></cases>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>184</xloc>
-      <yloc>254</yloc>
+      <xloc>619</xloc>
+      <yloc>152</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -494,8 +163,8 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>446</yloc>
+      <xloc>74</xloc>
+      <yloc>149</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -531,96 +200,68 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>978</xloc>
-      <yloc>260</yloc>
+      <xloc>758</xloc>
+      <yloc>248</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>create_uid</name>
-    <type>DBLookup</type>
+    <name>source</name>
+    <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>user_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>create_uid</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>create_uid_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>265</xloc>
-      <yloc>164</yloc>
+      <xloc>172</xloc>
+      <yloc>150</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>party</name>
-    <type>DBLookup</type>
+    <name>target</name>
+    <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_party_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>partner_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>party_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>390</xloc>
-      <yloc>165</yloc>
+      <xloc>755</xloc>
+      <yloc>152</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>party_address</name>
+    <name>union</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>400</xloc>
+      <yloc>152</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>search_party</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -640,176 +281,22 @@ Remember in migration.cfg to change trasnformation and add only this ktr.</note>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>openerp_id</name>
+        <name>address_id</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
         <name>target</name>
-        <rename>address_target</rename>
+        <rename>address</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>428</xloc>
-      <yloc>93</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>rename_id</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>id</name>
-        <rename>openerp_id</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>228</xloc>
-      <yloc>91</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>source</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>77</xloc>
-      <yloc>341</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>target</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1043</xloc>
-      <yloc>168</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>target_id</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <valuename>target_id</valuename>
-      <use_database>Y</use_database>
-      <connection>target</connection>
-      <schema/>
-      <seqname>party_contact_mechanism_id_seq</seqname>
-      <use_counter>N</use_counter>
-      <counter_name/>
-      <start_at>1</start_at>
-      <increment_by>1</increment_by>
-      <max_value>999999999</max_value>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>812</xloc>
-      <yloc>166</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>union</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>455</xloc>
-      <yloc>166</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>write_uid</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>user_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>write_uid</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>write_uid_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>330</xloc>
-      <yloc>164</yloc>
+      <xloc>274</xloc>
+      <yloc>151</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

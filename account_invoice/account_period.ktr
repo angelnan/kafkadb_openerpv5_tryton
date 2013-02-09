@@ -73,7 +73,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>${source_port}</port>
+    <port>5432</port>
     <username>${source_user}</username>
     <password>Encrypted </password>
     <servername/>
@@ -83,7 +83,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -95,7 +95,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>${target_port}</port>
+    <port>5432</port>
     <username>${target_user}</username>
     <password>Encrypted </password>
     <servername/>
@@ -105,14 +105,14 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Add constants 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>fisca_year_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Row denormaliser</from><to>target 2</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Row denormaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>source 2</to><enabled>N</enabled> </hop>  <hop> <from>default_sequence</from><to>sequence</to><enabled>Y</enabled> </hop>  <hop> <from>fisca_year_sequence</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>seq_map</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>sequence</from><to>seq_map</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>fisca_year_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>source 2</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>target 2</from><to>Table output 2</to><enabled>N</enabled> </hop>  </order>
+  <hop> <from>Add constants 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>fisca_year_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Row denormaliser</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Row denormaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>default_sequence</from><to>sequence</to><enabled>Y</enabled> </hop>  <hop> <from>fisca_year_sequence</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>seq_map</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>sequence</from><to>seq_map</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>default_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>sequence_year</from><to>fisca_year_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output 2</to><enabled>N</enabled> </hop>  </order>
   <step>
     <name>Add constants 2</name>
     <type>Constant</type>
@@ -563,7 +563,7 @@ FROM
     </step>
 
   <step>
-    <name>source 2</name>
+    <name>source</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -581,7 +581,7 @@ FROM
     </step>
 
   <step>
-    <name>target 2</name>
+    <name>target</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
