@@ -33,7 +33,7 @@
 import os,sys
 
 
-sys.path.append('/home/angel/projectes/kafkadb/')
+#sys.path.append('/home/angel/projectes/kafkadb/')
 
 from KafkaDB import tools
 
@@ -45,13 +45,14 @@ target_db = tools.get_target_connection(config)
 source_cursor = source_db.cursor()
 target_cursor = target_db.cursor()
 
-migration_filename = os.path.join(config['kafka_db'], 'migration.cfg')
+migration_filename = config.get('migration_config')
 migration = tools.readConfigFile(migration_filename)
 
-
-model_mapping = tools.readConfigFile('ir_model_mapping.cfg')
-field_mapping = tools.readConfigFile('ir_field_mapping.cfg')
-property_mapping = tools.readConfigFile('ir_property_mapping.cfg')
+ir_path=os.path.join(config.get('transformation_path'),'ir/')
+print ir_path
+model_mapping = tools.readConfigFile(ir_path + 'ir_model_mapping.cfg')
+field_mapping = tools.readConfigFile(ir_path + 'ir_field_mapping.cfg')
+property_mapping = tools.readConfigFile(ir_path +'ir_property_mapping.cfg')
 
 model = {}
 properties = {}
