@@ -49,7 +49,6 @@ migration_filename = config.get('migration_config')
 migration = tools.readConfigFile(migration_filename)
 
 ir_path=os.path.join(config.get('transformation_path'),'ir/')
-print ir_path
 model_mapping = tools.readConfigFile(ir_path + 'ir_model_mapping.cfg')
 field_mapping = tools.readConfigFile(ir_path + 'ir_field_mapping.cfg')
 property_mapping = tools.readConfigFile(ir_path +'ir_property_mapping.cfg')
@@ -62,20 +61,29 @@ for target,source in model_mapping['models'].iteritems():
     if source:
         model[source]=target
 
+
 for target,source in property_mapping['property'].iteritems():
     if source:
-        properties[source]=target
+        if not properties.get(source):
+            properties[source] =[]
+        properties[source].append(target)
 
 for m,fields_dict in field_mapping.iteritems():
     fields[m]={}
     for target_field,source_field in fields_dict.iteritems():
-        fields[m][source_field]=target_field
+        if not fields[m].get(source_field):
+            fields[m][source_field] = []
+        fields[m][source_field].append(target_field)
     
 def get_mapping_id(table,value_id):
     target_cursor.execute("SELECT target FROM migration." + table +
             " WHERE source="+str(value_id))
     print target_cursor.query
-    return target_cursor.fetchone()[0]
+    target_id =  target_cursor.fetchone()
+    if target_id:
+        return target_id[0]
+    
+    return None
 
 def get_field_id(model, field):
     target_cursor.execute( 
@@ -86,9 +94,9 @@ def get_field_id(model, field):
             "WHERE "
             " f.model = m.id AND "
             " m.model=%s AND"
-            " f.name=%s",(model, field))
-    print target_cursor.query
-    return target_cursor.fetchone()[0]
+            " f.name in %s",(model, tuple(field)))
+    fields= target_cursor.fetchall()
+    return fields
 
 def get_target_field(model, field):
     return fields.get(model) and \
@@ -121,16 +129,16 @@ def add_property(res_model, res_id, value_model, value_id, field, company):
     if vid:
         value = value_model+","+str(vid)
     
-    tfield = get_target_field(res_model, field)
-    if not tfield:
-        print "FIELD %s not mapping yet"%field
+    tfields = get_target_field(res_model, field)
+    if not tfields:
+        print "FIELD %s not mapping yet"%tfields
+        return
 
-    field = get_field_id(res_model,tfield)
-
-    target_cursor.execute(
-            'INSERT INTO ir_property(res,value,field,company)'
-            ' VALUES(%s,%s,%s,%s)',(res, value, field, company)) 
-    print target_cursor.query
+    fields = get_field_id(res_model,tfields)
+    for field in fields:
+        target_cursor.execute(
+                'INSERT INTO ir_property(res,value,field,company)'
+                ' VALUES(%s,%s,%s,%s)',(res, value, field, company)) 
 
 def get_map_table(model):
     if model:
@@ -141,6 +149,7 @@ def get_map_table(model):
 
 source_cursor.execute("SELECT res_id,name,value,company_id FROM ir_property")
 for row in source_cursor.fetchall():
+#    print row
     res,name,value,company = row
     
     if not properties.get(name):
@@ -157,19 +166,22 @@ for row in source_cursor.fetchall():
     if value:
         value_model,value_id = value.split(',')
 
+
     res_map = get_map_table(res_model)
     val_map = get_map_table(value_model)
+    target_res = get_map_table(model.get(res_model))
+    target_val = get_map_table(model.get(value_model))
+    target_model_res = model.get(res_model)
+    target_model_val = model.get(value_model)
+
 
     if not model.get(value_model) or not model.get(res_model) or \
-           not migration.get(res_map) or \
-           not migration.get(val_map):
-        print "Models not mapped yet , check %s,%s"%(value_model,res_model)
+           not migration.get(target_res) or \
+           not migration.get(target_val):
+        print "Models not mapped yet, check %s,%s"%(value_model,res_model)
         continue
 
-
-    print "--------------------------------------------"
-    print res_model,res_id, value_model,value_id, name
-    add_property(res_model,res_id, value_model,value_id, name, company) 
+    add_property(target_model_res,res_id, target_model_val,value_id, name, company) 
 
     
 target_db.commit()
