@@ -97,7 +97,7 @@
     <database>${source}</database>
     <port>5432</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -119,7 +119,7 @@
     <database>${target}</database>
     <port>5432</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
