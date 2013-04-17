@@ -190,6 +190,7 @@
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>create_uid</name>
       </remove>      <remove>        <name>write_uid</name>
+      </remove>      <remove>        <name>state</name>
       </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
         <type>Integer</type>
