@@ -123,40 +123,116 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>create_date</name>
-        <rename>create_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_date</name>
-        <rename>write_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>id</name>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>id</name>
         <rename>id</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>default_code</name>
-        <rename>code</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>product_tmpl_id</name>
-        <rename>template</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_uid_target</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>write_uid_target</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
         <rename>write_uid</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>description</name>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>create_date</name>
+        <rename>create_date</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_date</name>
+        <rename>write_date</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>product_tmpl_id</name>
+        <rename>template</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>default_code</name>
+        <rename>code</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>description</name>
         <rename>description</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>active</name>
+        <rename>active</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>548</xloc>
       <yloc>152</yloc>
