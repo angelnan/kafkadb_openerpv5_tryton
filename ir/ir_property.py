@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
 ##############################################################################
@@ -33,7 +33,7 @@
 import os,sys
 
 
-#sys.path.append('/home/angel/projectes/kafkadb/')
+sys.path.append(os.path.abspath(os.getcwd()))
 
 from KafkaDB import tools
 
@@ -74,7 +74,7 @@ for m,fields_dict in field_mapping.iteritems():
         if not fields[m].get(source_field):
             fields[m][source_field] = []
         fields[m][source_field].append(target_field)
-    
+
 def get_mapping_id(table,value_id):
     target_cursor.execute("SELECT target FROM migration." + table +
             " WHERE source="+str(value_id))
@@ -82,11 +82,11 @@ def get_mapping_id(table,value_id):
     target_id =  target_cursor.fetchone()
     if target_id:
         return target_id[0]
-    
+
     return None
 
 def get_field_id(model, field):
-    target_cursor.execute( 
+    target_cursor.execute(
             "SELECT f.id "
             "FROM  "
             "ir_model_field f,"
@@ -115,9 +115,9 @@ def add_property(res_model, res_id, value_model, value_id, field, company):
     val_map = get_map_table(value_model)
 
     res_map_table = migration.get(res_map) and \
-            migration[res_map].get('mapping') 
+            migration[res_map].get('mapping')
     val_map_table = migration.get(val_map) and \
-            migration[val_map].get('mapping') 
+            migration[val_map].get('mapping')
 
     if res_map_table:
         rid=get_mapping_id(res_map_table,res_id)
@@ -128,7 +128,7 @@ def add_property(res_model, res_id, value_model, value_id, field, company):
         res = res_model+","+str(rid)
     if vid:
         value = value_model+","+str(vid)
-    
+
     tfields = get_target_field(res_model, field)
     if not tfields:
         print "FIELD %s not mapping yet"%tfields
@@ -138,7 +138,7 @@ def add_property(res_model, res_id, value_model, value_id, field, company):
     for field in fields:
         target_cursor.execute(
                 'INSERT INTO ir_property(res,value,field,company)'
-                ' VALUES(%s,%s,%s,%s)',(res, value, field, company)) 
+                ' VALUES(%s,%s,%s,%s)',(res, value, field, company))
 
 def get_map_table(model):
     if model:
@@ -151,7 +151,7 @@ source_cursor.execute("SELECT res_id,name,value,company_id FROM ir_property")
 for row in source_cursor.fetchall():
 #    print row
     res,name,value,company = row
-    
+
     if not properties.get(name):
         print "Property %s Not Mapped yet"%name
         continue
@@ -181,9 +181,9 @@ for row in source_cursor.fetchall():
         print "Models not mapped yet, check %s,%s"%(value_model,res_model)
         continue
 
-    add_property(target_model_res,res_id, target_model_val,value_id, name, company) 
+    add_property(target_model_res,res_id, target_model_val,value_id, name, company)
 
-    
+
 target_db.commit()
 target_db.close()
 source_db.close()
