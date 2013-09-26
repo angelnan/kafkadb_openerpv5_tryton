@@ -138,8 +138,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>539</xloc>
-      <yloc>200</yloc>
+      <xloc>540</xloc>
+      <yloc>126</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -672,7 +672,7 @@
            </partitioning>
     <field_to_use>state</field_to_use>
     <target_field>invoice_state</target_field>
-    <non_match_default>done</non_match_default>
+    <non_match_default>none</non_match_default>
     <fields>
       <field>
         <source_value>draft</source_value>
@@ -684,7 +684,7 @@
       </field>
       <field>
         <source_value>done</source_value>
-        <target_value>done</target_value>
+        <target_value>paid</target_value>
       </field>
       <field>
         <source_value>cancel</source_value>
@@ -768,7 +768,7 @@
            </partitioning>
     <field_to_use>state</field_to_use>
     <target_field>shipment_state</target_field>
-    <non_match_default>done</non_match_default>
+    <non_match_default>none</non_match_default>
     <fields>
       <field>
         <source_value>draft</source_value>
@@ -788,7 +788,7 @@
       </field>
       <field>
         <source_value>manual</source_value>
-        <target_value>sent</target_value>
+        <target_value>none</target_value>
       </field>
       <field>
         <source_value>progress</source_value>
@@ -845,7 +845,7 @@
     <fields>
       <field>
         <source_value>draft</source_value>
-        <target_value>draft</target_value>
+        <target_value>quotation</target_value>
       </field>
       <field>
         <source_value>waiting_date</source_value>
@@ -861,7 +861,7 @@
       </field>
       <field>
         <source_value>manual</source_value>
-        <target_value>processing</target_value>
+        <target_value>done</target_value>
       </field>
       <field>
         <source_value>progress</source_value>
@@ -878,7 +878,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>134</xloc>
+      <xloc>135</xloc>
       <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>

@@ -283,7 +283,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM sale_order_line</sql>
+    <sql>SELECT * FROM sale_order_line where order_id=98</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>

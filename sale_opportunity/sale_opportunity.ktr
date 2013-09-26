@@ -112,7 +112,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>Add sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Value Mapper</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Value Mapper</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>  <hop> <from>Modified Java Script Value</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>Add sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Value Mapper</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Value Mapper</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>  <hop> <from>Modified Java Script Value</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -179,6 +179,77 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>449</xloc>
       <yloc>215</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>section_id</leftvalue>
+   <function>=</function>
+   <rightvalue/>
+   <value><name>constant</name><type>Integer</type><text>2</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#;-#</mask></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>OR</operator>
+   <leftvalue>section_id</leftvalue>
+   <function>=</function>
+   <rightvalue/>
+   <value><name>constant</name><type>Integer</type><text>3</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#;-#</mask></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>86</xloc>
+      <yloc>203</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Modified Java Script Value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+
+description2 = description + &apos;\n&apos; + notes</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>description2</name>
+        <rename>description2</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>659</xloc>
+      <yloc>217</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -494,7 +565,7 @@
            </partitioning>
     <field_to_use>name</field_to_use>
     <target_field>target_state</target_field>
-    <non_match_default/>
+    <non_match_default>lead</non_match_default>
     <fields>
       <field>
         <source_value>New</source_value>
@@ -773,77 +844,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>225</xloc>
       <yloc>208</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>section_id</leftvalue>
-   <function>=</function>
-   <rightvalue/>
-   <value><name>constant</name><type>Integer</type><text>2</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#;-#</mask></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>OR</operator>
-   <leftvalue>section_id</leftvalue>
-   <function>=</function>
-   <rightvalue/>
-   <value><name>constant</name><type>Integer</type><text>3</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#;-#</mask></value>   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>206</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Modified Java Script Value</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#47;&#47;Script here
-
-description2 = description + &apos;\n&apos; + notes</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>description2</name>
-        <rename>description2</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>659</xloc>
-      <yloc>217</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
