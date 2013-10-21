@@ -71,7 +71,7 @@
       <note> Account Journal (account.journal) is ID = 6</note>
       <xloc>324</xloc>
       <yloc>284</yloc>
-      <width>262</width>
+      <width>263</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -134,7 +134,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>union 2</to><enabled>Y</enabled> </hop>  <hop> <from>target_sequence</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>target_sequence</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>union 2</to><enabled>Y</enabled> </hop>  <hop> <from>target_sequence</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>target_sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Sequence code</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>create_uid</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -176,8 +176,8 @@
         <decimal/>
         <group/>
         <nullif>6</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
+        <length>0</length>
+        <precision>0</precision>
       </field>
     </fields>
      <cluster_schema/>
@@ -301,8 +301,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>48</xloc>
-      <yloc>205</yloc>
+      <xloc>57</xloc>
+      <yloc>108</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -397,8 +397,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>124</xloc>
-      <yloc>205</yloc>
+      <xloc>57</xloc>
+      <yloc>204</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -568,6 +568,61 @@ if(state == &quot;draft&quot;)
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>288</xloc>
       <yloc>205</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sequence code</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT id as source_sequence_id FROM ir_sequence WHERE code = &apos;account.journal&apos;</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>141</xloc>
+      <yloc>104</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main>Sequence code</main>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>source_sequence_id</leftvalue>
+ <function>=</function>
+ <rightvalue>source_sequence_id</rightvalue>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>134</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
