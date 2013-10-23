@@ -70,8 +70,8 @@
       <note>LOSE AL CONTANT WITHOUT PARTNER.</note>
       <xloc>413</xloc>
       <yloc>377</yloc>
-      <width>260</width>
-      <heigth>25</heigth>
+      <width>272</width>
+      <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -94,7 +94,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>5432</port>
+    <port>${source_port}</port>
     <username>${source_user}</username>
     <password>${source_password}</password>
     <servername/>
@@ -104,7 +104,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -116,7 +116,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>5432</port>
+    <port>${target_port}</port>
     <username>${target_user}</username>
     <password>${target_password}</password>
     <servername/>
@@ -126,14 +126,14 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Execute SQL script</to><enabled>Y</enabled> </hop>  <hop> <from>Execute SQL script</from><to>Switch &#47; Case</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>search_party</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>id</to><enabled>Y</enabled> </hop>  <hop> <from>id</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>search_party</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>union</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Execute SQL script</to><enabled>Y</enabled> </hop>  <hop> <from>Execute SQL script</from><to>Switch &#47; Case</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>search_party</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>id</to><enabled>Y</enabled> </hop>  <hop> <from>id</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>search_party</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>union</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Execute SQL script</name>
     <type>ExecSQL</type>
