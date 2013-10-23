@@ -9,4 +9,4 @@ stock.shipment.internal,0
 stock.shipment.out.return,0
 stock.shipment.in.return,0
 account.invoice,1
-sale.sale,1
+sale.sale,0
