@@ -127,7 +127,7 @@
     <fields>        <select_unspecified>N</select_unspecified>
       <meta>        <name>comercial</name>
         <rename>tradename</rename>
-        <type>-</type>
+        <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
