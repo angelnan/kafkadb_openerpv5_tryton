@@ -74,9 +74,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>5432</port>
+    <port>${source_port}</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -84,7 +84,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -98,7 +98,7 @@
     <database>${target}</database>
     <port>5432</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -135,7 +135,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Tryton party_party</from><to>lower 2</to><enabled>Y</enabled> </hop>  <hop> <from>lower 2</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Bank exist?</from><to>Create bank_id</to><enabled>Y</enabled> </hop>  <hop> <from>Create bank_id</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select bank_mapping values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Select bank_mapping values</to><enabled>Y</enabled> </hop>  <hop> <from>lower</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Party</from><to>Party exist?</to><enabled>Y</enabled> </hop>  <hop> <from>Party exist?</from><to>Skip</to><enabled>Y</enabled> </hop>  <hop> <from>OpenERP res_bank</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>lower</to><enabled>Y</enabled> </hop>  <hop> <from>Select bank values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Tryton Bank</to><enabled>N</enabled> </hop>  <hop> <from>Select bank_mapping values</from><to>Tryton migration.bank_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>Bank exist?</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>lookup bank 2</from><to>Bank exist?</to><enabled>Y</enabled> </hop>  <hop> <from>Party exist?</from><to>lookup bank 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>d</to><enabled>Y</enabled> </hop>  <hop> <from>d</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>Select bank values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Tryton party_party</from><to>lower 2</to><enabled>Y</enabled> </hop>  <hop> <from>lower 2</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Bank exist?</from><to>Create bank_id</to><enabled>Y</enabled> </hop>  <hop> <from>Create bank_id</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select bank_mapping values</to><enabled>Y</enabled> </hop>  <hop> <from>lower</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Party</from><to>Party exist?</to><enabled>Y</enabled> </hop>  <hop> <from>Party exist?</from><to>Skip</to><enabled>Y</enabled> </hop>  <hop> <from>OpenERP res_bank</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>lower</to><enabled>Y</enabled> </hop>  <hop> <from>Select bank values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Tryton Bank</to><enabled>N</enabled> </hop>  <hop> <from>Bank exist?</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>lookup bank 2</from><to>Bank exist?</to><enabled>Y</enabled> </hop>  <hop> <from>Party exist?</from><to>lookup bank 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>d</to><enabled>Y</enabled> </hop>  <hop> <from>d</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>Select bank values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Tryton migration.bank_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>Select bank_mapping values</from><to>Tryton migration.bank_mapping</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -206,11 +206,11 @@
            <schema_name/>
            </partitioning>
       <valuename>new_bank_id</valuename>
-      <use_database>N</use_database>
+      <use_database>Y</use_database>
       <connection>target</connection>
       <schema>public</schema>
       <seqname>bank_id_seq</seqname>
-      <use_counter>Y</use_counter>
+      <use_counter>N</use_counter>
       <counter_name/>
       <start_at>1000</start_at>
       <increment_by>1</increment_by>
@@ -419,7 +419,7 @@
         <rename>source</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>new_bank_id</name>
+      </field>      <field>        <name>bank_id</name>
         <rename>target</rename>
         <length>-2</length>
         <precision>-2</precision>
@@ -549,8 +549,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1130</xloc>
-      <yloc>142</yloc>
+      <xloc>833</xloc>
+      <yloc>113</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -576,6 +576,112 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>179</xloc>
       <yloc>409</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>create_uid</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>user_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>create_uid</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>create_uid_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1069</xloc>
+      <yloc>377</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>d</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1069</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lookup bank 2</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>bank</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>party_id</name>
+        <field>party</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>bic</name>
+        <field>bank_code</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>bank_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>575</xloc>
+      <yloc>274</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -683,94 +789,6 @@
     </step>
 
   <step>
-    <name>lookup bank 2</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>bank</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>party_id</name>
-        <field>party</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>bic</name>
-        <field>bank_code</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>bank_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>575</xloc>
-      <yloc>274</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>create_uid</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>user_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>create_uid</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>create_uid_target</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1069</xloc>
-      <yloc>377</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>write_uid</name>
     <type>DBLookup</type>
     <description/>
@@ -807,24 +825,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>951</xloc>
       <yloc>377</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>d</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1069</xloc>
-      <yloc>272</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
