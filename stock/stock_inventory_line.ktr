@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>stock_move</name>
+    <name>stock_inventory_line</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#47;</directory>
     <parameters>
     </parameters>
@@ -112,7 +113,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>product_uom</to><enabled>Y</enabled> </hop>  <hop> <from>product_uom</from><to>location</to><enabled>Y</enabled> </hop>  <hop> <from>location</from><to>location_dest</to><enabled>Y</enabled> </hop>  <hop> <from>location_dest</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Add constants</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>shipment</to><enabled>Y</enabled> </hop>  <hop> <from>shipment</from><to>create_uid</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Add constants</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -138,35 +139,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>793</xloc>
-      <yloc>236</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>location_id</leftvalue>
- <function>&lt;&gt;</function>
- <rightvalue>location_dest_id</rightvalue>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>162</xloc>
+      <xloc>506</xloc>
       <yloc>234</yloc>
       <draw>Y</draw>
       </GUI>
@@ -185,28 +158,9 @@
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>create_uid</name>
       </remove>      <remove>        <name>write_uid</name>
-      </remove>      <remove>        <name>product_uos_qty</name>
-      </remove>      <remove>        <name>address_id</name>
+      </remove>      <remove>        <name>prod_lot_id</name>
       </remove>      <remove>        <name>product_uom</name>
-      </remove>      <remove>        <name>prodlot_id</name>
-      </remove>      <remove>        <name>move_dest_id</name>
-      </remove>      <remove>        <name>product_uos</name>
       </remove>      <remove>        <name>location_id</name>
-      </remove>      <remove>        <name>note</name>
-      </remove>      <remove>        <name>auto_validate</name>
-      </remove>      <remove>        <name>price_currency_id</name>
-      </remove>      <remove>        <name>partner_id</name>
-      </remove>      <remove>        <name>company_id</name>
-      </remove>      <remove>        <name>picking_id</name>
-      </remove>      <remove>        <name>priority</name>
-      </remove>      <remove>        <name>location_dest_id</name>
-      </remove>      <remove>        <name>tracking_id</name>
-      </remove>      <remove>        <name>product_packaging</name>
-      </remove>      <remove>        <name>sale_line_id</name>
-      </remove>      <remove>        <name>purchase_line_id</name>
-      </remove>      <remove>        <name>weight</name>
-      </remove>      <remove>        <name>weight_net</name>
-      </remove>      <remove>        <name>name</name>
       </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
         <type>Integer</type>
@@ -231,56 +185,8 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>target_product_uom</name>
-        <rename>uom</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>price_unit</name>
-        <rename>unit_price</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>date_expected</name>
-        <rename>planned_date</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>date</name>
-        <rename>effective_date</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>target_location_id</name>
-        <rename>from_location</rename>
+      </meta>      <meta>        <name>inventory_id</name>
+        <rename>inventory</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -303,7 +209,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>product_qty2</name>
+      </meta>      <meta>        <name>product_qty</name>
         <rename>quantity</rename>
         <type>Number</type>
         <length>-2</length>
@@ -315,22 +221,10 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>target_location_dest</name>
-        <rename>to_location</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>907</xloc>
-      <yloc>239</yloc>
+      <xloc>622</xloc>
+      <yloc>236</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -346,7 +240,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM stock_move</sql>
+    <sql>SELECT * FROM stock_inventory_line</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -354,7 +248,7 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>25</xloc>
+      <xloc>80</xloc>
       <yloc>233</yloc>
       <draw>Y</draw>
       </GUI>
@@ -391,8 +285,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1087</xloc>
-      <yloc>241</yloc>
+      <xloc>816</xloc>
+      <yloc>246</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -432,184 +326,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>294</xloc>
-      <yloc>236</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>location</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>stock_location_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>location_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>target_location_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>547</xloc>
-      <yloc>235</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>location_dest</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>stock_location_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>location_dest_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>target_location_dest</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>642</xloc>
-      <yloc>235</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>prep</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#47;&#47;Script here
-
-product_qty2=abs(product_qty);
-internal_quantity=product_qty2;
-
-shipment = &apos;&apos;;
-
-if (shipment_type != null) {
-	ret =  &apos;&apos;;
-	if ( shipment_name != null &amp;&amp; shipment_name.indexOf(&apos;return&apos;) != -1) 
-		ret = &apos;.return&apos;;
-	shipment = &apos;stock.shipment.&apos;+shipment_type+ret+&apos;,&apos;+picking_id;
-}</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>internal_quantity</name>
-        <rename>internal_quantity</rename>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>product_qty2</name>
-        <rename>product_qty2</rename>
-        <type>Number</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>shipment</name>
-        <rename>shipment</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>721</xloc>
-      <yloc>234</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>product_uom</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>product_uom_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>product_uom</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>target_product_uom</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>452</xloc>
-      <yloc>235</yloc>
+      <xloc>279</xloc>
+      <yloc>231</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -626,7 +344,7 @@ if (shipment_type != null) {
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>102</xloc>
+      <xloc>146</xloc>
       <yloc>233</yloc>
       <draw>Y</draw>
       </GUI>
@@ -644,8 +362,8 @@ if (shipment_type != null) {
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>982</xloc>
-      <yloc>238</yloc>
+      <xloc>713</xloc>
+      <yloc>239</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -692,8 +410,8 @@ if (shipment_type != null) {
     </step>
 
   <step>
-    <name>shipment</name>
-    <type>DBLookup</type>
+    <name>prep</name>
+    <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -701,39 +419,51 @@ if (shipment_type != null) {
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>source</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>stock_picking</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>picking_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>type</name>
-        <rename>shipment_type</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>name</name>
-        <rename>shipment_name</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+
+var expected_quantity=product_qty;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>expected_quantity</name>
+        <rename>expected_quantity</rename>
+        <type>Number</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>424</xloc>
+      <yloc>233</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>inventory_id</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>228</xloc>
-      <yloc>235</yloc>
+      <xloc>212</xloc>
+      <yloc>233</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
