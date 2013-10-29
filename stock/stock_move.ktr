@@ -95,7 +95,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>${target_port}</port>
+    <port>${source_port}</port>
     <username>${target_user}</username>
     <password>${target_password}</password>
     <servername/>
@@ -105,7 +105,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -117,7 +117,7 @@
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -183,30 +183,25 @@
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>create_uid</name>
-      </remove>      <remove>        <name>write_uid</name>
-      </remove>      <remove>        <name>product_uos_qty</name>
-      </remove>      <remove>        <name>address_id</name>
-      </remove>      <remove>        <name>product_uom</name>
-      </remove>      <remove>        <name>prodlot_id</name>
-      </remove>      <remove>        <name>move_dest_id</name>
-      </remove>      <remove>        <name>product_uos</name>
-      </remove>      <remove>        <name>location_id</name>
-      </remove>      <remove>        <name>note</name>
+      <remove>        <name>address_id</name>
       </remove>      <remove>        <name>auto_validate</name>
-      </remove>      <remove>        <name>price_currency_id</name>
-      </remove>      <remove>        <name>partner_id</name>
-      </remove>      <remove>        <name>company_id</name>
+      </remove>      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>location_dest_id</name>
+      </remove>      <remove>        <name>location_id</name>
+      </remove>      <remove>        <name>move_dest_id</name>
+      </remove>      <remove>        <name>name</name>
+      </remove>      <remove>        <name>note</name>
       </remove>      <remove>        <name>picking_id</name>
       </remove>      <remove>        <name>priority</name>
-      </remove>      <remove>        <name>location_dest_id</name>
-      </remove>      <remove>        <name>tracking_id</name>
+      </remove>      <remove>        <name>prodlot_id</name>
       </remove>      <remove>        <name>product_packaging</name>
-      </remove>      <remove>        <name>sale_line_id</name>
+      </remove>      <remove>        <name>product_uom</name>
+      </remove>      <remove>        <name>product_uos</name>
+      </remove>      <remove>        <name>product_uos_qty</name>
       </remove>      <remove>        <name>purchase_line_id</name>
-      </remove>      <remove>        <name>weight</name>
-      </remove>      <remove>        <name>weight_net</name>
-      </remove>      <remove>        <name>name</name>
+      </remove>      <remove>        <name>sale_line_id</name>
+      </remove>      <remove>        <name>tracking_id</name>
+      </remove>      <remove>        <name>write_uid</name>
       </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
         <type>Integer</type>
@@ -255,7 +250,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>date_expected</name>
+      </meta>      <meta>        <name>date_planned</name>
         <rename>planned_date</rename>
         <type>Date</type>
         <length>-2</length>
@@ -339,7 +334,7 @@
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -615,6 +610,53 @@ if (shipment_type != null) {
     </step>
 
   <step>
+    <name>shipment</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>stock_picking</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>picking_id</name>
+        <field>id</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>type</name>
+        <rename>shipment_type</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>name</name>
+        <rename>shipment_name</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>228</xloc>
+      <yloc>235</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>source</name>
     <type>Dummy</type>
     <description/>
@@ -686,53 +728,6 @@ if (shipment_type != null) {
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>357</xloc>
-      <yloc>235</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>shipment</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>stock_picking</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>picking_id</name>
-        <field>id</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>type</name>
-        <rename>shipment_type</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>name</name>
-        <rename>shipment_name</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>228</xloc>
       <yloc>235</yloc>
       <draw>Y</draw>
       </GUI>
