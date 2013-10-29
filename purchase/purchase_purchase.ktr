@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>bank</name>
+    <name>purchase_purchase</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -62,9 +62,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2013&#47;10&#47;02 10:03:39.448</created_date>
+  <created_date>2012&#47;12&#47;04 18:29:42.918</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2013&#47;10&#47;02 10:03:39.448</modified_date>
+  <modified_date>2012&#47;12&#47;04 18:29:42.918</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -112,35 +112,13 @@
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
-  <connection>
-    <name>try28_zikzakmedia</name>
-    <server>localhost</server>
-    <type>POSTGRESQL</type>
-    <access>Native</access>
-    <database>try28_zikzakmedia</database>
-    <port>5432</port>
-    <username>jmartin</username>
-    <password>Encrypted 2be98afc86aa7b48bb91aaf52df80acdb</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
   <order>
-  <hop> <from>Tryton party_party</from><to>lower 2</to><enabled>Y</enabled> </hop>  <hop> <from>lower 2</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Bank exist?</from><to>Create bank_id</to><enabled>Y</enabled> </hop>  <hop> <from>Create bank_id</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select bank_mapping values</to><enabled>Y</enabled> </hop>  <hop> <from>lower</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Party</from><to>Party exist?</to><enabled>Y</enabled> </hop>  <hop> <from>Party exist?</from><to>Skip</to><enabled>Y</enabled> </hop>  <hop> <from>OpenERP res_bank</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>lower</to><enabled>Y</enabled> </hop>  <hop> <from>Select bank values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Tryton Bank</to><enabled>N</enabled> </hop>  <hop> <from>Bank exist?</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>lookup bank 2</from><to>Bank exist?</to><enabled>Y</enabled> </hop>  <hop> <from>Party exist?</from><to>lookup bank 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>d</to><enabled>Y</enabled> </hop>  <hop> <from>d</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>Select bank values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Tryton migration.bank_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>Select bank_mapping values</from><to>Tryton migration.bank_mapping</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>invoice_method</to><enabled>Y</enabled> </hop>  <hop> <from>If paymen_term value is null</from><to>currency</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>address</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>If paymen_term value is null</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_method</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -148,7 +126,7 @@
            </partitioning>
     <fields>
       <field>
-        <name>create_uid</name>
+        <name>company</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -161,14 +139,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>961</xloc>
-      <yloc>277</yloc>
+      <xloc>483</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Bank exist?</name>
+    <name>Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -177,27 +155,27 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Select values</send_true_to>
-<send_false_to>Create bank_id</send_false_to>
+<send_true_to/>
+<send_false_to/>
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>bank_id</leftvalue>
- <function>IS NOT NULL</function>
+ <leftvalue>curreny</leftvalue>
+ <function>IS NULL</function>
  <rightvalue/>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>692</xloc>
-      <yloc>279</yloc>
+      <xloc>1040</xloc>
+      <yloc>324</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Create bank_id</name>
-    <type>Sequence</type>
+    <name>If paymen_term value is null</name>
+    <type>IfNull</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -205,114 +183,29 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <valuename>new_bank_id</valuename>
-      <use_database>Y</use_database>
-      <connection>target</connection>
-      <schema>public</schema>
-      <seqname>bank_id_seq</seqname>
-      <use_counter>N</use_counter>
-      <counter_name/>
-      <start_at>1000</start_at>
-      <increment_by>1</increment_by>
-      <max_value>999999999</max_value>
+      <replaceAllByValue>1</replaceAllByValue>
+      <replaceAllMask/>
+      <selectFields>Y</selectFields>
+      <selectValuesType>N</selectValuesType>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>payment_term</name>
+        <value>1</value>
+        <mask/>
+        </field>
+      </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>830</xloc>
-      <yloc>277</yloc>
+      <xloc>597</xloc>
+      <yloc>204</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Lookup Party</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>lower 2</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>name</name>
-        <field>name</field>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>party_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>309</xloc>
-      <yloc>275</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>OpenERP res_bank</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <sql>SELECT * FROM res_bank</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>79</xloc>
-      <yloc>162</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Party exist?</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>lookup bank 2</send_true_to>
-<send_false_to>Skip</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>party_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>440</xloc>
-      <yloc>275</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select bank values</name>
+    <name>Select values</name>
     <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
@@ -322,31 +215,9 @@
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>new_bank_id</name>
-        <rename>id</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>party_id</name>
-        <rename>party</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>create_uid_target</name>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
         <type>Integer</type>
         <length>-2</length>
@@ -370,82 +241,105 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>951</xloc>
-      <yloc>507</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select bank_mapping values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>res_bank_id</name>
-        <rename>source</rename>
+      </meta>      <meta>        <name>name</name>
+        <rename>reference</rename>
+        <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>new_bank_id</name>
-        <rename>target</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>961</xloc>
-      <yloc>142</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>res_bank_id</name>
-        <rename>source</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>bank_id</name>
-        <rename>target</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>694</xloc>
-      <yloc>142</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>id</name>
-        <rename>res_bank_id</rename>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>party_target</name>
+        <rename>party</rename>
         <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>shipping_target</name>
+        <rename>invoice_address</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>date_order</name>
+        <rename>purchase_date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>amount_untaxed</name>
+        <rename>untaxed_amount_cache</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>amount_tax</name>
+        <rename>tax_amount_cache</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>amount_total</name>
+        <rename>total_amount_cache</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>origin</name>
+        <rename>description</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>partner_ref</name>
+        <rename>supplier_reference</rename>
+        <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -457,15 +351,15 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>308</xloc>
-      <yloc>163</yloc>
+      <xloc>1031</xloc>
+      <yloc>204</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Skip</name>
-    <type>Dummy</type>
+    <name>Table input</name>
+    <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -473,16 +367,23 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <connection>source</connection>
+    <sql>SELECT * FROM purchase_order</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>437</xloc>
-      <yloc>163</yloc>
+      <xloc>35</xloc>
+      <yloc>76</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Tryton Bank</name>
+    <name>Table output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -493,7 +394,7 @@
            </partitioning>
     <connection>target</connection>
     <schema/>
-    <table>bank</table>
+    <table>sale_sale</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -512,70 +413,49 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1168</xloc>
-      <yloc>508</yloc>
+      <xloc>1173</xloc>
+      <yloc>198</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Tryton migration.bank_mapping</name>
-    <type>TableOutput</type>
+    <name>address</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>1</copies>
+    <copies>4</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <schema>migration</schema>
-    <table>bank_mapping</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>N</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-    </fields>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_address_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>partner_address_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>shipping_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>833</xloc>
-      <yloc>113</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Tryton party_party</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <sql>SELECT * FROM party_party</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>179</xloc>
-      <yloc>409</yloc>
+      <xloc>967</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -615,80 +495,97 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1069</xloc>
-      <yloc>377</yloc>
+      <xloc>751</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>d</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1069</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>lookup bank 2</name>
+    <name>currency</name>
     <type>DBLookup</type>
     <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
+    <distribute>Y</distribute>
+    <copies>4</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
+    <connection>source</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
-      <table>bank</table>
+      <table>product_pricelist</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>party_id</name>
-        <field>party</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>bic</name>
-        <field>bank_code</field>
+        <name>pricelist_id</name>
+        <field>id</field>
         <condition>=</condition>
         <name2/>
       </key>
       <value>
-        <name>id</name>
-        <rename>bank_id</rename>
+        <name>currency_id</name>
+        <rename>currency_id</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>575</xloc>
-      <yloc>274</yloc>
+      <xloc>584</xloc>
+      <yloc>297</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>lower</name>
-    <type>StringOperations</type>
+    <name>currency_map</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>currency_currency_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>currency_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>currency</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>675</xloc>
+      <yloc>297</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>invoice_method</name>
+    <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -696,32 +593,34 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <field_to_use>invoice_method</field_to_use>
+    <target_field/>
+    <non_match_default>manual</non_match_default>
     <fields>
       <field>
-        <in_stream_name>name</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>no</init_cap>
-        <mask_xml>none</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
+        <source_value>manual</source_value>
+        <target_value>manual</target_value>
+      </field>
+      <field>
+        <source_value>order</source_value>
+        <target_value>order</target_value>
+      </field>
+      <field>
+        <source_value>picking</source_value>
+        <target_value>shipment</target_value>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>199</xloc>
-      <yloc>163</yloc>
+      <xloc>389</xloc>
+      <yloc>201</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>lower 2</name>
-    <type>StringOperations</type>
+    <name>invoice_state</name>
+    <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -729,25 +628,127 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <field_to_use>state</field_to_use>
+    <target_field>invoice_state</target_field>
+    <non_match_default>none</non_match_default>
     <fields>
       <field>
-        <in_stream_name>name</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>lower</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>no</init_cap>
-        <mask_xml>none</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
+        <source_value>approved</source_value>
+        <target_value>waiting</target_value>
+      </field>
+      <field>
+        <source_value>cancel</source_value>
+        <target_value>none</target_value>
+      </field>
+      <field>
+        <source_value>done</source_value>
+        <target_value>paid</target_value>
+      </field>
+      <field>
+        <source_value>draft</source_value>
+        <target_value>none</target_value>
+      </field>
+      <field>
+        <source_value>except_invoice</source_value>
+        <target_value>exception</target_value>
+      </field>
+      <field>
+        <source_value>except_picking</source_value>
+        <target_value>none</target_value>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>309</xloc>
-      <yloc>408</yloc>
+      <xloc>300</xloc>
+      <yloc>201</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>party</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_party_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>partner_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>party_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>905</xloc>
+      <yloc>199</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>shipment_state</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>state</field_to_use>
+    <target_field>shipment_state</target_field>
+    <non_match_default>none</non_match_default>
+    <fields>
+      <field>
+        <source_value>approved</source_value>
+        <target_value>none</target_value>
+      </field>
+      <field>
+        <source_value>cancel</source_value>
+        <target_value>none</target_value>
+      </field>
+      <field>
+        <source_value>done</source_value>
+        <target_value>received</target_value>
+      </field>
+      <field>
+        <source_value>draft</source_value>
+        <target_value>none</target_value>
+      </field>
+      <field>
+        <source_value>except_invoice</source_value>
+        <target_value>received</target_value>
+      </field>
+      <field>
+        <source_value>except_picking</source_value>
+        <target_value>exception</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>209</xloc>
+      <yloc>198</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -764,8 +765,55 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>139</xloc>
-      <yloc>101</yloc>
+      <xloc>24</xloc>
+      <yloc>195</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>state</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>state</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>draft</source_value>
+        <target_value>quotation</target_value>
+      </field>
+      <field>
+        <source_value>approved</source_value>
+        <target_value>confirmed</target_value>
+      </field>
+      <field>
+        <source_value>done</source_value>
+        <target_value>done</target_value>
+      </field>
+      <field>
+        <source_value>cancel</source_value>
+        <target_value>cancel</target_value>
+      </field>
+      <field>
+        <source_value>except_picking</source_value>
+        <target_value>confirmed</target_value>
+      </field>
+      <field>
+        <source_value>except_invoice</source_value>
+        <target_value>confirmed</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>135</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -774,7 +822,7 @@
     <name>target</name>
     <type>Dummy</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -782,8 +830,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1069</xloc>
-      <yloc>507</yloc>
+      <xloc>1096</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -823,8 +871,63 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>951</xloc>
-      <yloc>377</yloc>
+      <xloc>836</xloc>
+      <yloc>197</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main>Location</main>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>warehouse</leftvalue>
+ <function>=</function>
+ <rightvalue>warehouse</rightvalue>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>78</xloc>
+      <yloc>198</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Location</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <sql>SELECT id as warehouse FROM stock_location WHERE code = &apos;WH&apos;</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>99</xloc>
+      <yloc>78</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
