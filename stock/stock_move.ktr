@@ -95,7 +95,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>${target_port}</port>
+    <port>${source_port}</port>
     <username>${target_user}</username>
     <password>${target_password}</password>
     <servername/>
@@ -105,7 +105,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -117,7 +117,7 @@
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -190,22 +190,23 @@
       </remove>      <remove>        <name>product_uom</name>
       </remove>      <remove>        <name>move_dest_id</name>
       </remove>      <remove>        <name>product_uos</name>
-      </remove>      <remove>        <name>location_id</name>
-      </remove>      <remove>        <name>note</name>
       </remove>      <remove>        <name>auto_validate</name>
-      </remove>      <remove>        <name>price_currency_id</name>
-      </remove>      <remove>        <name>partner_id</name>
-      </remove>      <remove>        <name>company_id</name>
+      </remove>      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>location_dest_id</name>
+      </remove>      <remove>        <name>location_id</name>
+      </remove>      <remove>        <name>move_dest_id</name>
+      </remove>      <remove>        <name>name</name>
+      </remove>      <remove>        <name>note</name>
       </remove>      <remove>        <name>picking_id</name>
       </remove>      <remove>        <name>priority</name>
-      </remove>      <remove>        <name>location_dest_id</name>
-      </remove>      <remove>        <name>tracking_id</name>
       </remove>      <remove>        <name>product_packaging</name>
-      </remove>      <remove>        <name>sale_line_id</name>
+      </remove>      <remove>        <name>product_uom</name>
+      </remove>      <remove>        <name>product_uos</name>
+      </remove>      <remove>        <name>product_uos_qty</name>
       </remove>      <remove>        <name>purchase_line_id</name>
-      </remove>      <remove>        <name>weight</name>
-      </remove>      <remove>        <name>weight_net</name>
-      </remove>      <remove>        <name>name</name>
+      </remove>      <remove>        <name>sale_line_id</name>
+      </remove>      <remove>        <name>tracking_id</name>
+      </remove>      <remove>        <name>write_uid</name>
       </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
         <type>Integer</type>
@@ -254,7 +255,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>date_expected</name>
+      </meta>      <meta>        <name>date_planned</name>
         <rename>planned_date</rename>
         <type>Date</type>
         <length>-2</length>
@@ -338,7 +339,7 @@
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -542,7 +543,7 @@ shipment = &apos;&apos;;
 
 if (shipment_type != null) {
 	ret =  &apos;&apos;;
-	if ( shipment_name != null &amp;&amp; shipment_name.indexOf(&apos;return&apos;) != -1) 
+	if ( shipment_name != null &amp;&amp; shipment_name.indexOf(&apos;return&apos;) != -1)
 		ret = &apos;.return&apos;;
 	shipment = &apos;stock.shipment.&apos;+shipment_type+ret+&apos;,&apos;+picking_id;
 }</jsScript_script>
