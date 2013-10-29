@@ -1,0 +1,10 @@
+"source","target"
+"account.payment.term,name","account.invoice.payment_term,name"
+"account.payment.term,note","account.invoice.payment_term,description"
+"product.category,name","product.category,name"
+"product.pricelist,name",
+"product.template,description","product.product,description"
+"product.template,description_sale","product.product,description"
+"product.template,name","product.template,name"
+"res.partner.category,name","party.category,name"
+"stock.location,name","stock.location,name"
