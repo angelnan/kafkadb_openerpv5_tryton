@@ -71,8 +71,8 @@
       <note>CAL EXECUTAR-LA ABANS DEL PROCÉS de MIGRACIÓ</note>
       <xloc>1015</xloc>
       <yloc>28</yloc>
-      <width>350</width>
-      <heigth>25</heigth>
+      <width>354</width>
+      <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -95,9 +95,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>5432</port>
+    <port>${source_port}</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -105,7 +105,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -117,9 +117,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>5432</port>
+    <port>${target_port}</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -127,14 +127,91 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Lower OpenERP name</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Lower Tryton name</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Party</from><to>Party found?</to><enabled>Y</enabled> </hop>  <hop> <from>Upper name</from><to>Manage vat</to><enabled>Y</enabled> </hop>  <hop> <from>Manage vat</from><to>Select party values</to><enabled>Y</enabled> </hop>  <hop> <from>Tryton party_party 2</from><to>Lower Tryton name</to><enabled>Y</enabled> </hop>  <hop> <from>Party found?</from><to>Skip</to><enabled>Y</enabled> </hop>  <hop> <from>Select party values</from><to>Tryton party_party</to><enabled>Y</enabled> </hop>  <hop> <from>OpenERP res_bank</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Lower OpenERP name</to><enabled>Y</enabled> </hop>  <hop> <from>Party found?</from><to>target_id</to><enabled>Y</enabled> </hop>  <hop> <from>target_id</from><to>Upper name</to><enabled>Y</enabled> </hop>  <hop> <from>Select address values</from><to>Tryton party_address</to><enabled>Y</enabled> </hop>  <hop> <from>target_id</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish</from><to>Select address values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Lower OpenERP name</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Lower Tryton name</from><to>Lookup Party</to><enabled>Y</enabled> </hop>  <hop> <from>Lookup Party</from><to>Party found?</to><enabled>Y</enabled> </hop>  <hop> <from>Upper name</from><to>Manage vat</to><enabled>Y</enabled> </hop>  <hop> <from>Manage vat</from><to>Select party values</to><enabled>Y</enabled> </hop>  <hop> <from>Tryton party_party 2</from><to>Lower Tryton name</to><enabled>Y</enabled> </hop>  <hop> <from>Party found?</from><to>Skip</to><enabled>Y</enabled> </hop>  <hop> <from>Select party values</from><to>Tryton party_party</to><enabled>Y</enabled> </hop>  <hop> <from>OpenERP res_bank</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Lower OpenERP name</to><enabled>Y</enabled> </hop>  <hop> <from>target_id</from><to>Upper name</to><enabled>Y</enabled> </hop>  <hop> <from>Select address values</from><to>Tryton party_address</to><enabled>Y</enabled> </hop>  <hop> <from>target_id</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish</from><to>Select address values</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Party found? 2</to><enabled>Y</enabled> </hop>  <hop> <from>Party found? 2</from><to>Skip 2</to><enabled>Y</enabled> </hop>  <hop> <from>Party found?</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Party found? 2</from><to>target_id</to><enabled>Y</enabled> </hop>  </order>
+  <step>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>active</name>
+        <type>Boolean</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>True</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>create_uid_target</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>write_uid_target</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>170</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Block this step until steps finish</name>
+    <type>BlockUntilStepsFinish</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <steps>
+      <step>
+        <name>Tryton party_party</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>839</xloc>
+      <yloc>273</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Lookup Party</name>
     <type>StreamLookup</type>
@@ -164,8 +241,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>623</xloc>
-      <yloc>173</yloc>
+      <xloc>438</xloc>
+      <yloc>178</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -197,8 +274,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>506</xloc>
-      <yloc>173</yloc>
+      <xloc>321</xloc>
+      <yloc>178</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -230,8 +307,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>622</xloc>
-      <yloc>57</yloc>
+      <xloc>437</xloc>
+      <yloc>62</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -296,8 +373,8 @@ if( substr(vat,0,2) == &apos;ES&apos;){
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>228</xloc>
-      <yloc>174</yloc>
+      <xloc>43</xloc>
+      <yloc>179</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -313,7 +390,7 @@ if( substr(vat,0,2) == &apos;ES&apos;){
            <schema_name/>
            </partitioning>
 <send_true_to>Skip</send_true_to>
-<send_false_to>target_id</send_false_to>
+<send_false_to>Database lookup</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -324,8 +401,51 @@ if( substr(vat,0,2) == &apos;ES&apos;){
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>734</xloc>
-      <yloc>172</yloc>
+      <xloc>549</xloc>
+      <yloc>177</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select address values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>create_uid_target</name>
+        <rename>create_uid</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>active_1</name>
+        <rename>active</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>street</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>new_target_id</name>
+        <rename>party</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>854</xloc>
+      <yloc>355</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -393,8 +513,45 @@ if( substr(vat,0,2) == &apos;ES&apos;){
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>734</xloc>
-      <yloc>56</yloc>
+      <xloc>549</xloc>
+      <yloc>61</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Tryton party_address</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <schema/>
+    <table>party_address</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1146</xloc>
+      <yloc>359</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -455,8 +612,8 @@ if( substr(vat,0,2) == &apos;ES&apos;){
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
-      <yloc>56</yloc>
+      <xloc>295</xloc>
+      <yloc>61</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -495,59 +652,6 @@ if( substr(vat,0,2) == &apos;ES&apos;){
     </step>
 
   <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>active</name>
-        <type>Boolean</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>True</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>create_uid_target</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>write_uid_target</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>355</xloc>
-      <yloc>171</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>target_id</name>
     <type>Sequence</type>
     <description/>
@@ -576,51 +680,8 @@ if( substr(vat,0,2) == &apos;ES&apos;){
     </step>
 
   <step>
-    <name>Select address values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_uid_target</name>
-        <rename>create_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>active_1</name>
-        <rename>active</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>street</name>
-        <rename>street</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>new_target_id</name>
-        <rename>party</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>name</name>
-        <rename>name</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>854</xloc>
-      <yloc>355</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Tryton party_address</name>
-    <type>TableOutput</type>
+    <name>Database lookup</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -629,35 +690,39 @@ if( substr(vat,0,2) == &apos;ES&apos;){
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <schema/>
-    <table>party_address</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>N</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-    </fields>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>party_party</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>code</name>
+        <field>code</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>target_bis_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1146</xloc>
-      <yloc>359</yloc>
+      <xloc>641</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Block this step until steps finish</name>
-    <type>BlockUntilStepsFinish</type>
+    <name>Party found? 2</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -665,16 +730,38 @@ if( substr(vat,0,2) == &apos;ES&apos;){
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <steps>
-      <step>
-        <name>Tryton party_party</name>
-        <CopyNr>0</CopyNr>
-        </step>
-      </steps>
+<send_true_to>Skip 2</send_true_to>
+<send_false_to>target_id</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>target_bis_id</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>839</xloc>
-      <yloc>273</yloc>
+      <xloc>739</xloc>
+      <yloc>177</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Skip 2</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>739</xloc>
+      <yloc>61</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
