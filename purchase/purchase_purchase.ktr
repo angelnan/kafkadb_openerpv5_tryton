@@ -67,6 +67,27 @@
   <modified_date>2012&#47;12&#47;04 18:29:42.918</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Module purchase_payment must be installed in OpenERP in order to adds payment_term field to purchase_order model.</note>
+      <xloc>736</xloc>
+      <yloc>46</yloc>
+      <width>706</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>source</name>
@@ -113,7 +134,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>invoice_method</to><enabled>Y</enabled> </hop>  <hop> <from>If paymen_term value is null</from><to>currency</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>address</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>If paymen_term value is null</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_method</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>invoice_method</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>address</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_method</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>Join 2</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term</from><to>Join 2</to><enabled>Y</enabled> </hop>  <hop> <from>Remove</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>Join 2</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>payment term is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>currency</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -174,8 +195,8 @@
     </step>
 
   <step>
-    <name>If paymen_term value is null</name>
-    <type>IfNull</type>
+    <name>Join</name>
+    <type>JoinRows</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -183,23 +204,122 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <replaceAllByValue>1</replaceAllByValue>
-      <replaceAllMask/>
-      <selectFields>Y</selectFields>
-      <selectValuesType>N</selectValuesType>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>payment_term</name>
-        <value>1</value>
-        <mask/>
-        </field>
-      </fields>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main>Location</main>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>warehouse</leftvalue>
+ <function>=</function>
+ <rightvalue>warehouse</rightvalue>
+ </condition>
+    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>597</xloc>
-      <yloc>204</yloc>
+      <xloc>78</xloc>
+      <yloc>198</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join 2</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main>Payment term</main>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>default_payment_term</leftvalue>
+ <function>=</function>
+ <rightvalue>default_payment_term</rightvalue>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>505</xloc>
+      <yloc>38</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Location</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <sql>SELECT id as warehouse FROM stock_location WHERE code = &apos;WH&apos;</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>99</xloc>
+      <yloc>78</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Payment term</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT id as default_payment_term FROM account_payment_term order by id;</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>372</xloc>
+      <yloc>37</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remove</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>default_payment_term</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>601</xloc>
+      <yloc>121</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -353,6 +473,30 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1031</xloc>
       <yloc>204</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>payment_term</name>
+        <replaceby>default_payment_term</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>601</xloc>
+      <yloc>38</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -536,8 +680,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>584</xloc>
-      <yloc>297</yloc>
+      <xloc>591</xloc>
+      <yloc>299</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -707,6 +851,34 @@
     </step>
 
   <step>
+    <name>payment term is Null?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Join 2</send_true_to>
+<send_false_to>union</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>payment_term</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>502</xloc>
+      <yloc>115</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>shipment_state</name>
     <type>ValueMapper</type>
     <description/>
@@ -837,6 +1009,24 @@
     </step>
 
   <step>
+    <name>union</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>595</xloc>
+      <yloc>197</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>write_uid</name>
     <type>DBLookup</type>
     <description/>
@@ -873,61 +1063,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>836</xloc>
       <yloc>197</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Join</name>
-    <type>JoinRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <cache_size>500</cache_size>
-      <main>Location</main>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>warehouse</leftvalue>
- <function>=</function>
- <rightvalue>warehouse</rightvalue>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>198</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Location</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <sql>SELECT id as warehouse FROM stock_location WHERE code = &apos;WH&apos;</sql>
-    <limit>1</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>99</xloc>
-      <yloc>78</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

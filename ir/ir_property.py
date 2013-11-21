@@ -74,7 +74,8 @@ def get_field_id(model, field):
             " f.model = m.id AND "
             " m.model='%s' AND"
             " f.name = '%s'" % (model, field))
-    field, = target_cursor.fetchone()
+    fields = target_cursor.fetchone()
+    field = fields[0] if fields else None
     return field
 
 
@@ -102,10 +103,10 @@ def add_property(res_model, res_id, value_model, value_id, field, company):
         res = res_model + "," + str(rid)
     if vid:
         value = value_model + "," + str(vid)
-
-    target_cursor.execute(
-        'INSERT INTO ir_property(res, value, field, company)'
-        ' VALUES(%s,%s,%s,%s)', (res, value, field, company))
+    if field:
+        target_cursor.execute(
+            'INSERT INTO ir_property(res, value, field, company)'
+            ' VALUES(%s,%s,%s,%s)', (res, value, field, company))
 
 
 def get_map_table(model):

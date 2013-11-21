@@ -1,0 +1,3 @@
+Stock Move:
+
+In order to allow importation of stock_move, stock_location on OpenERP must have filled the Shipping Type field, and it must have one stock location for inputs, another for outputs and a third one for internal movements.

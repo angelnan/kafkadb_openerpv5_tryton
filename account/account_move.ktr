@@ -68,8 +68,8 @@
   <notepads>
     <notepad>
       <note>TODO: origin ( reference type)</note>
-      <xloc>218</xloc>
-      <yloc>256</yloc>
+      <xloc>212</xloc>
+      <yloc>158</yloc>
       <width>186</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -133,7 +133,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>journal</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>journal</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>journal</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>journal</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -183,18 +183,6 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>target_journal_id</name>
-        <rename>journal</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
       </meta>      <meta>        <name>name</name>
         <rename>number</rename>
         <type>String</type>
@@ -233,8 +221,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>623</xloc>
-      <yloc>41</yloc>
+      <xloc>525</xloc>
+      <yloc>44</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -258,10 +246,6 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>origin</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -296,8 +280,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>778</xloc>
-      <yloc>95</yloc>
+      <xloc>722</xloc>
+      <yloc>43</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -358,8 +342,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>774</xloc>
-      <yloc>191</yloc>
+      <xloc>832</xloc>
+      <yloc>43</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -433,15 +417,15 @@
       </key>
       <value>
         <name>target</name>
-        <rename>target_journal_id</rename>
+        <rename>journal</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>527</xloc>
-      <yloc>45</yloc>
+      <xloc>426</xloc>
+      <yloc>44</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -507,8 +491,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>734</xloc>
-      <yloc>36</yloc>
+      <xloc>624</xloc>
+      <yloc>43</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

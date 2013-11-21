@@ -69,12 +69,11 @@
     <notepad>
       <note>TODO:
  - Mark if consumable
- - Type Mapping
- - Uom Mapping</note>
+</note>
       <xloc>351</xloc>
       <yloc>459</yloc>
       <width>136</width>
-      <heigth>74</heigth>
+      <heigth>58</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -97,9 +96,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>5432</port>
+    <port>${source_port}</port>
     <username>${source_user}</username>
-    <password>Encrypted </password>
+    <password>${source_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -107,7 +106,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -119,9 +118,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>5432</port>
+    <port>${target_port}</port>
     <username>${target_user}</username>
-    <password>Encrypted </password>
+    <password>${target_password}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -129,14 +128,14 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Value Mapper</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>consumable</to><enabled>Y</enabled> </hop>  <hop> <from>consumable</from><to>Value Mapper</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>consumable</from><to>price</to><enabled>Y</enabled> </hop>  <hop> <from>price</from><to>normalize</to><enabled>Y</enabled> </hop>  <hop> <from>normalize</from><to>relation</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>property</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>uom_id</to><enabled>Y</enabled> </hop>  <hop> <from>uom_id</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>relation</from><to>model</to><enabled>Y</enabled> </hop>  <hop> <from>model</from><to>field_ids</to><enabled>Y</enabled> </hop>  <hop> <from>field_ids</from><to>un</to><enabled>Y</enabled> </hop>  <hop> <from>un</from><to>Select values 2</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Value Mapper</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>consumable</to><enabled>Y</enabled> </hop>  <hop> <from>consumable</from><to>Value Mapper</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>consumable</from><to>price</to><enabled>Y</enabled> </hop>  <hop> <from>price</from><to>normalize</to><enabled>Y</enabled> </hop>  <hop> <from>normalize</from><to>relation</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>property</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>uom_id</to><enabled>Y</enabled> </hop>  <hop> <from>uom_id</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>relation</from><to>model</to><enabled>Y</enabled> </hop>  <hop> <from>model</from><to>field_ids</to><enabled>Y</enabled> </hop>  <hop> <from>field_ids</from><to>un</to><enabled>Y</enabled> </hop>  <hop> <from>un</from><to>Select values 2</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -181,21 +180,9 @@
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>create_uid</name>
       </remove>      <remove>        <name>write_uid</name>
-      </remove>      <meta>        <name>categ_id</name>
-        <rename>category</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>create_uid_target</name>
+      </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
-        <type>Integer</type>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -207,7 +194,19 @@
         <storage_type/>
       </meta>      <meta>        <name>write_uid_target</name>
         <rename>write_uid</rename>
-        <type>Integer</type>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>categ_id</name>
+        <rename>category</rename>
+        <type>-</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -320,8 +319,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>898</xloc>
-      <yloc>348</yloc>
+      <xloc>963</xloc>
+      <yloc>213</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -399,7 +398,7 @@ if(type == &quot;consu&quot;)
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
@@ -440,7 +439,7 @@ if(type == &quot;consu&quot;)
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
@@ -493,7 +492,7 @@ if(type == &quot;consu&quot;)
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
@@ -622,8 +621,8 @@ if(type == &quot;consu&quot;)
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>749</xloc>
-      <yloc>321</yloc>
+      <xloc>759</xloc>
+      <yloc>322</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -754,7 +753,7 @@ model = &apos;product.template&apos;</jsScript_script>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
@@ -795,7 +794,7 @@ model = &apos;product.template&apos;</jsScript_script>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
