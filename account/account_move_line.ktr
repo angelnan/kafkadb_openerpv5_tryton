@@ -112,7 +112,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>journal</to><enabled>Y</enabled> </hop>  <hop> <from>journal</from><to>account</to><enabled>Y</enabled> </hop>  <hop> <from>credit&#47;debit</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>credit&#47;debit</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>account</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>credit&#47;debit</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>journal</to><enabled>Y</enabled> </hop>  <hop> <from>journal</from><to>account</to><enabled>Y</enabled> </hop>  <hop> <from>credit&#47;debit</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>credit&#47;debit</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>account</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>credit&#47;debit</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Filter rows</name>
     <type>FilterRows</type>
@@ -135,8 +135,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>854</xloc>
-      <yloc>284</yloc>
+      <xloc>761</xloc>
+      <yloc>271</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -152,7 +152,9 @@
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>target_account_id</name>
+      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>target_account_id</name>
         <rename>account</rename>
         <type>Integer</type>
         <length>-2</length>
