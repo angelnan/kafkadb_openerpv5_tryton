@@ -439,7 +439,7 @@
 var code = source_code;
 if (source_code.length &gt; 4) {
     var start = substr(source_code,0,4);
-    if (start == &apos;4720&apos; || start == &apos;4721&apos; || start == &apos;4770&apos;|| start == &apos;4771&apos;){
+    if (start == &apos;4720&apos; || start == &apos;4721&apos; || start == &apos;4770&apos; || start == &apos;4771&apos; || start == &apos;4730&apos; || start == &apos;4751&apos;){
 	    var digit = substr(source_code,4,2);
 		if (digit != &apos;00&apos;) {
 	    	code = rpad(substr(source_code,0,4),&apos;0&apos;, source_code.length-2) + digit;
