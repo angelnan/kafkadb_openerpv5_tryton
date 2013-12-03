@@ -6,6 +6,7 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#47;</directory>
     <parameters>
     </parameters>
@@ -112,9 +113,124 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>exist</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>target_account_tax</from><to>union 2</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>mapping</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>exist</to><enabled>Y</enabled> </hop>  <hop> <from>union 2</from><to>not_exist</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>target_account_tax</to><enabled>Y</enabled> </hop>  <hop> <from>not_exist</from><to>Write to log</to><enabled>Y</enabled> </hop>  <hop> <from>not_exist</from><to>discard rows</to><enabled>Y</enabled> </hop>  <hop> <from>discard rows</from><to>target</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Exists</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2</from><to>Exists</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 2</from><to>Exists</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>mapping 2</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>rename_id</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Has parent?</to><enabled>Y</enabled> </hop>  <hop> <from>Has parent?</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Has parent?</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Exists</from><to>Stream lookup 2 3</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Stream lookup 2 3</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 3</from><to>Exists 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2 2</from><to>Table output 2</to><enabled>N</enabled> </hop>  <hop> <from>discard rows</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2 2</to><enabled>N</enabled> </hop>  <hop> <from>Exists 2</from><to>prep 2</to><enabled>Y</enabled> </hop>  <hop> <from>prep 2</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>discard rows</from><to>Write to log 2</to><enabled>Y</enabled> </hop>  <hop> <from>Exists 2</from><to>discard rows</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>Add constants</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Select values 2</name>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>parent</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>482</xloc>
+      <yloc>195</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Exists</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>prep</send_true_to>
+<send_false_to>Stream lookup 2 3</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>tryton_id</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>808</xloc>
+      <yloc>200</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Exists 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>prep 2</send_true_to>
+<send_false_to>discard rows</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>tryton_bis_id</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>905</xloc>
+      <yloc>296</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Has parent?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Stream lookup 2 2</send_true_to>
+<send_false_to>Stream lookup 2</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>parent_id</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>575</xloc>
+      <yloc>195</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values 2 2</name>
     <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
@@ -194,8 +310,117 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>935</xloc>
-      <yloc>282</yloc>
+      <xloc>1128</xloc>
+      <yloc>379</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup 2</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Table input 2</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>name</name>
+        <field>name</field>
+      </key>
+      <key>
+        <name>parent_id</name>
+        <field>parent</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>tryton_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>694</xloc>
+      <yloc>109</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup 2 2</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Table input 2</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>name</name>
+        <field>name</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>tryton_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>692</xloc>
+      <yloc>298</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup 2 3</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Table input 2</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>name</name>
+        <field>name</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>tryton_bis_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>808</xloc>
+      <yloc>295</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -211,7 +436,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM account_tax</sql>
+    <sql>SELECT * FROM account_tax order by id</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -219,14 +444,44 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>141</xloc>
-      <yloc>306</yloc>
+      <xloc>42</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Table output</name>
+    <name>Table input 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <sql>SELECT
+	id,
+	name,
+	parent
+FROM
+	account_tax</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>691</xloc>
+      <yloc>196</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table output 2</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -256,14 +511,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1044</xloc>
-      <yloc>278</yloc>
+      <xloc>1237</xloc>
+      <yloc>375</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Write to log</name>
+    <name>Write to log 2</name>
     <type>WriteToLog</type>
     <description/>
     <distribute>Y</distribute>
@@ -288,8 +543,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>536</xloc>
-      <yloc>395</yloc>
+      <xloc>844</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -329,7 +584,7 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>287</xloc>
+      <xloc>308</xloc>
       <yloc>198</yloc>
       <draw>Y</draw>
       </GUI>
@@ -357,42 +612,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>647</xloc>
-      <yloc>285</yloc>
+      <xloc>840</xloc>
+      <yloc>382</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>exist</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>target_account_tax_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>554</xloc>
-      <yloc>84</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>mapping</name>
+    <name>mapping 2</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -422,36 +649,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>815</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>not_exist</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>target_account_tax_id</leftvalue>
- <function>IS NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>539</xloc>
-      <yloc>291</yloc>
+      <xloc>1137</xloc>
+      <yloc>115</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -470,15 +669,47 @@
         <rename>source</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>target_account_tax_id</name>
+      </field>      <field>        <name>tryton_id</name>
         <rename>target</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>623</xloc>
-      <yloc>83</yloc>
+      <xloc>901</xloc>
+      <yloc>110</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>prep 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>tryton_id</name>
+      </remove>      <meta>        <name>tryton_bis_id</name>
+        <rename>tryton_id</rename>
+        <type>-</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>902</xloc>
+      <yloc>206</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -508,8 +739,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>204</xloc>
-      <yloc>200</yloc>
+      <xloc>224</xloc>
+      <yloc>198</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -526,8 +757,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>137</xloc>
-      <yloc>203</yloc>
+      <xloc>125</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -544,55 +775,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>802</xloc>
-      <yloc>286</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>target_account_tax</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>account_tax</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>name</name>
-        <field>name</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>company_id</name>
-        <field>company</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>target_account_tax_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>456</xloc>
-      <yloc>198</yloc>
+      <xloc>995</xloc>
+      <yloc>383</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -609,26 +793,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>699</xloc>
-      <yloc>78</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>union 2</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>543</xloc>
-      <yloc>194</yloc>
+      <xloc>1000</xloc>
+      <yloc>113</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -668,7 +834,7 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>370</xloc>
+      <xloc>391</xloc>
       <yloc>197</yloc>
       <draw>Y</draw>
       </GUI>
