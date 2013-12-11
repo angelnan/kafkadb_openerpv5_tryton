@@ -6,6 +6,7 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#47;</directory>
     <parameters>
     </parameters>
@@ -41,7 +42,7 @@
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
-    <size_rowset>10000</size_rowset>
+    <size_rowset>5000</size_rowset>
     <sleep_time_empty>50</sleep_time_empty>
     <sleep_time_full>50</sleep_time_full>
     <unique_connections>N</unique_connections>
@@ -66,33 +67,6 @@
   <modified_date>2012&#47;12&#47;02 08:52:21.374</modified_date>
   </info>
   <notepads>
-    <notepad>
-      <note>In order to allow importation of stock_move,
-stock_location on OpenERP must have filled
-the Shipping Type field, and it must have one
-stock location for inputs, another for outputs
-and a third one for internal movements.
-It is also required have warehouse correctly
-configured accordingly with the previous locations.</note>
-      <xloc>560</xloc>
-      <yloc>61</yloc>
-      <width>303</width>
-      <heigth>122</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>165</backgroundcolorgreen>
-      <backgroundcolorblue>0</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>source</name>
@@ -100,7 +74,7 @@ configured accordingly with the previous locations.</note>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>5432</port>
+    <port>${source_port}</port>
     <username>${source_user}</username>
     <password>${source_password}</password>
     <servername/>
@@ -110,7 +84,7 @@ configured accordingly with the previous locations.</note>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -122,7 +96,7 @@ configured accordingly with the previous locations.</note>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>5432</port>
+    <port>${target_port}</port>
     <username>${target_user}</username>
     <password>${target_password}</password>
     <servername/>
@@ -132,67 +106,14 @@ configured accordingly with the previous locations.</note>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input 2</from><to>Is origin sale?</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin sale?</from><to>Add origin field</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin sale?</from><to>Add origin field 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add origin field</from><to>Calculator</to><enabled>Y</enabled> </hop>  <hop> <from>Add origin field 2</from><to>Calculator 2</to><enabled>Y</enabled> </hop>  <hop> <from>Calculator</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Calculator 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>shipment</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Add id</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>from location</from><to>to location</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = out</from><to>Set to_location = dest</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = internal</from><to>Set to_location = out</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>shipment</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>product_uom</to><enabled>Y</enabled> </hop>  <hop> <from>Out shipment?</from><to>Set out_location</to><enabled>Y</enabled> </hop>  <hop> <from>product_uom</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add aux fields</to><enabled>Y</enabled> </hop>  <hop> <from>Add aux fields</from><to>Out shipment?</to><enabled>Y</enabled> </hop>  <hop> <from>Out shipment?</from><to>In shipments</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = dest</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = out</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = in</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Delete out_location_id field</from><to>Delete aux fields</to><enabled>Y</enabled> </hop>  <hop> <from>Delete in_location_id field</from><to>Delete aux fields</to><enabled>Y</enabled> </hop>  <hop> <from>to location</from><to>Delete aux fields</to><enabled>Y</enabled> </hop>  <hop> <from>Set out_location</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>In shipments</from><to>Set in location</to><enabled>Y</enabled> </hop>  <hop> <from>Set in location</from><to>Filter rows 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing)</from><to>Set from_location = internal</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing)</from><to>Set from_location = out</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2 2</from><to>Dummy (do nothing) 2</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 2</from><to>Set from_location = orig</to><enabled>Y</enabled> </hop>  <hop> <from>In shipments</from><to>Dummy (do nothing) 3</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 3</from><to>from location</to><enabled>Y</enabled> </hop>  <hop> <from>Search company currency</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null?</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 3</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 3</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null?</from><to>Dummy (do nothing) 4</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 4</from><to>Add id</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Dummy (do nothing) 4</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2</from><to>Stream lookup 4</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 4</from><to>price_unit is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 3</from><to>Stream lookup 4</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = orig</from><to>Set to_location = in</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 2</from><to>Set from_location = in</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = in</from><to>Set to_location = internal</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = internal</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Delete aux fields</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Delete out_location_id field 2</to><enabled>Y</enabled> </hop>  <hop> <from>Delete out_location_id field 2</from><to>Dummy (do nothing) 3</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2 2</from><to>Delete in_location_id field 2</to><enabled>Y</enabled> </hop>  <hop> <from>Delete in_location_id field 2</from><to>Dummy (do nothing) 3</to><enabled>Y</enabled> </hop>  </order>
-  <step>
-    <name>Add aux fields</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>out_location</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>out</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>in_location</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>in</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>company_id</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>257</xloc>
-      <yloc>401</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
+  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>shipment</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>from location</from><to>to location</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = out</from><to>Set to_location = dest</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = internal</from><to>Set to_location = out</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>shipment</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>product_uom</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = dest</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = out</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = in</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing)</from><to>Set from_location = internal</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing)</from><to>Set from_location = out</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 2</from><to>Set from_location = orig</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 3</from><to>from location</to><enabled>Y</enabled> </hop>  <hop> <from>Search company currency</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = orig</from><to>Set to_location = in</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 2</from><to>Set from_location = in</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = in</from><to>Set to_location = internal</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = internal</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>In shipments</from><to>Dummy (do nothing) 3</to><enabled>Y</enabled> </hop>  <hop> <from>Out shipment?</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>In shipments</from><to>Dummy (do nothing) 2</to><enabled>Y</enabled> </hop>  <hop> <from>Delete in_location_id field</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>to location</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Delete out_location_id field</from><to>from&lt;&gt;to</to><enabled>Y</enabled> </hop>  <hop> <from>Database join 3</from><to>Out shipment?</to><enabled>Y</enabled> </hop>  <hop> <from>Database join 3 2</from><to>In shipments</to><enabled>Y</enabled> </hop>  <hop> <from>product_uom</from><to>Database join 3</to><enabled>Y</enabled> </hop>  <hop> <from>Out shipment?</from><to>Dummy (do nothing) 5</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 5</from><to>Database join 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add origin field</from><to>Calculator</to><enabled>Y</enabled> </hop>  <hop> <from>Add origin field 2</from><to>Calculator 2</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin sale?</from><to>Add origin field</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin sale?</from><to>Add origin field 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Dummy (do nothing) 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 3</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 4</from><to>price_unit is Null? 2</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 3</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 3</from><to>Stream lookup 4</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null? 2</from><to>Dummy (do nothing) 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null? 2</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>  <hop> <from>Database join</from><to>Is origin sale?</to><enabled>Y</enabled> </hop>  <hop> <from>from&lt;&gt;to</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows (cartesian product)</from><to>Stream lookup 4</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 4 2</from><to>Database join</to><enabled>Y</enabled> </hop>  <hop> <from>Calculator 2</from><to>Add id</to><enabled>Y</enabled> </hop>  <hop> <from>Calculator</from><to>Add id</to><enabled>Y</enabled> </hop>  <hop> <from>Add id</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>target</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add id</name>
     <type>Sequence</type>
@@ -215,8 +136,8 @@ configured accordingly with the previous locations.</note>
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1891</xloc>
-      <yloc>467</yloc>
+      <xloc>2237</xloc>
+      <yloc>441</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -246,8 +167,8 @@ configured accordingly with the previous locations.</note>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1881</xloc>
-      <yloc>237</yloc>
+      <xloc>2146</xloc>
+      <yloc>330</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -277,8 +198,8 @@ configured accordingly with the previous locations.</note>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1748</xloc>
-      <yloc>348</yloc>
+      <xloc>2048</xloc>
+      <yloc>442</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -309,8 +230,8 @@ configured accordingly with the previous locations.</note>
 </calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1994</xloc>
-      <yloc>237</yloc>
+      <xloc>2233</xloc>
+      <yloc>330</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -341,8 +262,126 @@ configured accordingly with the previous locations.</note>
 </calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1884</xloc>
-      <yloc>349</yloc>
+      <xloc>2149</xloc>
+      <yloc>442</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Database join</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <rowlimit>0</rowlimit>
+    <sql>SELECT
+	sl.id AS sale_line,
+	pl.id AS purchase_line
+FROM
+		stock_move AS m
+	LEFT JOIN
+		stock_picking AS p
+			ON (m.picking_id = p.id)
+	LEFT JOIN
+		sale_order AS s
+			ON (p.sale_id = s.id)
+	LEFT JOIN
+		purchase_order AS po
+			ON (p.purchase_id = po.id)
+	LEFT JOIN
+		sale_order_line AS sl
+			ON (sl.order_id = s.id AND m.product_id = sl.product_id)
+	LEFT JOIN
+		purchase_order_line AS pl
+			ON (pl.order_id = po.id AND m.product_id = pl.product_id)
+WHERE
+	m.id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>id</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1946</xloc>
+      <yloc>333</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Database join 3</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <rowlimit>0</rowlimit>
+    <sql>SELECT
+	lot_output_id
+FROM
+	stock_warehouse
+WHERE
+	lot_stock_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>location_id</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>577</xloc>
+      <yloc>255</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Database join 3 2</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <rowlimit>0</rowlimit>
+    <sql>SELECT
+	lot_input_id
+FROM
+	stock_warehouse
+WHERE
+	lot_stock_id = ?</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>location_dest_id</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>692</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -382,29 +421,8 @@ configured accordingly with the previous locations.</note>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1441</xloc>
-      <yloc>603</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Delete aux fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>in_location</name>
-      </remove>      <remove>        <name>out_location</name>
-      </remove>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1278</xloc>
-      <yloc>470</yloc>
+      <xloc>1444</xloc>
+      <yloc>466</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -420,31 +438,11 @@ configured accordingly with the previous locations.</note>
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>in_location_id</name>
+      <remove>        <name>lot_input_id</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1176</xloc>
-      <yloc>642</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Delete in_location_id field 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>in_location_id</name>
-      </remove>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>642</xloc>
-      <yloc>610</yloc>
+      <xloc>1194</xloc>
+      <yloc>450</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -460,31 +458,11 @@ configured accordingly with the previous locations.</note>
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>out_location_id</name>
+      <remove>        <name>lot_output_id</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1101</xloc>
-      <yloc>403</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Delete out_location_id field 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>out_location_id</name>
-      </remove>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>481</xloc>
-      <yloc>490</yloc>
+      <xloc>1194</xloc>
+      <yloc>324</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -501,8 +479,8 @@ configured accordingly with the previous locations.</note>
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>639</xloc>
-      <yloc>378</yloc>
+      <xloc>813</xloc>
+      <yloc>257</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -519,8 +497,8 @@ configured accordingly with the previous locations.</note>
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>725</xloc>
-      <yloc>701</yloc>
+      <xloc>802</xloc>
+      <yloc>522</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -537,14 +515,14 @@ configured accordingly with the previous locations.</note>
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>664</xloc>
-      <yloc>491</yloc>
+      <xloc>803</xloc>
+      <yloc>398</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Dummy (do nothing) 4</name>
+    <name>Dummy (do nothing) 4 2</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -555,15 +533,15 @@ configured accordingly with the previous locations.</note>
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1791</xloc>
-      <yloc>466</yloc>
+      <xloc>1823</xloc>
+      <yloc>334</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
+    <name>Dummy (do nothing) 5</name>
+    <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -571,114 +549,10 @@ configured accordingly with the previous locations.</note>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>location_id</leftvalue>
- <function>&lt;&gt;</function>
- <rightvalue>location_dest_id</rightvalue>
- </condition>
-    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>379</xloc>
-      <yloc>271</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Dummy (do nothing)</send_true_to>
-<send_false_to>Delete out_location_id field 2</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>location_id</leftvalue>
-   <function>&lt;&gt;</function>
-   <rightvalue>out_location_id</rightvalue>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>out_location_id</leftvalue>
-   <function>&lt;&gt;</function>
-   <rightvalue>location_dest_id</rightvalue>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>out_location_id</leftvalue>
-   <function>IS NOT NULL</function>
-   <rightvalue/>
-   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>485</xloc>
-      <yloc>377</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows 2 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Dummy (do nothing) 2</send_true_to>
-<send_false_to>Delete in_location_id field 2</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>location_id</leftvalue>
-   <function>&lt;&gt;</function>
-   <rightvalue>in_location_id</rightvalue>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>in_location_id</leftvalue>
-   <function>&lt;&gt;</function>
-   <rightvalue>location_dest_id</rightvalue>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>in_location_id</leftvalue>
-   <function>IS NOT NULL</function>
-   <rightvalue/>
-   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>604</xloc>
-      <yloc>750</yloc>
+      <xloc>691</xloc>
+      <yloc>315</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -693,20 +567,25 @@ configured accordingly with the previous locations.</note>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Set in location</send_true_to>
+<send_true_to>Dummy (do nothing) 2</send_true_to>
 <send_false_to>Dummy (do nothing) 3</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>shipment_type</leftvalue>
- <function>=</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>in</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>lot_input_id</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>in</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>377</xloc>
-      <yloc>751</yloc>
+      <xloc>690</xloc>
+      <yloc>457</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -733,8 +612,38 @@ configured accordingly with the previous locations.</note>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1747</xloc>
-      <yloc>237</yloc>
+      <xloc>2047</xloc>
+      <yloc>331</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main>from&lt;&gt;to</main>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue/>
+ <function>=</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1449</xloc>
+      <yloc>331</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -749,20 +658,26 @@ configured accordingly with the previous locations.</note>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Set out_location</send_true_to>
-<send_false_to>In shipments</send_false_to>
+<send_true_to>Dummy (do nothing)</send_true_to>
+<send_false_to>Dummy (do nothing) 5</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>shipment_type</leftvalue>
- <function>=</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>out</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>lot_output_id</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  </conditions>
+ </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>377</xloc>
-      <yloc>401</yloc>
+      <xloc>692</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -793,14 +708,14 @@ FROM
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1442</xloc>
-      <yloc>729</yloc>
+      <xloc>1445</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select values</name>
+    <name>Select values 3 2</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -810,7 +725,54 @@ FROM
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>create_uid_target</name>
+      <remove>        <name>list_price</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1828</xloc>
+      <yloc>456</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>address_id</name>
+      </remove>      <remove>        <name>auto_validate</name>
+      </remove>      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>currency_id</name>
+      </remove>      <remove>        <name>id</name>
+      </remove>      <remove>        <name>location_dest_id</name>
+      </remove>      <remove>        <name>location_id</name>
+      </remove>      <remove>        <name>move_dest_id</name>
+      </remove>      <remove>        <name>name</name>
+      </remove>      <remove>        <name>note</name>
+      </remove>      <remove>        <name>picking_id</name>
+      </remove>      <remove>        <name>priority</name>
+      </remove>      <remove>        <name>prodlot_id</name>
+      </remove>      <remove>        <name>product_packaging</name>
+      </remove>      <remove>        <name>product_qty</name>
+      </remove>      <remove>        <name>product_uom</name>
+      </remove>      <remove>        <name>product_uos</name>
+      </remove>      <remove>        <name>product_uos_qty</name>
+      </remove>      <remove>        <name>production_id</name>
+      </remove>      <remove>        <name>purchase_line</name>
+      </remove>      <remove>        <name>purchase_line_id</name>
+      </remove>      <remove>        <name>sale_line</name>
+      </remove>      <remove>        <name>sale_line_id</name>
+      </remove>      <remove>        <name>shipment_name</name>
+      </remove>      <remove>        <name>shipment_type</name>
+      </remove>      <remove>        <name>tracking_id</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
         <type>Integer</type>
         <length>-2</length>
@@ -822,33 +784,9 @@ FROM
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>target_product_uom</name>
-        <rename>uom</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>price_unit</name>
-        <rename>unit_price</rename>
-        <type>Number</type>
+      </meta>      <meta>        <name>date</name>
+        <rename>effective_date</rename>
+        <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -870,9 +808,9 @@ FROM
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>date</name>
-        <rename>effective_date</rename>
-        <type>Date</type>
+      </meta>      <meta>        <name>price_unit</name>
+        <rename>unit_price</rename>
+        <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -906,18 +844,6 @@ FROM
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>target_origin</name>
-        <rename>origin</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
       </meta>      <meta>        <name>target_id</name>
         <rename>id</rename>
         <type>Integer</type>
@@ -930,8 +856,32 @@ FROM
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>company_id</name>
-        <rename>company</rename>
+      </meta>      <meta>        <name>target_origin</name>
+        <rename>origin</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>target_product_uom</name>
+        <rename>uom</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -944,56 +894,14 @@ FROM
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2098</xloc>
-      <yloc>463</yloc>
+      <xloc>2322</xloc>
+      <yloc>440</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>purchase_line</name>
-      </remove>      <remove>        <name>sale_line</name>
-      </remove>      <remove>        <name>target</name>
-      </remove>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1997</xloc>
-      <yloc>349</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 3</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>list_price</name>
-      </remove>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1796</xloc>
-      <yloc>588</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Set field value</name>
+    <name>Set field value 2</name>
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
@@ -1010,8 +918,8 @@ FROM
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1803</xloc>
-      <yloc>732</yloc>
+      <xloc>1835</xloc>
+      <yloc>600</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1037,7 +945,7 @@ FROM
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>in_location_id</name>
+        <name>lot_input_id</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
@@ -1051,8 +959,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>858</xloc>
-      <yloc>749</yloc>
+      <xloc>936</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1092,8 +1000,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>770</xloc>
-      <yloc>277</yloc>
+      <xloc>936</xloc>
+      <yloc>210</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1133,8 +1041,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>856</xloc>
-      <yloc>642</yloc>
+      <xloc>941</xloc>
+      <yloc>469</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1160,7 +1068,7 @@ FROM
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>out_location_id</name>
+        <name>lot_output_id</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
@@ -1174,90 +1082,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>771</xloc>
-      <yloc>403</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Set in location</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>stock_location</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>in_location</name>
-        <field>chained_picking_type</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>in_location_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>493</xloc>
-      <yloc>749</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Set out_location</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>stock_location</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>out_location</name>
-        <field>chained_location_type</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>out_location_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>491</xloc>
-      <yloc>273</yloc>
+      <xloc>930</xloc>
+      <yloc>307</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1297,8 +1123,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>954</xloc>
-      <yloc>403</yloc>
+      <xloc>1079</xloc>
+      <yloc>307</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1324,7 +1150,7 @@ FROM
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>in_location_id</name>
+        <name>lot_input_id</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
@@ -1338,8 +1164,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1023</xloc>
-      <yloc>642</yloc>
+      <xloc>1080</xloc>
+      <yloc>470</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1379,8 +1205,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1028</xloc>
-      <yloc>749</yloc>
+      <xloc>1080</xloc>
+      <yloc>559</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1406,7 +1232,7 @@ FROM
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>out_location_id</name>
+        <name>lot_output_id</name>
         <field>source</field>
         <condition>=</condition>
         <name2/>
@@ -1420,78 +1246,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>951</xloc>
-      <yloc>277</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>Select values 2</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>id</name>
-        <field>source_id</field>
-      </key>
-      <value>
-        <name>target_origin</name>
-        <rename>target_origin</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1998</xloc>
-      <yloc>466</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Stream lookup 2</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>Database lookup</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>company_id</name>
-        <field>company</field>
-      </key>
-      <value>
-        <name>currency</name>
-        <rename>currency</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1437</xloc>
-      <yloc>467</yloc>
+      <xloc>1080</xloc>
+      <yloc>210</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1525,8 +1281,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1675</xloc>
-      <yloc>604</yloc>
+      <xloc>1707</xloc>
+      <yloc>472</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1560,8 +1316,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1558</xloc>
-      <yloc>466</yloc>
+      <xloc>1590</xloc>
+      <yloc>334</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1578,62 +1334,15 @@ FROM
            </partitioning>
     <connection>source</connection>
     <sql>SELECT * FROM stock_move</sql>
-    <limit>0</limit>
+    <limit>50</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>48</xloc>
-      <yloc>164</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Table input 2</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <sql>SELECT
-	m.id AS source_id,
-	sl.id AS sale_line,
-	pl.id AS purchase_line
-FROM
-		stock_move AS m
-	LEFT JOIN
-		stock_picking AS p
-			ON (m.picking_id = p.id)
-	LEFT JOIN
-		sale_order AS s
-			ON (p.sale_id = s.id)
-	LEFT JOIN
-		purchase_order AS po
-			ON (p.purchase_id = po.id)
-	LEFT JOIN
-		sale_order_line AS sl
-			ON (sl.order_id = s.id AND m.product_id = sl.product_id)
-	LEFT JOIN
-		purchase_order_line AS pl
-			ON (pl.order_id = po.id AND m.product_id = pl.product_id)
-	
-</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1618</xloc>
-      <yloc>237</yloc>
+      <xloc>20</xloc>
+      <yloc>249</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1665,8 +1374,8 @@ FROM
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1559</xloc>
-      <yloc>730</yloc>
+      <xloc>1591</xloc>
+      <yloc>598</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1702,8 +1411,8 @@ FROM
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2292</xloc>
-      <yloc>463</yloc>
+      <xloc>2466</xloc>
+      <yloc>440</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1743,8 +1452,8 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>269</xloc>
-      <yloc>167</yloc>
+      <xloc>159</xloc>
+      <yloc>250</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1754,7 +1463,7 @@ FROM
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
-    <copies>4</copies>
+    <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
@@ -1784,8 +1493,55 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>798</xloc>
-      <yloc>493</yloc>
+      <xloc>931</xloc>
+      <yloc>397</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>from&lt;&gt;to</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>from_location</leftvalue>
+   <function>&lt;&gt;</function>
+   <rightvalue>to_location</rightvalue>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>from_location</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>to_location</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1316</xloc>
+      <yloc>325</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1837,14 +1593,14 @@ if (shipment_type != null) {
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>156</xloc>
-      <yloc>273</yloc>
+      <xloc>384</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>price_unit is Null?</name>
+    <name>price_unit is Null? 2</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1854,7 +1610,7 @@ if (shipment_type != null) {
            <schema_name/>
            </partitioning>
 <send_true_to>Stream lookup 3</send_true_to>
-<send_false_to>Dummy (do nothing) 4</send_false_to>
+<send_false_to>Dummy (do nothing) 4 2</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -1865,8 +1621,8 @@ if (shipment_type != null) {
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1672</xloc>
-      <yloc>466</yloc>
+      <xloc>1704</xloc>
+      <yloc>334</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1906,8 +1662,8 @@ if (shipment_type != null) {
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>266</xloc>
-      <yloc>272</yloc>
+      <xloc>476</xloc>
+      <yloc>255</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1953,8 +1709,8 @@ if (shipment_type != null) {
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>45</xloc>
-      <yloc>273</yloc>
+      <xloc>313</xloc>
+      <yloc>253</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1971,8 +1727,8 @@ if (shipment_type != null) {
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>162</xloc>
-      <yloc>167</yloc>
+      <xloc>91</xloc>
+      <yloc>249</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1989,8 +1745,8 @@ if (shipment_type != null) {
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2190</xloc>
-      <yloc>463</yloc>
+      <xloc>2397</xloc>
+      <yloc>441</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2030,8 +1786,8 @@ if (shipment_type != null) {
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>952</xloc>
-      <yloc>493</yloc>
+      <xloc>1080</xloc>
+      <yloc>396</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2071,8 +1827,8 @@ if (shipment_type != null) {
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>383</xloc>
-      <yloc>166</yloc>
+      <xloc>235</xloc>
+      <yloc>251</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
