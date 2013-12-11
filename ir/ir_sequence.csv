@@ -1,12 +1,5 @@
 sequence_type,strict
-party.party,0
-account.journal,0
-account.move,0
-account.move.reconciliation,0
-stock.shipment.out,0
-stock.shipment.in,0
-stock.shipment.internal,0
-stock.shipment.out.return,0
-stock.shipment.in.return,0
-account.invoice,1
-sale.sale,0
+"account.invoice.out_invoice",1
+"account.invoice.in_invoice",1
+"account.invoice.out_refund",1
+"account.invoice.in_refund",1
