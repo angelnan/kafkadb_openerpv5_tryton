@@ -69,8 +69,8 @@
   <notepads>
     <notepad>
       <note>Module purchase_payment must be installed in OpenERP in order to adds payment_term field to purchase_order model.</note>
-      <xloc>736</xloc>
-      <yloc>46</yloc>
+      <xloc>836</xloc>
+      <yloc>50</yloc>
       <width>706</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -134,7 +134,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>invoice_method</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Filter rows</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>address</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_method</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>Join 2</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term</from><to>Join 2</to><enabled>Y</enabled> </hop>  <hop> <from>Remove</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>Join 2</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>payment term is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>currency</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>invoice_method</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_method</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Join 2</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term</from><to>Join 2</to><enabled>Y</enabled> </hop>  <hop> <from>Remove</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>Join 2</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>payment term is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>currency</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Database join</to><enabled>Y</enabled> </hop>  <hop> <from>Database join</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>select-purchase_purchase</to><enabled>N</enabled> </hop>  <hop> <from>select-purchase_purchase</from><to>Table output</to><enabled>N</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -160,66 +160,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>483</xloc>
-      <yloc>199</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>curreny</leftvalue>
- <function>IS NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1040</xloc>
-      <yloc>324</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Join</name>
-    <type>JoinRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <cache_size>500</cache_size>
-      <main>Location</main>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>warehouse</leftvalue>
- <function>=</function>
- <rightvalue>warehouse</rightvalue>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>198</yloc>
+      <xloc>583</xloc>
+      <yloc>203</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -248,33 +190,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>505</xloc>
-      <yloc>38</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Location</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <sql>SELECT id as warehouse FROM stock_location WHERE code = &apos;WH&apos;</sql>
-    <limit>1</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>99</xloc>
-      <yloc>78</yloc>
+      <xloc>680</xloc>
+      <yloc>110</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -298,8 +215,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>372</xloc>
-      <yloc>37</yloc>
+      <xloc>583</xloc>
+      <yloc>109</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -318,8 +235,8 @@
       <remove>        <name>default_payment_term</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>601</xloc>
-      <yloc>121</yloc>
+      <xloc>873</xloc>
+      <yloc>110</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -328,7 +245,7 @@
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -337,7 +254,43 @@
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>create_uid</name>
       </remove>      <remove>        <name>write_uid</name>
-      </remove>      <meta>        <name>create_uid_target</name>
+      </remove>      <meta>        <name>amount_tax</name>
+        <rename>tax_amount_cache</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>amount_total</name>
+        <rename>total_amount_cache</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>amount_untaxed</name>
+        <rename>untaxed_amount_cache</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>create_uid_target</name>
         <rename>create_uid</rename>
         <type>Integer</type>
         <length>-2</length>
@@ -349,9 +302,9 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <type>Integer</type>
+      </meta>      <meta>        <name>date_order</name>
+        <rename>purchase_date</rename>
+        <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -363,6 +316,30 @@
         <storage_type/>
       </meta>      <meta>        <name>name</name>
         <rename>reference</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>origin</name>
+        <rename>description</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>partner_ref</name>
+        <rename>supplier_reference</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -397,69 +374,9 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>date_order</name>
-        <rename>purchase_date</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>amount_untaxed</name>
-        <rename>untaxed_amount_cache</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>amount_tax</name>
-        <rename>tax_amount_cache</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>amount_total</name>
-        <rename>total_amount_cache</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>origin</name>
-        <rename>description</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>partner_ref</name>
-        <rename>supplier_reference</rename>
-        <type>String</type>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -471,7 +388,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1031</xloc>
+      <xloc>1382</xloc>
       <yloc>204</yloc>
       <draw>Y</draw>
       </GUI>
@@ -495,8 +412,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>601</xloc>
-      <yloc>38</yloc>
+      <xloc>776</xloc>
+      <yloc>110</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -513,15 +430,15 @@
            </partitioning>
     <connection>source</connection>
     <sql>SELECT * FROM purchase_order</sql>
-    <limit>0</limit>
+    <limit>050</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>35</xloc>
-      <yloc>76</yloc>
+      <xloc>37</xloc>
+      <yloc>197</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -538,7 +455,7 @@
            </partitioning>
     <connection>target</connection>
     <schema/>
-    <table>sale_sale</table>
+    <table>purchase_purchase</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -557,8 +474,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1173</xloc>
-      <yloc>198</yloc>
+      <xloc>1661</xloc>
+      <yloc>207</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -598,8 +515,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>967</xloc>
-      <yloc>199</yloc>
+      <xloc>1318</xloc>
+      <yloc>203</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -639,8 +556,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>751</xloc>
-      <yloc>200</yloc>
+      <xloc>1102</xloc>
+      <yloc>204</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -680,8 +597,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>591</xloc>
-      <yloc>299</yloc>
+      <xloc>943</xloc>
+      <yloc>205</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -721,8 +638,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>675</xloc>
-      <yloc>297</yloc>
+      <xloc>1027</xloc>
+      <yloc>203</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -756,8 +673,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>389</xloc>
-      <yloc>201</yloc>
+      <xloc>489</xloc>
+      <yloc>205</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -803,8 +720,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>300</xloc>
-      <yloc>201</yloc>
+      <xloc>400</xloc>
+      <yloc>205</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -844,8 +761,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>905</xloc>
-      <yloc>199</yloc>
+      <xloc>1256</xloc>
+      <yloc>203</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -872,8 +789,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>502</xloc>
-      <yloc>115</yloc>
+      <xloc>680</xloc>
+      <yloc>205</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -919,8 +836,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>209</xloc>
-      <yloc>198</yloc>
+      <xloc>309</xloc>
+      <yloc>202</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -937,8 +854,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>24</xloc>
-      <yloc>195</yloc>
+      <xloc>124</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -984,8 +901,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>135</xloc>
-      <yloc>199</yloc>
+      <xloc>235</xloc>
+      <yloc>203</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -994,7 +911,7 @@
     <name>target</name>
     <type>Dummy</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1002,8 +919,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1096</xloc>
-      <yloc>200</yloc>
+      <xloc>1447</xloc>
+      <yloc>204</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1020,8 +937,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>595</xloc>
-      <yloc>197</yloc>
+      <xloc>873</xloc>
+      <yloc>205</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1061,8 +978,140 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>836</xloc>
-      <yloc>197</yloc>
+      <xloc>1187</xloc>
+      <yloc>201</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Database join</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <rowlimit>0</rowlimit>
+    <sql>SELECT id as warehouse FROM stock_location WHERE code = &apos;WH&apos;</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+    </parameter>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>183</xloc>
+      <yloc>202</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>select-purchase_purchase</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>company</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>create_date</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>create_uid</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>currency</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>description</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>id</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>invoice_address</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>invoice_method</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>invoice_state</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>party</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>payment_term</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>purchase_date</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>reference</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>shipment_state</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>state</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>supplier_reference</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>tax_amount_cache</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>total_amount_cache</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>untaxed_amount_cache</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>warehouse</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>write_date</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>      <field>        <name>write_uid</name>
+        <rename/>
+        <length>0</length>
+        <precision>0</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1543</xloc>
+      <yloc>207</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
