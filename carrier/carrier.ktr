@@ -96,7 +96,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>${source_port}</port>
+    <port>${target_port}</port>
     <username>${target_user}</username>
     <password>${target_password}</password>
     <servername/>
@@ -106,19 +106,91 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>delivery_carrier</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>Select values 2</from><to>carrier</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>Map party</to><enabled>Y</enabled> </hop>  <hop> <from>Map party</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>delivery_grid</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Map party</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Map party</to><enabled>Y</enabled> </hop>  <hop> <from>delivery_carrier</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Tryton carrier</to><enabled>N</enabled> </hop>  </order>
+  <step>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>carrier_cost_method</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>product</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>729</xloc>
+      <yloc>201</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Map party</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_party_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>partner_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>party</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>630</xloc>
+      <yloc>201</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -166,15 +238,15 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>694</xloc>
-      <yloc>199</yloc>
+      <xloc>836</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>delivery_carrier</name>
-    <type>TableInput</type>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -182,23 +254,39 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>source</connection>
-    <sql>SELECT * FROM delivery_carrier</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <from>delivery_carrier</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>id</name>
+        <field>grid_id</field>
+      </key>
+      <value>
+        <name>partner_id</name>
+        <rename>partner_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>product_id</name>
+        <rename>product_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>95</xloc>
+      <xloc>514</xloc>
       <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>carrier</name>
+    <name>Tryton carrier</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -228,8 +316,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1021</xloc>
-      <yloc>198</yloc>
+      <xloc>1034</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -276,6 +364,64 @@
     </step>
 
   <step>
+    <name>delivery_carrier</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT
+	g.id AS grid_id,
+	c.partner_id AS partner_id,
+	c.product_id AS product_id
+FROM
+		delivery_carrier AS c
+	RIGHT JOIN
+		delivery_grid AS g
+			ON (c.id = g.carrier_id)</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>514</xloc>
+      <yloc>33</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>delivery_grid</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT * FROM delivery_grid</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>95</xloc>
+      <yloc>199</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>source</name>
     <type>Dummy</type>
     <description/>
@@ -305,8 +451,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>794</xloc>
-      <yloc>198</yloc>
+      <xloc>936</xloc>
+      <yloc>199</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -347,129 +493,6 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>393</xloc>
-      <yloc>200</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>id</name>
-        <rename>id</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_date</name>
-        <rename>create_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_date</name>
-        <rename>write_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>carrier_product</name>
-        <rename>carrier_product</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>create_uid</name>
-        <rename>create_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>write_uid</name>
-        <rename>write_uid</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>party</name>
-        <rename>party</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>carrier_cost_method</name>
-        <rename>carrier_cost_method</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>903</xloc>
-      <yloc>198</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Map party</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_party_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>partner_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>party</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>488</xloc>
-      <yloc>200</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>carrier_cost_method</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>product</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>587</xloc>
       <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
