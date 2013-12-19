@@ -1,6 +1,7 @@
 "source","target"
 "account.payment.term,name","account.invoice.payment_term,name"
 "account.payment.term,note","account.invoice.payment_term,description"
+"payment.type,name","account.payment.type,name"
 "product.category,name","product.category,name"
 "product.pricelist,name",
 "product.template,description","product.product,description"
