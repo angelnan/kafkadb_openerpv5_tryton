@@ -35,49 +35,35 @@
 # Convert password users to sha1
 ##############################################################################
 
-import psycopg2
 import hashlib
+import string
+import random
+import os
+import sys
 
-config = {}
+sys.path.append(os.path.abspath(os.getcwd()))
+from KafkaDB import tools
 
-def get_target_connection(config):
-    return psycopg2.connect(
-        database = config['target'],
-        host = config['target_host'],
-        port = config['target_port'],
-        user = config['target_user'],
-        password = config['target_password'])
-
+config = tools.read_kettle_properties()
+source_db = tools.get_source_connection(config)
+target_db = tools.get_target_connection(config)
 
 if __name__ == '__main__':
 
-    salt = 'kafkadb'
-
-    with open('kettle.properties') as f:
-        for line in f:
-            tokens = line.split('=')
-            config[tokens[0].strip()] = "=".join([x.strip() for x in tokens[1:]])
-
-    target_db = get_target_connection(config)
-    #~ target_db.set_session(deferrable=True)
     targetCR = target_db.cursor()
 
-    targetCR.execute('SELECT login, password from res_user where id > 2')          
-    for user in targetCR.fetchall():
-        login = user[0]
-        password = user[1]
-
-        if not password:
+    targetCR.execute("SELECT id, password, salt from res_user where "
+        "login not like 'user_cron%' and login != 'root'")
+    users = targetCR.fetchall()
+    for uid, password, salt in users:
+        if salt is not None or password is None:
             continue
-
-        password = password+salt
-        pswd = hashlib.sha1(password).hexdigest()
-        targetCR.execute("UPDATE res_user SET password = '%(password)s', salt = '%(salt)s' WHERE login = '%(login)s';" % {
-                'password': pswd,
-                'salt': salt,
-                'login': login,
-            })
-        target_db.commit()
-        print "Updated password user %s" % login
-
+        salt = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+        password += salt
+        if isinstance(password, unicode):
+            password = password.encode('utf-8')
+        password = hashlib.sha1(password).hexdigest()
+        targetCR.execute("UPDATE res_user SET password=%s, salt=%s WHERE id=%s",
+            (password, salt, uid))
+    target_db.commit()
     target_db.close()
