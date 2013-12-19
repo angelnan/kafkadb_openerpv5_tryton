@@ -113,12 +113,12 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>uom_categ</from><to>digits</to><enabled>Y</enabled> </hop>  <hop> <from>digits</from><to>If field value is null</to><enabled>Y</enabled> </hop>  <hop> <from>If field value is null</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Exist tryton_id?</from><to>tryton_id -&gt; target</to><enabled>Y</enabled> </hop>  <hop> <from>Exist tryton_id?</from><to>Create target_id</to><enabled>Y</enabled> </hop>  <hop> <from>tryton_id -&gt; target</from><to>Tryton product_uom_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>target_id -&gt; target</from><to>Tryton product_uom_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>Create target_id</from><to>target_id -&gt; target</to><enabled>Y</enabled> </hop>  <hop> <from>Create target_id</from><to>uom_categ</to><enabled>Y</enabled> </hop>  <hop> <from>CSV file input</from><to>exists</to><enabled>Y</enabled> </hop>  <hop> <from>exists</from><to>target_name mapped?</to><enabled>Y</enabled> </hop>  <hop> <from>product_uom_exists</from><to>Exist tryton_id?</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>target_name mapped?</from><to>product_uom_exists</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>exists</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>String operations</to><enabled>Y</enabled> </hop>  <hop> <from>String operations</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>target_name mapped?</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>product_uom_exists</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>uom_categ</from><to>digits</to><enabled>Y</enabled> </hop>  <hop> <from>digits</from><to>If field value is null</to><enabled>Y</enabled> </hop>  <hop> <from>If field value is null</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Exist tryton_id?</from><to>tryton_id -&gt; target</to><enabled>Y</enabled> </hop>  <hop> <from>Exist tryton_id?</from><to>Create target_id</to><enabled>Y</enabled> </hop>  <hop> <from>tryton_id -&gt; target</from><to>Tryton product_uom_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>target_id -&gt; target</from><to>Tryton product_uom_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>Create target_id</from><to>uom_categ</to><enabled>Y</enabled> </hop>  <hop> <from>CSV file input</from><to>exists</to><enabled>Y</enabled> </hop>  <hop> <from>exists</from><to>target_name mapped?</to><enabled>Y</enabled> </hop>  <hop> <from>product_uom_exists</from><to>Exist tryton_id?</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>target_name mapped?</from><to>product_uom_exists</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>exists</to><enabled>Y</enabled> </hop>  <hop> <from>String operations</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>target_name mapped?</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>product_uom_exists</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>target_id -&gt; target</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>String operations</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -139,8 +139,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1114</xloc>
-      <yloc>305</yloc>
+      <xloc>1272</xloc>
+      <yloc>315</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -194,8 +194,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>225</xloc>
-      <yloc>182</yloc>
+      <xloc>405</xloc>
+      <yloc>236</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -204,7 +204,7 @@
     <name>Create target_id</name>
     <type>Sequence</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -222,8 +222,8 @@
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>801</xloc>
-      <yloc>309</yloc>
+      <xloc>920</xloc>
+      <yloc>313</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -250,8 +250,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>627</xloc>
-      <yloc>309</yloc>
+      <xloc>815</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -278,8 +278,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>170</xloc>
-      <yloc>314</yloc>
+      <xloc>414</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -309,8 +309,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>954</xloc>
-      <yloc>305</yloc>
+      <xloc>1160</xloc>
+      <yloc>317</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -319,7 +319,7 @@
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -327,6 +327,8 @@
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>id</name>
+      </remove>      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
       </remove>      <meta>        <name>target_id</name>
         <rename>id</rename>
         <type>Integer</type>
@@ -339,10 +341,34 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
+      </meta>      <meta>        <name>create_uid_target</name>
+        <rename>create_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1114</xloc>
-      <yloc>413</yloc>
+      <xloc>1365</xloc>
+      <yloc>316</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -365,8 +391,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>395</xloc>
-      <yloc>223</yloc>
+      <xloc>642</xloc>
+      <yloc>233</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -398,8 +424,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>133</xloc>
-      <yloc>315</yloc>
+      <xloc>331</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -408,7 +434,7 @@
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -423,8 +449,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>24</xloc>
-      <yloc>308</yloc>
+      <xloc>20</xloc>
+      <yloc>309</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -460,8 +486,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1274</xloc>
-      <yloc>412</yloc>
+      <xloc>1525</xloc>
+      <yloc>315</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -497,8 +523,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>712</xloc>
-      <yloc>72</yloc>
+      <xloc>1030</xloc>
+      <yloc>211</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -567,8 +593,8 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>953</xloc>
-      <yloc>417</yloc>
+      <xloc>1075</xloc>
+      <yloc>318</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -577,7 +603,7 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     <name>exists</name>
     <type>StreamLookup</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -602,8 +628,8 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>223</xloc>
-      <yloc>309</yloc>
+      <xloc>481</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -643,7 +669,7 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>478</xloc>
+      <xloc>704</xloc>
       <yloc>310</yloc>
       <draw>Y</draw>
       </GUI>
@@ -671,7 +697,7 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     <name>target</name>
     <type>Dummy</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -679,8 +705,8 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1197</xloc>
-      <yloc>414</yloc>
+      <xloc>1444</xloc>
+      <yloc>317</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -689,7 +715,7 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     <name>target_id -&gt; target</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -706,8 +732,8 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>799</xloc>
-      <yloc>183</yloc>
+      <xloc>1269</xloc>
+      <yloc>210</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -734,8 +760,8 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>319</xloc>
-      <yloc>307</yloc>
+      <xloc>575</xloc>
+      <yloc>311</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -744,7 +770,7 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     <name>tryton_id -&gt; target</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -761,8 +787,8 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>627</xloc>
-      <yloc>184</yloc>
+      <xloc>811</xloc>
+      <yloc>210</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -802,8 +828,90 @@ Alert(num2str(d2, &quot;0.00;(0.00)&quot;, &quot;EN&quot;));
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>800</xloc>
-      <yloc>417</yloc>
+      <xloc>1010</xloc>
+      <yloc>316</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>create_uid</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>user_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>create_uid</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>create_uid_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>168</xloc>
+      <yloc>311</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>write_uid</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>user_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>write_uid</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>write_uid_target</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>243</xloc>
+      <yloc>313</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
