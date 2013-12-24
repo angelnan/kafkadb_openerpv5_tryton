@@ -133,7 +133,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Execute SQL script</to><enabled>Y</enabled> </hop>  <hop> <from>Execute SQL script</from><to>Switch &#47; Case</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>search_party</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>id</to><enabled>Y</enabled> </hop>  <hop> <from>id</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>search_party</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>union</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Execute SQL script</to><enabled>Y</enabled> </hop>  <hop> <from>Execute SQL script</from><to>Switch &#47; Case</to><enabled>Y</enabled> </hop>  <hop> <from>Switch &#47; Case</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>search_party</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>id</to><enabled>Y</enabled> </hop>  <hop> <from>id</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>search_party</from><to>Database join</to><enabled>Y</enabled> </hop>  <hop> <from>Database join</from><to>Select values 2</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Execute SQL script</name>
     <type>ExecSQL</type>
@@ -247,7 +247,7 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>732</xloc>
+      <xloc>839</xloc>
       <yloc>166</yloc>
       <draw>Y</draw>
       </GUI>
@@ -276,9 +276,12 @@
         </field>      <field>        <name>email</name>
         <value>email</value>
         <norm>value</norm>
+        </field>      <field>        <name>website</name>
+        <value>website</value>
+        <norm>value</norm>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>640</xloc>
+      <xloc>747</xloc>
       <yloc>163</yloc>
       <draw>Y</draw>
       </GUI>
@@ -381,7 +384,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>904</xloc>
+      <xloc>1011</xloc>
       <yloc>170</yloc>
       <draw>Y</draw>
       </GUI>
@@ -437,10 +440,14 @@
         <rename>address_id</rename>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>website</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>484</xloc>
+      <xloc>591</xloc>
       <yloc>163</yloc>
       <draw>Y</draw>
       </GUI>
@@ -561,7 +568,7 @@
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>812</xloc>
+      <xloc>919</xloc>
       <yloc>166</yloc>
       <draw>Y</draw>
       </GUI>
@@ -638,7 +645,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1043</xloc>
+      <xloc>1150</xloc>
       <yloc>168</yloc>
       <draw>Y</draw>
       </GUI>
@@ -656,7 +663,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>553</xloc>
+      <xloc>660</xloc>
       <yloc>162</yloc>
       <draw>Y</draw>
       </GUI>
@@ -698,6 +705,40 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>330</xloc>
+      <yloc>164</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Database join</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <rowlimit>0</rowlimit>
+    <sql>SELECT
+	website
+FROM
+	res_partner
+WHERE
+	id = ?</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>partner_id</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>491</xloc>
       <yloc>164</yloc>
       <draw>Y</draw>
       </GUI>
