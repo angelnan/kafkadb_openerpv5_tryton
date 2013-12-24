@@ -558,18 +558,6 @@ LIMIT
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>shipping_target</name>
-        <rename>shipment_address</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
       </meta>      <meta>        <name>date_order</name>
         <rename>sale_date</rename>
         <type>Date</type>
@@ -609,18 +597,6 @@ LIMIT
       </meta>      <meta>        <name>amount_total</name>
         <rename>total_amount_cache</rename>
         <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>origin</name>
-        <rename>description</rename>
-        <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -843,7 +819,7 @@ LIMIT
       </key>
       <value>
         <name>target</name>
-        <rename>shipping_target</rename>
+        <rename>shipping_address</rename>
         <default/>
         <type>Integer</type>
       </value>
@@ -884,7 +860,7 @@ LIMIT
       </key>
       <value>
         <name>target</name>
-        <rename>invoice_target</rename>
+        <rename>invoice_address</rename>
         <default/>
         <type>Integer</type>
       </value>
@@ -1099,6 +1075,47 @@ LIMIT
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>483</xloc>
       <yloc>390</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>party</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_party_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>partner_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>party</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1392</xloc>
+      <yloc>392</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1387,47 +1404,6 @@ LIMIT
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1323</xloc>
-      <yloc>392</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>party</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_party_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>partner_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>party</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1392</xloc>
       <yloc>392</yloc>
       <draw>Y</draw>
       </GUI>
