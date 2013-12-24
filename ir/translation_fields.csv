@@ -1,4 +1,6 @@
 "source","target"
+"account.journal,name","account.journal,name"
+"payment.type,name","account.payment.type,name"
 "account.payment.term,name","account.invoice.payment_term,name"
 "account.payment.term,note","account.invoice.payment_term,description"
 "payment.type,name","account.payment.type,name"
