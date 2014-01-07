@@ -113,7 +113,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>payment term is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>currency</to><enabled>Y</enabled> </hop>  <hop> <from>Remove</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows (cartesian product)</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term 2</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>prepaid?</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>Add constants 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>manual?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>postpaid?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>address 2</to><enabled>Y</enabled> </hop>  <hop> <from>address 2</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>shipment_address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>payment term is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>currency</to><enabled>Y</enabled> </hop>  <hop> <from>Remove</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Add payment_term</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term 2</from><to>Add payment_term</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add payment_term</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>prepaid?</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>Add constants 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>manual?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>postpaid?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_address</from><to>invoice_address</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_address</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -139,8 +139,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>783</xloc>
-      <yloc>393</yloc>
+      <xloc>569</xloc>
+      <yloc>566</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -181,8 +181,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>518</xloc>
-      <yloc>326</yloc>
+      <xloc>352</xloc>
+      <yloc>491</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -223,8 +223,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>627</xloc>
-      <yloc>329</yloc>
+      <xloc>464</xloc>
+      <yloc>489</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -265,8 +265,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>745</xloc>
-      <yloc>328</yloc>
+      <xloc>565</xloc>
+      <yloc>488</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -307,8 +307,38 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>679</xloc>
-      <yloc>393</yloc>
+      <xloc>648</xloc>
+      <yloc>487</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add payment_term</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main>Payment term 2</main>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue/>
+ <function>=</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>963</xloc>
+      <yloc>378</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -323,7 +353,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Join Rows (cartesian product)</send_true_to>
+<send_true_to>Add payment_term</send_true_to>
 <send_false_to>Set field value</send_false_to>
     <compare>
 <condition>
@@ -335,8 +365,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>957</xloc>
-      <yloc>213</yloc>
+      <xloc>832</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -366,37 +396,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>129</xloc>
-      <yloc>380</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Join Rows (cartesian product)</name>
-    <type>JoinRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <cache_size>500</cache_size>
-      <main/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>id</leftvalue>
- <function>=</function>
- <rightvalue>id</rightvalue>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1075</xloc>
-      <yloc>211</yloc>
+      <yloc>379</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -451,8 +451,8 @@ WHERE
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>878</xloc>
-      <yloc>119</yloc>
+      <xloc>732</xloc>
+      <yloc>289</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -483,8 +483,8 @@ LIMIT
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1072</xloc>
-      <yloc>123</yloc>
+      <xloc>960</xloc>
+      <yloc>290</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -503,8 +503,8 @@ LIMIT
       <remove>        <name>oerp_payment_term</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1073</xloc>
-      <yloc>298</yloc>
+      <xloc>961</xloc>
+      <yloc>465</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -513,7 +513,7 @@ LIMIT
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -549,6 +549,18 @@ LIMIT
       </meta>      <meta>        <name>name</name>
         <rename>reference</rename>
         <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>party_target</name>
+        <rename>party</rename>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -606,6 +618,18 @@ LIMIT
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
+      </meta>      <meta>        <name>origin</name>
+        <rename>description</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
       </meta>      <meta>        <name>note</name>
         <rename>comment</rename>
         <type>String</type>
@@ -620,8 +644,8 @@ LIMIT
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1613</xloc>
-      <yloc>395</yloc>
+      <xloc>1517</xloc>
+      <yloc>565</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -640,8 +664,8 @@ LIMIT
       <remove>        <name>default_oerp_payment_term</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1208</xloc>
-      <yloc>298</yloc>
+      <xloc>1096</xloc>
+      <yloc>465</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -664,8 +688,8 @@ LIMIT
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>952</xloc>
-      <yloc>300</yloc>
+      <xloc>833</xloc>
+      <yloc>473</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -688,8 +712,8 @@ LIMIT
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1214</xloc>
-      <yloc>211</yloc>
+      <xloc>1102</xloc>
+      <yloc>378</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -723,8 +747,8 @@ LIMIT
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>876</xloc>
-      <yloc>215</yloc>
+      <xloc>730</xloc>
+      <yloc>385</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -785,90 +809,8 @@ LIMIT
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1759</xloc>
-      <yloc>395</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>address</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_address_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>partner_shipping_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>shipping_address</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1459</xloc>
-      <yloc>393</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>address 2</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>4</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>party_address_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>partner_invoice_id</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>invoice_address</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1533</xloc>
-      <yloc>397</yloc>
+      <xloc>1659</xloc>
+      <yloc>559</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -908,8 +850,8 @@ LIMIT
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1239</xloc>
-      <yloc>393</yloc>
+      <xloc>1127</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -949,8 +891,8 @@ LIMIT
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1071</xloc>
-      <yloc>396</yloc>
+      <xloc>959</xloc>
+      <yloc>563</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -990,8 +932,49 @@ LIMIT
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1156</xloc>
-      <yloc>390</yloc>
+      <xloc>1044</xloc>
+      <yloc>557</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>invoice_address</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_address_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>partner_invoice_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>invoice_address</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1417</xloc>
+      <yloc>563</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1090,8 +1073,8 @@ LIMIT
            <schema_name/>
            </partitioning>
     <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema>migration</schema>
@@ -1107,15 +1090,15 @@ LIMIT
       </key>
       <value>
         <name>target</name>
-        <rename>party</rename>
+        <rename>party_target</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1392</xloc>
-      <yloc>392</yloc>
+      <xloc>1281</xloc>
+      <yloc>559</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1142,8 +1125,8 @@ LIMIT
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>873</xloc>
-      <yloc>395</yloc>
+      <xloc>727</xloc>
+      <yloc>565</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1200,6 +1183,47 @@ LIMIT
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>410</xloc>
       <yloc>387</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>shipment_address</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>4</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>party_address_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>partner_shipping_id</name>
+        <field>source</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>shipment_address</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1343</xloc>
+      <yloc>559</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1336,7 +1360,7 @@ LIMIT
     <name>target</name>
     <type>Dummy</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1344,8 +1368,8 @@ LIMIT
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1682</xloc>
-      <yloc>396</yloc>
+      <xloc>1582</xloc>
+      <yloc>561</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1362,8 +1386,8 @@ LIMIT
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>968</xloc>
-      <yloc>395</yloc>
+      <xloc>856</xloc>
+      <yloc>562</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1403,8 +1427,8 @@ LIMIT
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1323</xloc>
-      <yloc>392</yloc>
+      <xloc>1211</xloc>
+      <yloc>559</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
