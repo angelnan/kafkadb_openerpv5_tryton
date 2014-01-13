@@ -113,7 +113,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>journal_id</to><enabled>Y</enabled> </hop>  <hop> <from>journal_id</from><to>Sort rows</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>  <hop> <from>Unique rows</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>journal_id</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>  <hop> <from>Unique rows</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>journal_id</from><to>Value Mapper</to><enabled>Y</enabled> </hop>  <hop> <from>Value Mapper</from><to>Sort rows</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Select values</name>
     <type>SelectValues</type>
@@ -165,8 +165,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>704</xloc>
-      <yloc>114</yloc>
+      <xloc>916</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -224,8 +224,45 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>888</xloc>
-      <yloc>114</yloc>
+      <xloc>1130</xloc>
+      <yloc>101</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>journal</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+      <field>
+        <name>period_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>702</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -250,7 +287,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>60</xloc>
-      <yloc>114</yloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -286,8 +323,69 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>980</xloc>
-      <yloc>114</yloc>
+      <xloc>1237</xloc>
+      <yloc>101</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <count_rows>N</count_rows>
+      <count_field/>
+      <reject_duplicate_row>N</reject_duplicate_row>
+      <error_description/>
+    <fields>      <field>        <name>journal</name>
+        <case_insensitive>N</case_insensitive>
+        </field>      <field>        <name>period_id</name>
+        <case_insensitive>N</case_insensitive>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>809</xloc>
+      <yloc>101</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Value Mapper</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>journal</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>draft</source_value>
+        <target_value>open</target_value>
+      </field>
+      <field>
+        <source_value>printed</source_value>
+        <target_value>open</target_value>
+      </field>
+      <field>
+        <source_value>done</source_value>
+        <target_value>close</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>595</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -327,8 +425,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>244</xloc>
-      <yloc>114</yloc>
+      <xloc>274</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -368,8 +466,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>428</xloc>
-      <yloc>114</yloc>
+      <xloc>488</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -386,8 +484,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>152</xloc>
-      <yloc>114</yloc>
+      <xloc>167</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -404,8 +502,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>796</xloc>
-      <yloc>114</yloc>
+      <xloc>1023</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -445,71 +543,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>114</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>journal</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-      <field>
-        <name>period_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>520</xloc>
-      <yloc>114</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      <field>        <name>journal</name>
-        <case_insensitive>N</case_insensitive>
-        </field>      <field>        <name>period_id</name>
-        <case_insensitive>N</case_insensitive>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>612</xloc>
-      <yloc>114</yloc>
+      <xloc>381</xloc>
+      <yloc>101</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
