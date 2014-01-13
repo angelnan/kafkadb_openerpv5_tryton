@@ -126,7 +126,7 @@
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
       <meta>        <name>name</name>
-        <rename>code</rename>
+        <rename>description</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
