@@ -178,15 +178,10 @@
     <compare>
 <condition>
  <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>type</leftvalue>
-   <function>=</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>in_return</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
+ <leftvalue>picking_type</leftvalue>
+ <function>=</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>in_return</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -434,6 +429,41 @@ ORDER BY p.id</sql>
     </step>
 
   <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Picking Type</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>id</name>
+        <field>picking_id</field>
+      </key>
+      <value>
+        <name>picking_type</name>
+        <rename>picking_type</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>219</xloc>
+      <yloc>126</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
@@ -652,41 +682,6 @@ ORDER BY p.id</sql>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>878</xloc>
       <yloc>125</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>Picking Type</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>id</name>
-        <field>picking_id</field>
-      </key>
-      <value>
-        <name>picking_type</name>
-        <rename>picking_type</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>219</xloc>
-      <yloc>126</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
