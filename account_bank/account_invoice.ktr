@@ -67,6 +67,29 @@
   <modified_date>2012&#47;12&#47;02 09:29:11.116</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Differences between V5 &amp; V6
+
+partner_bank -&gt; partner_bank_id</note>
+      <xloc>449</xloc>
+      <yloc>414</yloc>
+      <width>197</width>
+      <heigth>58</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>source</name>
@@ -126,7 +149,7 @@
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>kind</name>
-      </remove>      <meta>        <name>partner_bank_id</name>
+      </remove>      <meta>        <name>partner_bank</name>
         <rename>bank_account</rename>
         <type>Integer</type>
         <length>-2</length>
