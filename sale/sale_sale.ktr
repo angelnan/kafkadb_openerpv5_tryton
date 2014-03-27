@@ -67,6 +67,32 @@
   <modified_date>2012&#47;12&#47;04 18:29:42.918</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Versión OpenERP6
+Copiada a OpenERP5
+Pasos Filter rows, Add constant 3, Set field values 3, Remove 2
+No los tenía. Por lo demás parecen idénticos.
+
+Falta probarlo.</note>
+      <xloc>1338</xloc>
+      <yloc>319</yloc>
+      <width>383</width>
+      <heigth>106</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>source</name>
@@ -113,7 +139,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>shipment_address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>payment term is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>currency</to><enabled>Y</enabled> </hop>  <hop> <from>Remove</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Add payment_term</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term 2</from><to>Add payment_term</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add payment_term</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>prepaid?</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>Add constants 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>manual?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>postpaid?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_address</from><to>invoice_address</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_address</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>shipment_address</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>shipment_state</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_state</from><to>invoice_state</to><enabled>Y</enabled> </hop>  <hop> <from>currency</from><to>currency_map</to><enabled>Y</enabled> </hop>  <hop> <from>currency_map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Location</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Join</to><enabled>Y</enabled> </hop>  <hop> <from>Join</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>payment term is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>currency</to><enabled>Y</enabled> </hop>  <hop> <from>Remove</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>payment term is Null?</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Add payment_term</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Payment term 2</from><to>Add payment_term</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add payment_term</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Remove</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_state</from><to>prepaid?</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>Add constants 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>prepaid?</from><to>manual?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>manual?</from><to>postpaid?</to><enabled>Y</enabled> </hop>  <hop> <from>postpaid?</from><to>Add constants 2 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2 2 2 2</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>shipment_address</from><to>invoice_address</to><enabled>Y</enabled> </hop>  <hop> <from>invoice_address</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add constants 3</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 3</from><to>Set field value 3</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3</from><to>Remove 2</to><enabled>Y</enabled> </hop>  <hop> <from>Remove 2</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -314,6 +340,59 @@
     </step>
 
   <step>
+    <name>Add constants 3</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>temp_amount_untaxed</name>
+        <type>Number</type>
+        <format/>
+        <currency>N</currency>
+        <decimal/>
+        <group>N</group>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>temp_amount_tax</name>
+        <type>Number</type>
+        <format/>
+        <currency>N</currency>
+        <decimal/>
+        <group>N</group>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>temp_amount_total</name>
+        <type>Number</type>
+        <format/>
+        <currency>N</currency>
+        <decimal/>
+        <group>N</group>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1411</xloc>
+      <yloc>471</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Add payment_term</name>
     <type>JoinRows</type>
     <description/>
@@ -326,7 +405,7 @@
       <directory>%%java.io.tmpdir%%</directory>
       <prefix>out</prefix>
       <cache_size>500</cache_size>
-      <main>Payment term 2</main>
+      <main>Filter rows 2</main>
     <compare>
 <condition>
  <negated>N</negated>
@@ -339,6 +418,34 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>963</xloc>
       <yloc>378</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Add constants 3</send_true_to>
+<send_false_to>Select values</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>state</leftvalue>
+ <function>=</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>draft</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1483</xloc>
+      <yloc>562</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -439,7 +546,7 @@
     <connection>source</connection>
     <sql>SELECT
 	cast(substring(res_id FROM 13) AS integer) AS oerp_partner_id,
-	cast(substring(value FROM 22) AS integer) AS oerp_payment_term
+	cast(substring(value_reference FROM 22) AS integer) AS oerp_payment_term
 FROM
 	ir_property
 WHERE
@@ -469,7 +576,7 @@ WHERE
            </partitioning>
     <connection>source</connection>
     <sql>SELECT
-	cast(substring(value from 22) AS integer) AS default_oerp_payment_term
+	cast(substring(value_reference from 22) AS integer) AS default_oerp_payment_term
 FROM
 	ir_property
 WHERE
@@ -505,6 +612,28 @@ LIMIT
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>961</xloc>
       <yloc>465</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remove 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>temp_amount_tax</name>
+      </remove>      <remove>        <name>temp_amount_total</name>
+      </remove>      <remove>        <name>temp_amount_untaxed</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1555</xloc>
+      <yloc>470</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -618,18 +747,6 @@ LIMIT
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>origin</name>
-        <rename>description</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
       </meta>      <meta>        <name>note</name>
         <rename>comment</rename>
         <type>String</type>
@@ -644,8 +761,8 @@ LIMIT
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1517</xloc>
-      <yloc>565</yloc>
+      <xloc>1560</xloc>
+      <yloc>562</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -714,6 +831,38 @@ LIMIT
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1102</xloc>
       <yloc>378</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value 3</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>amount_untaxed</name>
+        <replaceby>temp_amount_untaxed</replaceby>
+        </field>
+      <field>
+        <name>amount_tax</name>
+        <replaceby>temp_amount_tax</replaceby>
+        </field>
+      <field>
+        <name>amount_total</name>
+        <replaceby>temp_amount_total</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1487</xloc>
+      <yloc>470</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -809,8 +958,8 @@ LIMIT
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1659</xloc>
-      <yloc>559</yloc>
+      <xloc>1702</xloc>
+      <yloc>556</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1018,7 +1167,7 @@ LIMIT
         <target_value>waiting</target_value>
       </field>
       <field>
-        <source_value>shiping_except</source_value>
+        <source_value>shipping_except</source_value>
         <target_value>none</target_value>
       </field>
       <field>
@@ -1267,7 +1416,7 @@ LIMIT
         <target_value>waiting</target_value>
       </field>
       <field>
-        <source_value>shiping_except</source_value>
+        <source_value>shipping_except</source_value>
         <target_value>exception</target_value>
       </field>
       <field>
@@ -1340,7 +1489,7 @@ LIMIT
         <target_value>processing</target_value>
       </field>
       <field>
-        <source_value>shiping_except</source_value>
+        <source_value>shipping_except</source_value>
         <target_value>processing</target_value>
       </field>
       <field>
@@ -1368,8 +1517,8 @@ LIMIT
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1582</xloc>
-      <yloc>561</yloc>
+      <xloc>1625</xloc>
+      <yloc>558</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
