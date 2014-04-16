@@ -94,7 +94,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${source}</database>
-    <port>${source_port}</port>
+    <port>5432</port>
     <username>${source_user}</username>
     <password>${source_password}</password>
     <servername/>
@@ -104,7 +104,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -116,7 +116,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>${target}</database>
-    <port>${target_port}</port>
+    <port>5432</port>
     <username>${target_user}</username>
     <password>${target_password}</password>
     <servername/>
@@ -126,7 +126,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
@@ -638,9 +638,8 @@ if (source_code.length &gt; 4) {
     var start = substr(source_code,0,4);
     if (start == &apos;4720&apos; || start == &apos;4721&apos; || start == &apos;4770&apos; || start == &apos;4771&apos; || start == &apos;4730&apos; || start == &apos;4751&apos;){
 	    var digit = substr(source_code,4,2);
-		if (digit != &apos;00&apos;) {
-	    	code = rpad(substr(source_code,0,4),&apos;0&apos;, source_code.length-2) + digit;
-		}
+		if(digit!=&apos;00&apos;)
+			code = rpad(substr(source_code,0,4),&apos;0&apos;, source_code.length-3) + digit;		
     }
 }</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
