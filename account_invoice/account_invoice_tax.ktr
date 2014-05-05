@@ -6,6 +6,7 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#47;</directory>
     <parameters>
     </parameters>
@@ -112,7 +113,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Select values</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>write_uid</from><to>account</to><enabled>Y</enabled> </hop>  <hop> <from>account</from><to>base_code</to><enabled>Y</enabled> </hop>  <hop> <from>base_code</from><to>tax_code</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>account_tax</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>sign</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>account_tax</from><to>invoice</to><enabled>Y</enabled> </hop>  <hop> <from>invoice</from><to>sign</to><enabled>Y</enabled> </hop>  <hop> <from>tax_code</from><to>un</to><enabled>Y</enabled> </hop>  <hop> <from>un</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>account</to><enabled>Y</enabled> </hop>  <hop> <from>account</from><to>base_code</to><enabled>Y</enabled> </hop>  <hop> <from>base_code</from><to>tax_code</to><enabled>Y</enabled> </hop>  <hop> <from>Row Normaliser</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>account_tax</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>  <hop> <from>account_tax</from><to>invoice</to><enabled>Y</enabled> </hop>  <hop> <from>tax_code</from><to>un</to><enabled>Y</enabled> </hop>  <hop> <from>un</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>invoice</from><to>sign</to><enabled>Y</enabled> </hop>  <hop> <from>sign</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Row Normaliser</name>
     <type>Normaliser</type>
@@ -138,8 +139,8 @@
         <norm>tax_code_id</norm>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>578</xloc>
-      <yloc>45</yloc>
+      <xloc>846</xloc>
+      <yloc>53</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -148,7 +149,7 @@
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -171,54 +172,6 @@
         <storage_type/>
       </meta>      <meta>        <name>write_uid_target</name>
         <rename>write_uid</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>target_account_id</name>
-        <rename>account</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>base_amount</name>
-        <rename>base</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>target_base_code</name>
-        <rename>base_code</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>target_base_sign</name>
-        <rename>base_sign</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -265,149 +218,10 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>target_tax_code</name>
-        <rename>tax_code</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>target_tax_sign</name>
-        <rename>tax_sign</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>801</xloc>
-      <yloc>361</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>target_account_id</name>
-        <rename>account</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>create_uid_target</name>
-        <rename>create_uid</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>name</name>
-        <rename>description</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>invoice_id</name>
-        <rename>invoice</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>product_id</name>
-        <rename>product</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>line_type</name>
-        <rename>type</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>price_unit</name>
-        <rename>unit_price</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>write_uid_target</name>
-        <rename>write_uid</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>992</xloc>
-      <yloc>355</yloc>
+      <xloc>1238</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -465,8 +279,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>591</xloc>
-      <yloc>180</yloc>
+      <xloc>846</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -482,7 +296,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM account_invoice_tax</sql>
+    <sql>SELECT * FROM account_invoice_tax where id = 5</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -490,8 +304,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>64</xloc>
-      <yloc>318</yloc>
+      <xloc>62</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -507,7 +321,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM account_tax;</sql>
+    <sql>SELECT * FROM account_tax order by parent_id is null;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -515,8 +329,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>450</xloc>
-      <yloc>50</yloc>
+      <xloc>748</xloc>
+      <yloc>53</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -552,8 +366,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>895</xloc>
-      <yloc>492</yloc>
+      <xloc>1434</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -586,15 +400,15 @@
       </key>
       <value>
         <name>target</name>
-        <rename>target_account_id</rename>
+        <rename>account</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>346</xloc>
-      <yloc>177</yloc>
+      <xloc>454</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -634,8 +448,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>671</xloc>
-      <yloc>180</yloc>
+      <xloc>944</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -668,15 +482,15 @@
       </key>
       <value>
         <name>target</name>
-        <rename>target_base_code</rename>
+        <rename>base_code</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>416</xloc>
-      <yloc>175</yloc>
+      <xloc>552</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -716,8 +530,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>162</xloc>
-      <yloc>177</yloc>
+      <xloc>258</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -757,8 +571,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>781</xloc>
-      <yloc>182</yloc>
+      <xloc>1042</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -779,28 +593,26 @@
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>&#47;&#47;Script here
 
-target_tax_sign = tax_sign;
-target_base_sign =  base_sign;
 if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&apos; ){
-	target_tax_sign = tax_sign;
-	target_base_sign =  base_sign;
+	tax_sign = ref_tax_sign;
+	base_sign =  ref_base_sign;
 }</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>target_tax_sign</name>
-        <rename>target_tax_sign</rename>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>tax_sign</name>
+        <rename>tax_sign</rename>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>target_base_sign</name>
-        <rename>target_base_sign</rename>
+        <replace>Y</replace>
+      </field>      <field>        <name>base_sign</name>
+        <rename>base_sign</rename>
         <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
+        <replace>Y</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>767</xloc>
-      <yloc>269</yloc>
+      <xloc>1140</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -817,8 +629,8 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>70</xloc>
-      <yloc>177</yloc>
+      <xloc>160</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -827,7 +639,7 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
     <name>target</name>
     <type>Dummy</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -835,8 +647,8 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>891</xloc>
-      <yloc>369</yloc>
+      <xloc>1336</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -869,15 +681,15 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
       </key>
       <value>
         <name>target</name>
-        <rename>target_tax_code</rename>
+        <rename>tax_code</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>498</xloc>
-      <yloc>177</yloc>
+      <xloc>650</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -894,8 +706,8 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>544</xloc>
-      <yloc>178</yloc>
+      <xloc>748</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -935,8 +747,8 @@ if( invoice_type == &apos;out_refund&apos; || invoice_type == &apos;in_refund&ap
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>254</xloc>
-      <yloc>177</yloc>
+      <xloc>356</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
