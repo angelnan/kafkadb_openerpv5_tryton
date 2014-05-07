@@ -197,7 +197,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>map type</to><enabled>Y</enabled> </hop>  <hop> <from>Physical Locations</from><to>Warehouses</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouses</from><to>Warehouse?</to><enabled>Y</enabled> </hop>  <hop> <from>Input Locations</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Output Locations</from><to>Output</to><enabled>Y</enabled> </hop>  <hop> <from>Stock Locations</from><to>Stock</to><enabled>Y</enabled> </hop>  <hop> <from>Output?</from><to>Stock</to><enabled>Y</enabled> </hop>  <hop> <from>Input?</from><to>Output</to><enabled>Y</enabled> </hop>  <hop> <from>Input</from><to>Input?</to><enabled>Y</enabled> </hop>  <hop> <from>Output</from><to>Output?</to><enabled>Y</enabled> </hop>  <hop> <from>Stock</from><to>Stock?</to><enabled>Y</enabled> </hop>  <hop> <from>Delete output</from><to>Delete input</to><enabled>Y</enabled> </hop>  <hop> <from>Delete stock</from><to>Delete output</to><enabled>Y</enabled> </hop>  <hop> <from>map type</from><to>Add parent</to><enabled>Y</enabled> </hop>  <hop> <from>Partner Locations</from><to>Partner</to><enabled>Y</enabled> </hop>  <hop> <from>Partner</from><to>Partner?</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual Locations</from><to>Virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual</from><to>Virtual?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2 2</from><to>mapping 2</to><enabled>Y</enabled> </hop>  <hop> <from>Input?</from><to>IN</to><enabled>Y</enabled> </hop>  <hop> <from>Output?</from><to>OUT</to><enabled>Y</enabled> </hop>  <hop> <from>Stock?</from><to>STO</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Get previous row fields</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Get previous row fields</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Sort rows</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouse?</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouse?</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows 3</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3</from><to>Set field value 3</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Select values 5</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2</from><to>Set field value 4</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup 2</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add sequence 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>Get previous row fields 2</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Get previous row fields 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2 2</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Delete input</from><to>Database lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 5</from><to>Block this step until steps finish 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2</from><to>Set field value 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2</from><to>Filter rows 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 2</from><to>Filter rows 3 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2</from><to>Set field value 3 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 2 2</from><to>Filter rows 3 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2 2</from><to>Set field value 3 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>  <hop> <from>map type 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>Partner?</from><to>Filter rows 4</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4</from><to>map type 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2</from><to>map type 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4</from><to>Filter rows 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>map type 2 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual?</from><to>Database lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stock?</from><to>Partner</to><enabled>Y</enabled> </hop>  <hop> <from>Delete partner</from><to>Delete stock</to><enabled>Y</enabled> </hop>  <hop> <from>Partner?</from><to>Virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup 2 2</from><to>Filter rows 4 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2 2</from><to>Set field value 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2 2</from><to>Add sequence 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2 2</from><to>Set field value 4 3</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 3</from><to>Select values 4 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Already exists?</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Already exists?</from><to>join</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>join</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add parent</from><to>Set field value 6</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 6</from><to>Warehouses</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2</from><to>Set field value 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>join</from><to>Update</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>IN</from><to>Delete input</to><enabled>Y</enabled> </hop>  <hop> <from>OUT</from><to>Delete output</to><enabled>Y</enabled> </hop>  <hop> <from>STO</from><to>Delete stock</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Delete virtual</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual?</from><to>Discard</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>map type</to><enabled>Y</enabled> </hop>  <hop> <from>Physical Locations</from><to>Warehouses</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouses</from><to>Warehouse?</to><enabled>Y</enabled> </hop>  <hop> <from>Input Locations</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Output Locations</from><to>Output</to><enabled>Y</enabled> </hop>  <hop> <from>Stock Locations</from><to>Stock</to><enabled>Y</enabled> </hop>  <hop> <from>Output?</from><to>Stock</to><enabled>Y</enabled> </hop>  <hop> <from>Input?</from><to>Output</to><enabled>Y</enabled> </hop>  <hop> <from>Input</from><to>Input?</to><enabled>Y</enabled> </hop>  <hop> <from>Output</from><to>Output?</to><enabled>Y</enabled> </hop>  <hop> <from>Stock</from><to>Stock?</to><enabled>Y</enabled> </hop>  <hop> <from>Delete output</from><to>Delete input</to><enabled>Y</enabled> </hop>  <hop> <from>Delete stock</from><to>Delete output</to><enabled>Y</enabled> </hop>  <hop> <from>map type</from><to>Add parent</to><enabled>Y</enabled> </hop>  <hop> <from>Partner Locations</from><to>Partner</to><enabled>Y</enabled> </hop>  <hop> <from>Partner</from><to>Partner?</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual Locations</from><to>Virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual</from><to>Virtual?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2 2</from><to>mapping 2</to><enabled>Y</enabled> </hop>  <hop> <from>Input?</from><to>IN</to><enabled>Y</enabled> </hop>  <hop> <from>Output?</from><to>OUT</to><enabled>Y</enabled> </hop>  <hop> <from>Stock?</from><to>STO</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Get previous row fields</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Get previous row fields</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Sort rows</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouse?</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouse?</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows 3</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3</from><to>Set field value 3</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Select values 5</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2</from><to>Set field value 4</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup 2</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add sequence 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>Get previous row fields 2</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Get previous row fields 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2 2</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Delete input</from><to>Database lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 5</from><to>Block this step until steps finish 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2</from><to>Set field value 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2</from><to>Filter rows 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 2</from><to>Filter rows 3 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2</from><to>Set field value 3 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 2 2</from><to>Filter rows 3 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2 2</from><to>Set field value 3 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>  <hop> <from>map type 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>Partner?</from><to>Filter rows 4</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4</from><to>map type 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2</from><to>map type 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4</from><to>Filter rows 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>map type 2 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual?</from><to>Database lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stock?</from><to>Partner</to><enabled>Y</enabled> </hop>  <hop> <from>Delete partner</from><to>Delete stock</to><enabled>Y</enabled> </hop>  <hop> <from>Partner?</from><to>Virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup 2 2</from><to>Filter rows 4 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2 2</from><to>Set field value 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2 2</from><to>Add sequence 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2 2</from><to>Set field value 4 3</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 3</from><to>Select values 4 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Already exists?</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Already exists?</from><to>join</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>join</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add parent</from><to>Set field value 6</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 6</from><to>Warehouses</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2</from><to>Set field value 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>join</from><to>Update</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>IN</from><to>Delete input</to><enabled>Y</enabled> </hop>  <hop> <from>OUT</from><to>Delete output</to><enabled>Y</enabled> </hop>  <hop> <from>STO</from><to>Delete stock</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Virtual?</from><to>Stock 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stock Locations 2</from><to>Stock 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2 2 2</from><to>Set field value 4 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 3 2</from><to>Select values 4 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stock 2</from><to>Internal</to><enabled>Y</enabled> </hop>  <hop> <from>Internal</from><to>Discard</to><enabled>Y</enabled> </hop>  <hop> <from>Delete virtual</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2 2 2</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Internal</from><to>Set field value to a constant</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value to a constant</from><to>Add sequence 2 2 2</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
@@ -393,6 +393,34 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2354</xloc>
       <yloc>223</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add sequence 2 2 2</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>new_id</valuename>
+      <use_database>Y</use_database>
+      <connection>target</connection>
+      <schema>public</schema>
+      <seqname>stock_location_id_seq</seqname>
+      <use_counter>N</use_counter>
+      <counter_name/>
+      <start_at>1</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2479</xloc>
+      <yloc>222</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -719,8 +747,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2355</xloc>
-      <yloc>65</yloc>
+      <xloc>2614</xloc>
+      <yloc>67</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1169,6 +1197,34 @@ WHERE
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1360</xloc>
       <yloc>61</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Internal</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Set field value to a constant</send_true_to>
+<send_false_to>Discard</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>internal</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue>virtual</rightvalue>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2475</xloc>
+      <yloc>66</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1659,6 +1715,82 @@ FROM
     </step>
 
   <step>
+    <name>Select values 4 2 2 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>new_id</name>
+      </remove>      <remove>        <name>input</name>
+      </remove>      <remove>        <name>output</name>
+      </remove>      <remove>        <name>stock</name>
+      </remove>      <remove>        <name>partner</name>
+      </remove>      <remove>        <name>virtual</name>
+      </remove>      <remove>        <name>internal</name>
+      </remove>      <remove>        <name>create_uid</name>
+      </remove>      <remove>        <name>write_uid</name>
+      </remove>      <meta>        <name>create_uid_target</name>
+        <rename>create_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>write_uid_target</name>
+        <rename>write_uid</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>parent_left</name>
+        <rename>left</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>parent_right</name>
+        <rename>right</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2483</xloc>
+      <yloc>553</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Select values 5</name>
     <type>SelectValues</type>
     <description/>
@@ -2022,6 +2154,34 @@ FROM
     </step>
 
   <step>
+    <name>Set field value 4 3 2</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>id</name>
+        <replaceby>new_id</replaceby>
+        </field>
+      <field>
+        <name>create</name>
+        <replaceby>new_id</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2478</xloc>
+      <yloc>310</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Set field value 6</name>
     <type>SetValueField</type>
     <description/>
@@ -2041,6 +2201,32 @@ FROM
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>521</xloc>
       <yloc>61</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value to a constant</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>active</name>
+        <value>Y</value>
+        <mask/>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2479</xloc>
+      <yloc>153</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2155,6 +2341,41 @@ FROM
     </step>
 
   <step>
+    <name>Stock 2</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Stock Locations 2</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>id</name>
+        <field>internal</field>
+      </key>
+      <value>
+        <name>internal</name>
+        <rename>internal</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2350</xloc>
+      <yloc>66</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Stock Locations</name>
     <type>TableInput</type>
     <description/>
@@ -2189,6 +2410,44 @@ WHERE
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1639</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stock Locations 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT
+	l.id AS internal
+FROM
+	stock_location AS l
+WHERE
+		location_id in (
+			SELECT
+				id AS warehouse
+			FROM
+				stock_location
+			WHERE
+				location_id = (SELECT id FROM stock_location WHERE Name = &apos;Physical Locations&apos;))
+	AND
+		chained_picking_type IS NULL</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2350</xloc>
+      <yloc>149</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2546,7 +2805,7 @@ WHERE
            <schema_name/>
            </partitioning>
 <send_true_to>Database lookup 2 2</send_true_to>
-<send_false_to>Discard</send_false_to>
+<send_false_to>Stock 2</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
