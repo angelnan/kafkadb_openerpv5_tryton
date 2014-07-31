@@ -7,7 +7,7 @@
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
-    <directory>&#47;</directory>
+    <directory>&#x2f;</directory>
     <parameters>
     </parameters>
     <log>
@@ -17,7 +17,7 @@
 <size_limit_lines/>
 <interval/>
 <timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field></trans-log-table>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
 <perf-log-table><connection/>
 <schema/>
 <table/>
@@ -34,6 +34,11 @@
 <table/>
 <timeout_days/>
 <field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+<metrics-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
     </log>
     <maxdate>
       <connection/>
@@ -62,15 +67,13 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2012&#47;12&#47;02 08:52:21.374</created_date>
+  <created_date>2012&#x2f;12&#x2f;02 08&#x3a;52&#x3a;21.374</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2012&#47;12&#47;02 08:52:21.374</modified_date>
+  <modified_date>2012&#x2f;12&#x2f;02 08&#x3a;52&#x3a;21.374</modified_date>
   </info>
   <notepads>
     <notepad>
-      <note>Diferences between V5 and V6
-date_planned -&gt; date_expected
-V5 field origin not exist</note>
+      <note>Diferences between V5 and V6&#xa;date_planned -&#x3e; date_expected&#xa;V5 field origin does not exist</note>
       <xloc>2210</xloc>
       <yloc>864</yloc>
       <width>192</width>
@@ -93,13 +96,13 @@ V5 field origin not exist</note>
   </notepads>
   <connection>
     <name>source</name>
-    <server>${source_host}</server>
+    <server>&#x24;&#x7b;source_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${source}</database>
-    <port>${source_port}</port>
-    <username>${source_user}</username>
-    <password>${source_password}</password>
+    <database>&#x24;&#x7b;source&#x7d;</database>
+    <port>&#x24;&#x7b;source_port&#x7d;</port>
+    <username>&#x24;&#x7b;source_user&#x7d;</username>
+    <password>&#x24;&#x7b;source_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -107,21 +110,23 @@ V5 field origin not exist</note>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;source_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <connection>
     <name>target</name>
-    <server>${target_host}</server>
+    <server>&#x24;&#x7b;target_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${target}</database>
-    <port>${target_port}</port>
-    <username>${target_user}</username>
-    <password>${target_password}</password>
+    <database>&#x24;&#x7b;target&#x7d;</database>
+    <port>&#x24;&#x7b;target_port&#x7d;</port>
+    <username>&#x24;&#x7b;target_user&#x7d;</username>
+    <password>&#x24;&#x7b;target_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -129,19 +134,103 @@ V5 field origin not exist</note>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;target_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>from location</from><to>to location</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = out</from><to>Set to_location = dest</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = internal</from><to>Set to_location = out</to><enabled>Y</enabled> </hop>  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>product_uom</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = dest</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = in</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy3</from><to>from location</to><enabled>Y</enabled> </hop>  <hop> <from>Search company currency</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = orig</from><to>Set to_location = in</to><enabled>Y</enabled> </hop>  <hop> <from>Set from_location = in</from><to>Set to_location = internal</to><enabled>Y</enabled> </hop>  <hop> <from>In shipments</from><to>Dummy4</to><enabled>Y</enabled> </hop>  <hop> <from>Delete in_location_id field</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Delete out_location_id field</from><to>from&lt;&gt;to</to><enabled>Y</enabled> </hop>  <hop> <from>Database join 3 2</from><to>In shipments</to><enabled>Y</enabled> </hop>  <hop> <from>product_uom</from><to>Database join 3</to><enabled>Y</enabled> </hop>  <hop> <from>Add origin sale</from><to>Calculator</to><enabled>Y</enabled> </hop>  <hop> <from>Add origin purchase</from><to>Calculator 2</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin sale?</from><to>Add origin sale</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 3</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>  <hop> <from>from&lt;&gt;to</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>Add id</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 4 2</to><enabled>N</enabled> </hop>  <hop> <from>Select values 4 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Set to_location = out</from><to>Delete sale_line</to><enabled>Y</enabled> </hop>  <hop> <from>Delete sale_line</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Set to_location = internal</from><to>Delete purchase_line</to><enabled>Y</enabled> </hop>  <hop> <from>Delete purchase_line</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin sale?</from><to>Is origin purchase?</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin purchase?</from><to>Add origin purchase</to><enabled>Y</enabled> </hop>  <hop> <from>Is origin purchase?</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Database join 3</from><to>Out shipment?</to><enabled>Y</enabled> </hop>  <hop> <from>Picking Type</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>Out shipment?</from><to>In return shipments</to><enabled>Y</enabled> </hop>  <hop> <from>In return shipments</from><to>Dummy3</to><enabled>Y</enabled> </hop>  <hop> <from>In return shipments</from><to>Database join 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy2</from><to>Set from_location = internal</to><enabled>Y</enabled> </hop>  <hop> <from>Out shipment?</from><to>Dummy0</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy0</from><to>Dummy2</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy0</from><to>Dummy1</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy1</from><to>Set from_location = out</to><enabled>Y</enabled> </hop>  <hop> <from>to location</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy4</from><to>Dummy5</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy5</from><to>Set from_location = orig</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy4</from><to>Dummy6</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy6</from><to>Set from_location = in</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows (cartesian product)</from><to>Is origin sale?</to><enabled>Y</enabled> </hop>  <hop> <from>unit_price from sales</from><to>Add unit_price</to><enabled>Y</enabled> </hop>  <hop> <from>unit_price from purchases</from><to>Add cost_price</to><enabled>Y</enabled> </hop>  <hop> <from>Calculator</from><to>price_unit is Null?</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null?</from><to>Add unit_price</to><enabled>Y</enabled> </hop>  <hop> <from>Add unit_price</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Calculator 2</from><to>Add cost_price</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null?</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>  <hop> <from>Add cost_price</from><to>price_unit is Null? 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add product cost_price</from><to>price_unit is Null? 2</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null? 2</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 3</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>  <hop> <from>price_unit is Null? 2</from><to>Dummy (do nothing) 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 3</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Dummy (do nothing) 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing) 4 2</from><to>Add id</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>from location</from><to>to location</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set from_location &#x3d; out</from><to>Set to_location &#x3d; dest</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set from_location &#x3d; internal</from><to>Set to_location &#x3d; out</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>
+  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>prep</from><to>product_uom</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set to_location &#x3d; dest</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set to_location &#x3d; in</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy3</from><to>from location</to><enabled>Y</enabled> </hop>
+  <hop> <from>Search company currency</from><to>Database lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set from_location &#x3d; orig</from><to>Set to_location &#x3d; in</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set from_location &#x3d; in</from><to>Set to_location &#x3d; internal</to><enabled>Y</enabled> </hop>
+  <hop> <from>In shipments</from><to>Dummy4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete in_location_id field</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete out_location_id field</from><to>from&#x3c;&#x3e;to</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add origin sale</from><to>Calculator</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add origin purchase</from><to>Calculator 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Is origin sale&#x3f;</from><to>Add origin sale</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 2</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input 3</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>from&#x3c;&#x3e;to</from><to>Join Rows &#x28;cartesian product&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Database lookup</from><to>Join Rows &#x28;cartesian product&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add id</from><to>Select values 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4</from><to>target</to><enabled>Y</enabled> </hop>
+  <hop> <from>target</from><to>Select values 4 2</to><enabled>N</enabled> </hop>
+  <hop> <from>Select values 4 2</from><to>Table output</to><enabled>N</enabled> </hop>
+  <hop> <from>Set to_location &#x3d; out</from><to>Delete sale_line</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete sale_line</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set to_location &#x3d; internal</from><to>Delete purchase_line</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete purchase_line</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Is origin sale&#x3f;</from><to>Is origin purchase&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Is origin purchase&#x3f;</from><to>Add origin purchase</to><enabled>Y</enabled> </hop>
+  <hop> <from>Is origin purchase&#x3f;</from><to>Add constants</to><enabled>Y</enabled> </hop>
+  <hop> <from>Picking Type</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>write_uid</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup</from><to>prep</to><enabled>Y</enabled> </hop>
+  <hop> <from>In return shipments</from><to>Dummy3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy2</from><to>Set from_location &#x3d; internal</to><enabled>Y</enabled> </hop>
+  <hop> <from>Out shipment&#x3f;</from><to>Dummy0</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy0</from><to>Dummy2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy0</from><to>Dummy1</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy1</from><to>Set from_location &#x3d; out</to><enabled>Y</enabled> </hop>
+  <hop> <from>to location</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy4</from><to>Dummy5</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy5</from><to>Set from_location &#x3d; orig</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy4</from><to>Dummy6</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy6</from><to>Set from_location &#x3d; in</to><enabled>Y</enabled> </hop>
+  <hop> <from>Join Rows &#x28;cartesian product&#x29;</from><to>Is origin sale&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>unit_price from sales</from><to>Add unit_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>unit_price from purchases</from><to>Add cost_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>Calculator</from><to>price_unit is Null&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>price_unit is Null&#x3f;</from><to>Add unit_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add unit_price</from><to>Set field value</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Calculator 2</from><to>Add cost_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>price_unit is Null&#x3f;</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants</from><to>Add product cost_price</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add cost_price</from><to>price_unit is Null&#x3f; 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add product cost_price</from><to>price_unit is Null&#x3f; 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>price_unit is Null&#x3f; 2</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input 3</from><to>Stream lookup 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>price_unit is Null&#x3f; 2</from><to>Dummy &#x28;do nothing&#x29; 4 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup 3</from><to>Set field value 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3 2</from><to>Dummy &#x28;do nothing&#x29; 4 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy &#x28;do nothing&#x29; 4 2</from><to>Add id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Warehouse 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>In return shipments</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup 2 2</from><to>In shipments</to><enabled>Y</enabled> </hop>
+  <hop> <from>Warehouse</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>product_uom</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup 2</from><to>Out shipment&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>In shipments</from><to>Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>Set field value 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Out shipment&#x3f; 2</from><to>Set field value 3 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Out shipment&#x3f;</from><to>Out shipment&#x3f; 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Out shipment&#x3f; 2</from><to>In return shipments</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 3 2</from><to>Dummy1</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 3</from><to>Dummy5</to><enabled>Y</enabled> </hop>
+  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -158,6 +247,7 @@ V5 field origin not exist</note>
         <nullif/>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>target_origin</name>
@@ -169,6 +259,7 @@ V5 field origin not exist</note>
         <nullif/>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
@@ -184,6 +275,7 @@ V5 field origin not exist</note>
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -223,6 +315,7 @@ V5 field origin not exist</note>
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -251,6 +344,7 @@ V5 field origin not exist</note>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -267,6 +361,7 @@ V5 field origin not exist</note>
         <nullif>purchase.line,</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
@@ -282,6 +377,7 @@ V5 field origin not exist</note>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -298,6 +394,7 @@ V5 field origin not exist</note>
         <nullif>sale.line,</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
@@ -313,6 +410,7 @@ V5 field origin not exist</note>
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -348,6 +446,7 @@ V5 field origin not exist</note>
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -387,6 +486,7 @@ V5 field origin not exist</note>
     <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -419,6 +519,7 @@ V5 field origin not exist</note>
     <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -447,78 +548,11 @@ V5 field origin not exist</note>
     </step>
 
   <step>
-    <name>Database join 3</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <rowlimit>0</rowlimit>
-    <sql>SELECT
-	lot_output_id
-FROM
-	stock_warehouse
-WHERE
-	lot_stock_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>location_id</name>
-        <type>Integer</type>
-      </field>
-    </parameter>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>577</xloc>
-      <yloc>255</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Database join 3 2</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <rowlimit>0</rowlimit>
-    <sql>SELECT
-	lot_input_id
-FROM
-	stock_warehouse
-WHERE
-	lot_stock_id = ?</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>location_dest_id</name>
-        <type>Integer</type>
-      </field>
-    </parameter>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>705</xloc>
-      <yloc>594</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Database lookup</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -537,7 +571,7 @@ WHERE
       <key>
         <name>currency_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -560,6 +594,7 @@ WHERE
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -569,8 +604,8 @@ WHERE
       <remove>        <name>lot_input_id</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1320</xloc>
-      <yloc>601</yloc>
+      <xloc>1310</xloc>
+      <yloc>667</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -580,6 +615,7 @@ WHERE
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -600,6 +636,7 @@ WHERE
     <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -611,12 +648,13 @@ WHERE
         <name>purchase_line_id</name>
         <value/>
         <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1321</xloc>
-      <yloc>690</yloc>
+      <xloc>1201</xloc>
+      <yloc>565</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -626,6 +664,7 @@ WHERE
     <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -637,6 +676,7 @@ WHERE
         <name>sale_line_id</name>
         <value/>
         <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       </fields>
      <cluster_schema/>
@@ -648,10 +688,11 @@ WHERE
     </step>
 
   <step>
-    <name>Dummy (do nothing) 4 2</name>
+    <name>Dummy &#x28;do nothing&#x29; 4 2</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -670,6 +711,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -688,6 +730,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -706,6 +749,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -724,6 +768,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -742,6 +787,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -749,8 +795,8 @@ WHERE
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>805</xloc>
-      <yloc>694</yloc>
+      <xloc>804</xloc>
+      <yloc>667</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -760,6 +806,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -767,8 +814,8 @@ WHERE
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>926</xloc>
-      <yloc>602</yloc>
+      <xloc>903</xloc>
+      <yloc>772</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -778,6 +825,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -785,8 +833,8 @@ WHERE
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>929</xloc>
-      <yloc>693</yloc>
+      <xloc>804</xloc>
+      <yloc>562</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -796,13 +844,14 @@ WHERE
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
 <send_true_to>Dummy3</send_true_to>
-<send_false_to>Database join 3 2</send_false_to>
+<send_false_to>Stream lookup 2 2</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -810,14 +859,14 @@ WHERE
   <condition>
    <negated>N</negated>
    <leftvalue>shipment_type</leftvalue>
-   <function>=</function>
+   <function>&#x3d;</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>in_return</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>OR</operator>
    <leftvalue>shipment_type</leftvalue>
-   <function>=</function>
+   <function>&#x3d;</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>internal</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
@@ -836,13 +885,14 @@ WHERE
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to/>
-<send_false_to/>
+<send_true_to>Dummy4</send_true_to>
+<send_false_to>Filter rows</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -858,17 +908,18 @@ WHERE
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>706</xloc>
-      <yloc>695</yloc>
+      <xloc>700</xloc>
+      <yloc>667</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Is origin purchase?</name>
+    <name>Is origin purchase&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -893,17 +944,18 @@ WHERE
     </step>
 
   <step>
-    <name>Is origin sale?</name>
+    <name>Is origin sale&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
 <send_true_to>Add origin sale</send_true_to>
-<send_false_to>Is origin purchase?</send_false_to>
+<send_false_to>Is origin purchase&#x3f;</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -921,24 +973,25 @@ WHERE
     </step>
 
   <step>
-    <name>Join Rows (cartesian product)</name>
+    <name>Join Rows &#x28;cartesian product&#x29;</name>
     <type>JoinRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
       <prefix>out</prefix>
       <cache_size>500</cache_size>
-      <main>from&lt;&gt;to</main>
+      <main>from&#x3c;&#x3e;to</main>
     <compare>
 <condition>
  <negated>N</negated>
  <leftvalue/>
- <function>=</function>
+ <function>&#x3d;</function>
  <rightvalue/>
  </condition>
     </compare>
@@ -951,17 +1004,18 @@ WHERE
     </step>
 
   <step>
-    <name>Out shipment?</name>
+    <name>Out shipment&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
 <send_true_to>Dummy0</send_true_to>
-<send_false_to>In return shipments</send_false_to>
+<send_false_to>Out shipment&#x3f; 2</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -977,14 +1031,14 @@ WHERE
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>shipment_type</leftvalue>
-   <function>&lt;&gt;</function>
+   <function>&#x3c;&#x3e;</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>in_return</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>shipment_type</leftvalue>
-   <function>&lt;&gt;</function>
+   <function>&#x3c;&#x3e;</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>internal</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
@@ -1003,27 +1057,14 @@ WHERE
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	p.id AS shipment_id,
-	p.name AS shipment_name,
-	CASE
-		WHEN p.type = &apos;out&apos; AND l_d.usage=&apos;customer&apos; THEN &apos;out&apos;
-		WHEN p.type = &apos;in&apos; AND l_o.usage=&apos;supplier&apos; THEN &apos;in&apos;
-		WHEN p.type = &apos;in&apos; AND l_o.usage=&apos;customer&apos; THEN &apos;out_return&apos;
-		WHEN p.type = &apos;out&apos; AND l_d.usage=&apos;supplier&apos; THEN &apos;in_return&apos;
-		WHEN p.type = &apos;internal&apos; THEN &apos;internal&apos;
-	END AS shipment_type
-FROM stock_picking p 
-	JOIN stock_move m ON m.picking_id=p.id 
-	JOIN stock_location l_o ON l_o.id=m.location_id 
-	JOIN stock_location l_d ON l_d.id=m.location_dest_id
-GROUP BY p.id, p.name, p.type, l_o.usage, l_d.usage</sql>
+    <sql>SELECT&#xa;	p.id AS shipment_id,&#xa;	p.name AS shipment_name,&#xa;	CASE&#xa;		WHEN p.type &#x3d; &#x27;out&#x27; AND l_d.name&#x3d;&#x27;Customers&#x27; THEN &#x27;out&#x27;&#xa;		WHEN p.type &#x3d; &#x27;in&#x27; AND l_o.name&#x3d;&#x27;Suppliers&#x27; THEN &#x27;in&#x27;&#xa;		WHEN p.type &#x3d; &#x27;in&#x27; AND l_o.name&#x3d;&#x27;Customers&#x27; THEN &#x27;out_return&#x27;&#xa;		WHEN p.type &#x3d; &#x27;out&#x27; AND l_d.name&#x3d;&#x27;Suppliers&#x27; THEN &#x27;in_return&#x27;&#xa;		WHEN p.type &#x3d; &#x27;internal&#x27; THEN &#x27;internal&#x27;&#xa;	END AS shipment_type&#xa;FROM stock_picking p &#xa;	JOIN stock_move m ON m.picking_id&#x3d;p.id &#xa;	JOIN stock_location l_o ON l_o.id&#x3d;m.location_id &#xa;	JOIN stock_location l_d ON l_d.id&#x3d;m.location_dest_id&#xa;GROUP BY p.id, p.name, p.type, l_o.name, l_d.name</sql>
     <limit/>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1042,20 +1083,14 @@ GROUP BY p.id, p.name, p.type, l_o.usage, l_d.usage</sql>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT 
-	c.id AS company,
-	cc.id AS currency_id
-FROM
-		res_company AS c
-	JOIN
-		res_currency AS cc
-			ON c.currency_id = cc.id</sql>
+    <sql>SELECT &#xa;	c.id AS company,&#xa;	cc.id AS currency_id&#xa;FROM&#xa;		res_company AS c&#xa;	JOIN&#xa;		res_currency AS cc&#xa;			ON c.currency_id &#x3d; cc.id</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1074,6 +1109,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1094,6 +1130,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1114,6 +1151,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1130,6 +1168,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1142,6 +1183,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1154,6 +1198,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1166,6 +1213,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1178,6 +1228,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1190,6 +1243,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1202,6 +1258,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1214,6 +1273,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1226,6 +1288,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1238,6 +1303,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1256,6 +1324,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1351,6 +1420,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1375,6 +1445,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1395,10 +1466,11 @@ FROM
     </step>
 
   <step>
-    <name>Set from_location = in</name>
+    <name>Set from_location &#x3d; in</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1417,7 +1489,7 @@ FROM
       <key>
         <name>lot_input_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1429,17 +1501,18 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1058</xloc>
-      <yloc>692</yloc>
+      <xloc>909</xloc>
+      <yloc>563</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Set from_location = internal</name>
+    <name>Set from_location &#x3d; internal</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1458,7 +1531,7 @@ FROM
       <key>
         <name>location_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1477,10 +1550,11 @@ FROM
     </step>
 
   <step>
-    <name>Set from_location = orig</name>
+    <name>Set from_location &#x3d; orig</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1499,7 +1573,7 @@ FROM
       <key>
         <name>location_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1511,17 +1585,18 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1058</xloc>
-      <yloc>601</yloc>
+      <xloc>1037</xloc>
+      <yloc>771</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Set from_location = out</name>
+    <name>Set from_location &#x3d; out</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1540,7 +1615,7 @@ FROM
       <key>
         <name>lot_output_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1559,10 +1634,11 @@ FROM
     </step>
 
   <step>
-    <name>Set to_location = dest</name>
+    <name>Set to_location &#x3d; dest</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1581,7 +1657,7 @@ FROM
       <key>
         <name>location_dest_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1600,10 +1676,11 @@ FROM
     </step>
 
   <step>
-    <name>Set to_location = in</name>
+    <name>Set to_location &#x3d; in</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1622,7 +1699,7 @@ FROM
       <key>
         <name>lot_input_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1634,17 +1711,18 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1206</xloc>
-      <yloc>602</yloc>
+      <xloc>1197</xloc>
+      <yloc>772</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Set to_location = internal</name>
+    <name>Set to_location &#x3d; internal</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1663,7 +1741,7 @@ FROM
       <key>
         <name>location_dest_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1675,17 +1753,18 @@ FROM
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1206</xloc>
-      <yloc>691</yloc>
+      <xloc>1061</xloc>
+      <yloc>562</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Set to_location = out</name>
+    <name>Set to_location &#x3d; out</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1704,7 +1783,7 @@ FROM
       <key>
         <name>lot_output_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1727,6 +1806,7 @@ FROM
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1764,10 +1844,83 @@ FROM
     </step>
 
   <step>
+    <name>Stream lookup 2</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Warehouse</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>location_id</name>
+        <field>lot_stock_id</field>
+      </key>
+      <value>
+        <name>lot_output_id</name>
+        <rename>lot_output_id</rename>
+        <default/>
+        <type>None</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>591</xloc>
+      <yloc>254</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup 2 2</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Warehouse 2</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>location_dest_id</name>
+        <field>lot_stock_id</field>
+      </key>
+      <value>
+        <name>lot_input_id</name>
+        <rename>lot_input_id</rename>
+        <default/>
+        <type>None</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>703</xloc>
+      <yloc>561</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Stream lookup 3</name>
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1803,13 +1956,14 @@ FROM
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM stock_move</sql>
+    <sql>SELECT &#x2a; FROM stock_move&#xa;where picking_id &#x3d; 277</sql>
     <limit>100</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1828,21 +1982,14 @@ FROM
     <type>TableInput</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	p.id AS prod_id,
-	pt.standard_price AS cost_price,
-	pt.list_price AS list_price
-FROM
-		product_product AS p
-	LEFT JOIN
-		product_template AS pt
-			ON p.product_tmpl_id = pt.id</sql>
+    <sql>SELECT&#xa;	p.id AS prod_id,&#xa;	pt.standard_price AS cost_price,&#xa;	pt.list_price AS list_price&#xa;FROM&#xa;		product_product AS p&#xa;	LEFT JOIN&#xa;		product_template AS pt&#xa;			ON p.product_tmpl_id &#x3d; pt.id</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1861,6 +2008,7 @@ FROM
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1894,10 +2042,63 @@ FROM
     </step>
 
   <step>
+    <name>Warehouse</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT&#xa;	lot_stock_id,&#xa;	lot_output_id&#xa;FROM&#xa;	stock_warehouse</sql>
+    <limit/>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>595</xloc>
+      <yloc>165</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Warehouse 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT&#xa;	lot_stock_id,&#xa;	lot_input_id&#xa;FROM&#xa;	stock_warehouse</sql>
+    <limit/>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>596</xloc>
+      <yloc>561</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>create_uid</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1916,7 +2117,7 @@ FROM
       <key>
         <name>create_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1939,6 +2140,7 @@ FROM
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1957,7 +2159,7 @@ FROM
       <key>
         <name>location_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1976,10 +2178,11 @@ FROM
     </step>
 
   <step>
-    <name>from&lt;&gt;to</name>
+    <name>from&#x3c;&#x3e;to</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1994,7 +2197,7 @@ FROM
   <condition>
    <negated>N</negated>
    <leftvalue>from_location</leftvalue>
-   <function>&lt;&gt;</function>
+   <function>&#x3c;&#x3e;</function>
    <rightvalue>to_location</rightvalue>
    </condition>
   <condition>
@@ -2027,6 +2230,7 @@ FROM
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2036,26 +2240,7 @@ FROM
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#47;&#47;Script here
-
-product_qty2=abs(product_qty);
-internal_quantity=product_qty2;
-
-shipment = &apos;&apos;;
-
-if (shipment_type != null) {
-	dest =  &apos;&apos;;
-	ret =  &apos;&apos;;
-	if ( shipment_type.indexOf(&apos;internal&apos;) != -1) 
-		dest = &apos;internal&apos;;
-	else if ( shipment_type.indexOf(&apos;in&apos;) != -1) 
-		dest = &apos;in&apos;;
-	else
-		dest = &apos;out&apos;;
-	if ( shipment_type.indexOf(&apos;return&apos;) != -1) 
-		ret = &apos;.return&apos;;
-	shipment = &apos;stock.shipment.&apos;+dest+ret+&apos;,&apos;+picking_id;
-}</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;product_qty2&#x3d;abs&#x28;product_qty&#x29;&#x3b;&#xa;internal_quantity&#x3d;product_qty2&#x3b;&#xa;&#xa;shipment &#x3d; &#x27;&#x27;&#x3b;&#xa;&#xa;if &#x28;shipment_type &#x21;&#x3d; null&#x29; &#x7b;&#xa;	dest &#x3d;  &#x27;&#x27;&#x3b;&#xa;	ret &#x3d;  &#x27;&#x27;&#x3b;&#xa;	if &#x28; shipment_type.indexOf&#x28;&#x27;internal&#x27;&#x29; &#x21;&#x3d; -1&#x29; &#xa;		dest &#x3d; &#x27;internal&#x27;&#x3b;&#xa;	else if &#x28; shipment_type.indexOf&#x28;&#x27;in&#x27;&#x29; &#x21;&#x3d; -1&#x29; &#xa;		dest &#x3d; &#x27;in&#x27;&#x3b;&#xa;	else&#xa;		dest &#x3d; &#x27;out&#x27;&#x3b;&#xa;	if &#x28; shipment_type.indexOf&#x28;&#x27;return&#x27;&#x29; &#x21;&#x3d; -1&#x29; &#xa;		ret &#x3d; &#x27;.return&#x27;&#x3b;&#xa;	shipment &#x3d; &#x27;stock.shipment.&#x27;&#x2b;dest&#x2b;ret&#x2b;&#x27;,&#x27;&#x2b;picking_id&#x3b;&#xa;&#x7d;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>internal_quantity</name>
         <rename>internal_quantity</rename>
         <type>Number</type>
@@ -2083,10 +2268,11 @@ if (shipment_type != null) {
     </step>
 
   <step>
-    <name>price_unit is Null?</name>
+    <name>price_unit is Null&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2111,17 +2297,18 @@ if (shipment_type != null) {
     </step>
 
   <step>
-    <name>price_unit is Null? 2</name>
+    <name>price_unit is Null&#x3f; 2</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
 <send_true_to>Stream lookup 3</send_true_to>
-<send_false_to>Dummy (do nothing) 4 2</send_false_to>
+<send_false_to>Dummy &#x28;do nothing&#x29; 4 2</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -2143,6 +2330,7 @@ if (shipment_type != null) {
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -2161,7 +2349,7 @@ if (shipment_type != null) {
       <key>
         <name>product_uom</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -2184,6 +2372,7 @@ if (shipment_type != null) {
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2202,6 +2391,7 @@ if (shipment_type != null) {
     <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2220,6 +2410,7 @@ if (shipment_type != null) {
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -2238,7 +2429,7 @@ if (shipment_type != null) {
       <key>
         <name>location_dest_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -2261,18 +2452,14 @@ if (shipment_type != null) {
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	id AS purchase_line_id,
-	product_id AS product_id,
-	price_unit AS cost_price
-FROM
-	purchase_order_line</sql>
+    <sql>SELECT&#xa;	id AS purchase_line_id,&#xa;	product_id AS product_id,&#xa;	price_unit AS cost_price&#xa;FROM&#xa;	purchase_order_line</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -2291,18 +2478,14 @@ FROM
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	id AS sale_line_id,
-	product_id AS product_id,
-	price_unit AS unit_price
-FROM
-	sale_order_line</sql>
+    <sql>SELECT&#xa;	id AS sale_line_id,&#xa;	product_id AS product_id,&#xa;	price_unit AS unit_price&#xa;FROM&#xa;	sale_order_line</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -2321,6 +2504,7 @@ FROM
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -2339,7 +2523,7 @@ FROM
       <key>
         <name>write_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -2357,9 +2541,118 @@ FROM
       </GUI>
     </step>
 
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>shipment_type</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>in</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>698</xloc>
+      <yloc>774</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value 3</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>lot_input_id</name>
+        <replaceby>location_dest_id</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>785</xloc>
+      <yloc>775</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Out shipment&#x3f; 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Set field value 3 2</send_true_to>
+<send_false_to>In return shipments</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>shipment_type</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>out</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>703</xloc>
+      <yloc>353</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value 3 2</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>lot_output_id</name>
+        <replaceby>location_id</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>822</xloc>
+      <yloc>353</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step_error_handling>
   </step_error_handling>
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
    <slave_transformation>N</slave_transformation>
+
 </transformation>

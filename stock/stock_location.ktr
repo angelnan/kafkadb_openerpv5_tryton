@@ -7,7 +7,7 @@
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
-    <directory>&#47;</directory>
+    <directory>&#x2f;</directory>
     <parameters>
     </parameters>
     <log>
@@ -17,7 +17,7 @@
 <size_limit_lines/>
 <interval/>
 <timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field></trans-log-table>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
 <perf-log-table><connection/>
 <schema/>
 <table/>
@@ -34,6 +34,11 @@
 <table/>
 <timeout_days/>
 <field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+<metrics-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
     </log>
     <maxdate>
       <connection/>
@@ -62,9 +67,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2012&#47;11&#47;24 20:09:51.525</created_date>
+  <created_date>2012&#x2f;11&#x2f;24 20&#x3a;09&#x3a;51.525</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2012&#47;11&#47;24 20:09:51.525</modified_date>
+  <modified_date>2012&#x2f;11&#x2f;24 20&#x3a;09&#x3a;51.525</modified_date>
   </info>
   <notepads>
     <notepad>
@@ -110,7 +115,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>input, output &amp; storage target id</note>
+      <note>input, output &#x26; storage target id</note>
       <xloc>1098</xloc>
       <yloc>602</yloc>
       <width>193</width>
@@ -151,16 +156,37 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>Differences between OpenERP 5 and OpenERP 6&#x3a;&#xa;&#xa;OpenERP 5 has no the chained_picking_type field on stock_location</note>
+      <xloc>2595</xloc>
+      <yloc>198</yloc>
+      <width>407</width>
+      <heigth>58</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>source</name>
-    <server>${source_host}</server>
+    <server>&#x24;&#x7b;source_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${source}</database>
-    <port>${source_port}</port>
-    <username>${source_user}</username>
-    <password>${source_password}</password>
+    <database>&#x24;&#x7b;source&#x7d;</database>
+    <port>&#x24;&#x7b;source_port&#x7d;</port>
+    <username>&#x24;&#x7b;source_user&#x7d;</username>
+    <password>&#x24;&#x7b;source_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -168,21 +194,23 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;source_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <connection>
     <name>target</name>
-    <server>${target_host}</server>
+    <server>&#x24;&#x7b;target_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${target}</database>
-    <port>${target_port}</port>
-    <username>${target_user}</username>
-    <password>${target_password}</password>
+    <database>&#x24;&#x7b;target&#x7d;</database>
+    <port>&#x24;&#x7b;target_port&#x7d;</port>
+    <username>&#x24;&#x7b;target_user&#x7d;</username>
+    <password>&#x24;&#x7b;target_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -190,19 +218,144 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;target_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>map type</to><enabled>Y</enabled> </hop>  <hop> <from>Physical Locations</from><to>Warehouses</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouses</from><to>Warehouse?</to><enabled>Y</enabled> </hop>  <hop> <from>Input Locations</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Output Locations</from><to>Output</to><enabled>Y</enabled> </hop>  <hop> <from>Stock Locations</from><to>Stock</to><enabled>Y</enabled> </hop>  <hop> <from>Output?</from><to>Stock</to><enabled>Y</enabled> </hop>  <hop> <from>Input?</from><to>Output</to><enabled>Y</enabled> </hop>  <hop> <from>Input</from><to>Input?</to><enabled>Y</enabled> </hop>  <hop> <from>Output</from><to>Output?</to><enabled>Y</enabled> </hop>  <hop> <from>Stock</from><to>Stock?</to><enabled>Y</enabled> </hop>  <hop> <from>Delete output</from><to>Delete input</to><enabled>Y</enabled> </hop>  <hop> <from>Delete stock</from><to>Delete output</to><enabled>Y</enabled> </hop>  <hop> <from>map type</from><to>Add parent</to><enabled>Y</enabled> </hop>  <hop> <from>Partner Locations</from><to>Partner</to><enabled>Y</enabled> </hop>  <hop> <from>Partner</from><to>Partner?</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual Locations</from><to>Virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual</from><to>Virtual?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2 2</from><to>stock_location_mapping</to><enabled>Y</enabled> </hop>  <hop> <from>Input?</from><to>IN</to><enabled>Y</enabled> </hop>  <hop> <from>Output?</from><to>OUT</to><enabled>Y</enabled> </hop>  <hop> <from>Stock?</from><to>STO</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows</from><to>Get previous row fields</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add sequence</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Get previous row fields</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Sort rows</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouse?</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Warehouse?</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows 3</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3</from><to>Set field value 3</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3</from><to>Select values</to><enabled>Y</enabled> </hop>  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Select values 5</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2</from><to>Set field value 4</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup 2</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add sequence 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Add constants 2</to><enabled>Y</enabled> </hop>  <hop> <from>Get previous row fields 2</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Sort rows 2</from><to>Get previous row fields 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2 2</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Delete input</from><to>Database lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 5</from><to>Block this step until steps finish 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Block this step until steps finish 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2</from><to>Set field value 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2</from><to>Filter rows 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 2</from><to>Filter rows 3 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2</from><to>Set field value 3 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2 2 2</from><to>Filter rows 3 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2 2</from><to>Set field value 3 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>  <hop> <from>map type 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>Partner?</from><to>Filter rows 4</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4</from><to>map type 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2</from><to>map type 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4</from><to>Filter rows 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>map type 2 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>  <hop> <from>Virtual?</from><to>Database lookup 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stock?</from><to>Partner</to><enabled>Y</enabled> </hop>  <hop> <from>Delete partner</from><to>Delete stock</to><enabled>Y</enabled> </hop>  <hop> <from>Partner?</from><to>Virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup 2 2</from><to>Filter rows 4 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2 2</from><to>Set field value 4 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 4 2 2</from><to>Add sequence 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2 2</from><to>Set field value 4 3</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 3</from><to>Select values 4 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>  <hop> <from>Already exists?</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Already exists?</from><to>join</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 6</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>join</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add parent</from><to>Set field value 6</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 6</from><to>Warehouses</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants 2</from><to>Set field value 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>join</from><to>Update</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>IN</from><to>Delete input</to><enabled>Y</enabled> </hop>  <hop> <from>OUT</from><to>Delete output</to><enabled>Y</enabled> </hop>  <hop> <from>STO</from><to>Delete stock</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Virtual?</from><to>Stock 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stock Locations 2</from><to>Stock 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add sequence 2 2 2</from><to>Set field value 4 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 4 3 2</from><to>Select values 4 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Stock 2</from><to>Internal</to><enabled>Y</enabled> </hop>  <hop> <from>Internal</from><to>Discard</to><enabled>Y</enabled> </hop>  <hop> <from>Delete virtual</from><to>Select values 6</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4 2 2 2</from><to>Already exists?</to><enabled>Y</enabled> </hop>  <hop> <from>Internal</from><to>Set field value to a constant</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value to a constant</from><to>Add sequence 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Filter rows 5</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 5</from><to>Select values 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>join</from><to>Filter rows 5</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 5</from><to>Select values 2 2 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2 2 2</from><to>stock_warehouse_mapping</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>
+  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>write_uid</from><to>address</to><enabled>Y</enabled> </hop>
+  <hop> <from>address</from><to>map type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Physical Locations</from><to>Warehouses</to><enabled>Y</enabled> </hop>
+  <hop> <from>Warehouses</from><to>Warehouse&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Input Locations</from><to>Input</to><enabled>Y</enabled> </hop>
+  <hop> <from>Output Locations</from><to>Output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stock Locations</from><to>Stock</to><enabled>Y</enabled> </hop>
+  <hop> <from>Output&#x3f;</from><to>Stock</to><enabled>Y</enabled> </hop>
+  <hop> <from>Input&#x3f;</from><to>Output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Input</from><to>Input&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Output</from><to>Output&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stock</from><to>Stock&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete output</from><to>Delete input</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete stock</from><to>Delete output</to><enabled>Y</enabled> </hop>
+  <hop> <from>map type</from><to>Add parent</to><enabled>Y</enabled> </hop>
+  <hop> <from>Partner Locations</from><to>Partner</to><enabled>Y</enabled> </hop>
+  <hop> <from>Partner</from><to>Partner&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Virtual Locations</from><to>Virtual</to><enabled>Y</enabled> </hop>
+  <hop> <from>Virtual</from><to>Virtual&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 2 2</from><to>stock_location_mapping</to><enabled>Y</enabled> </hop>
+  <hop> <from>Input&#x3f;</from><to>IN</to><enabled>Y</enabled> </hop>
+  <hop> <from>Output&#x3f;</from><to>OUT</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stock&#x3f;</from><to>STO</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>Add sequence</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add sequence</from><to>Set field value</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get previous row fields</from><to>Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>Add constants</to><enabled>Y</enabled> </hop>
+  <hop> <from>Warehouse&#x3f;</from><to>Block this step until steps finish</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value</from><to>Select values 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Block this step until steps finish</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup</from><to>Filter rows 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3</from><to>Set field value 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants</from><to>Set field value 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 2</from><to>Select values 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 3</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Input</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4</from><to>Select values 5</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add sequence 2</from><to>Set field value 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 2</from><to>Add sequence 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 2</from><to>Add constants 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 4</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 2 2</from><to>Select values 4 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 5</from><to>Block this step until steps finish 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Block this step until steps finish 2</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3 2</from><to>Set field value 3 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup 2</from><to>Filter rows 3 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup 2 2</from><to>Filter rows 3 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3 2 2</from><to>Set field value 3 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 3 2</from><to>Stream lookup 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup 2 2 2</from><to>Filter rows 3 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3 2 2 2</from><to>Set field value 3 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 3 2 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3 2</from><to>Stream lookup 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 3 2 2 2</from><to>Select values 6 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>map type 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>
+  <hop> <from>Partner&#x3f;</from><to>Filter rows 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 4</from><to>map type 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 4 2</from><to>map type 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 4</from><to>Filter rows 4 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 4 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>
+  <hop> <from>map type 2 2</from><to>Delete partner</to><enabled>Y</enabled> </hop>
+  <hop> <from>Virtual&#x3f;</from><to>Database lookup 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stock&#x3f;</from><to>Partner</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete partner</from><to>Delete stock</to><enabled>Y</enabled> </hop>
+  <hop> <from>Partner&#x3f;</from><to>Virtual</to><enabled>Y</enabled> </hop>
+  <hop> <from>Database lookup 2 2</from><to>Filter rows 4 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 4 2 2</from><to>Set field value 4 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 4 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 4 2 2</from><to>Add sequence 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add sequence 2 2</from><to>Set field value 4 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 4 3</from><to>Select values 4 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4 2 2</from><to>Delete virtual</to><enabled>Y</enabled> </hop>
+  <hop> <from>Already exists&#x3f;</from><to>target</to><enabled>Y</enabled> </hop>
+  <hop> <from>Already exists&#x3f;</from><to>join</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 6</from><to>Already exists&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 6</from><to>Already exists&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 6 2</from><to>Select values 6</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 6</from><to>Already exists&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>target</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>join</from><to>Select values 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add parent</from><to>Set field value 6</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 6</from><to>Warehouses</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants 2</from><to>Set field value 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4 2</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>join</from><to>Update</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4</from><to>Select values 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>IN</from><to>Delete input</to><enabled>Y</enabled> </hop>
+  <hop> <from>OUT</from><to>Delete output</to><enabled>Y</enabled> </hop>
+  <hop> <from>STO</from><to>Delete stock</to><enabled>Y</enabled> </hop>
+  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>
+  <hop> <from>Virtual&#x3f;</from><to>Stock 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stock Locations 2</from><to>Stock 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add sequence 2 2 2</from><to>Set field value 4 3 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 4 3 2</from><to>Select values 4 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stock 2</from><to>Internal</to><enabled>Y</enabled> </hop>
+  <hop> <from>Internal</from><to>Discard</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete virtual</from><to>Select values 6</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4 2 2 2</from><to>Already exists&#x3f;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Internal</from><to>Set field value to a constant</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value to a constant</from><to>Add sequence 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>target</from><to>Filter rows 5</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 5</from><to>Select values 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>join</from><to>Filter rows 5</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 5</from><to>Select values 2 2 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 2 2 2</from><to>stock_warehouse_mapping</to><enabled>Y</enabled> </hop>
+  <hop> <from>Warehouse&#x3f;</from><to>Sort rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort rows</from><to>Database lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Database lookup</from><to>Get previous row fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete input</from><to>Database lookup 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Database lookup 2</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>
+  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -219,6 +372,7 @@
         <nullif/>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
@@ -234,6 +388,7 @@
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -250,6 +405,7 @@
         <nullif/>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
@@ -265,6 +421,7 @@
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -281,6 +438,7 @@
         <nullif/>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>create</name>
@@ -292,6 +450,7 @@
         <nullif>0</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>oerp_id</name>
@@ -303,6 +462,7 @@
         <nullif/>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
@@ -318,6 +478,7 @@
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -346,6 +507,7 @@
     <type>Sequence</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -374,6 +536,7 @@
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -402,6 +565,7 @@
     <type>Sequence</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -426,10 +590,11 @@
     </step>
 
   <step>
-    <name>Already exists?</name>
+    <name>Already exists&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -441,9 +606,9 @@
 <condition>
  <negated>N</negated>
  <leftvalue>create</leftvalue>
- <function>=</function>
+ <function>&#x3d;</function>
  <rightvalue/>
- <value><name>constant</name><type>Integer</type><text>0</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>#;-#</mask></value> </condition>
+ <value><name>constant</name><type>Integer</type><text>0</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>&#x23;&#x3b;-&#x23;</mask></value> </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -458,6 +623,7 @@
     <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -482,6 +648,7 @@
     <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -506,6 +673,7 @@
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -524,7 +692,7 @@
       <key>
         <name>type</name>
         <field>type</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -536,8 +704,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>691</xloc>
-      <yloc>146</yloc>
+      <xloc>695</xloc>
+      <yloc>234</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -547,6 +715,7 @@
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -563,15 +732,9 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>code</name>
-        <field>code</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>type</name>
-        <field>type</field>
-        <condition>=</condition>
+        <name>name</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -583,7 +746,7 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1277</xloc>
+      <xloc>1186</xloc>
       <yloc>321</yloc>
       <draw>Y</draw>
       </GUI>
@@ -594,6 +757,7 @@
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -612,7 +776,7 @@
       <key>
         <name>type</name>
         <field>type</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -635,6 +799,7 @@
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -655,6 +820,7 @@
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -675,6 +841,7 @@
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -695,6 +862,7 @@
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -715,6 +883,7 @@
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -740,6 +909,7 @@
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -758,6 +928,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -768,8 +939,8 @@
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>target_id</leftvalue>
- <function>=</function>
+ <leftvalue>previous_target_id</leftvalue>
+ <function>IS NOT NULL</function>
  <rightvalue>previous_target_id</rightvalue>
  </condition>
     </compare>
@@ -786,6 +957,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -796,14 +968,9 @@
     <compare>
 <condition>
  <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>target_id</leftvalue>
-   <function>=</function>
-   <rightvalue>previous_target_id</rightvalue>
-   </condition>
-  </conditions>
+ <leftvalue>target_id</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue>previous_target_id</rightvalue>
  </condition>
     </compare>
      <cluster_schema/>
@@ -819,6 +986,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -847,6 +1015,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -875,6 +1044,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -903,6 +1073,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -931,6 +1102,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -942,7 +1114,7 @@
 <condition>
  <negated>N</negated>
  <leftvalue>type</leftvalue>
- <function>=</function>
+ <function>&#x3d;</function>
  <rightvalue/>
  <value><name>constant</name><type>String</type><text>supplier</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
     </compare>
@@ -959,6 +1131,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -970,7 +1143,7 @@
 <condition>
  <negated>N</negated>
  <leftvalue>type</leftvalue>
- <function>=</function>
+ <function>&#x3d;</function>
  <rightvalue/>
  <value><name>constant</name><type>String</type><text>customer</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
     </compare>
@@ -987,6 +1160,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -998,7 +1172,7 @@
 <condition>
  <negated>N</negated>
  <leftvalue>name</leftvalue>
- <function>=</function>
+ <function>&#x3d;</function>
  <rightvalue/>
  <value><name>constant</name><type>String</type><text>Inventory loss</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
     </compare>
@@ -1015,6 +1189,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1043,6 +1218,7 @@
     <type>GetPreviousRowField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1063,34 +1239,11 @@
     </step>
 
   <step>
-    <name>Get previous row fields 2</name>
-    <type>GetPreviousRowField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>target_id</in_stream_name>
-        <out_stream_name>previous_target_id</out_stream_name>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1087</xloc>
-      <yloc>321</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>IN</name>
     <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1102,16 +1255,13 @@
         <name>code</name>
         <value>IN</value>
         <mask/>
-        </field>
-      <field>
-        <name>name</name>
-        <value>Input Zone</value>
-        <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       <field>
         <name>create_uid_target</name>
         <value>0</value>
         <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       </fields>
      <cluster_schema/>
@@ -1127,6 +1277,7 @@
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1162,27 +1313,14 @@
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	hi.lot_input_id AS input
-FROM
-		stock_location AS l
-	JOIN
-		stock_warehouse AS hi
-			ON (l.id = hi.lot_input_id)			
-WHERE
-	location_id in (
-		SELECT
-			id AS warehouse
-		FROM
-			stock_location
-		WHERE
-			location_id = (SELECT id FROM stock_location WHERE Name = &apos;Physical Locations&apos;))</sql>
+    <sql>SELECT&#xa;	hi.lot_input_id AS input&#xa;FROM&#xa;		stock_location AS l&#xa;	JOIN&#xa;		stock_warehouse AS hi&#xa;			ON &#x28;l.id &#x3d; hi.lot_input_id&#x29;			&#xa;WHERE&#xa;	location_id in &#x28;&#xa;		SELECT&#xa;			id AS warehouse&#xa;		FROM&#xa;			stock_location&#xa;		WHERE&#xa;			location_id &#x3d; &#x28;SELECT id FROM stock_location WHERE Name &#x3d; &#x27;Physical Locations&#x27;&#x29;&#x29;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1197,10 +1335,11 @@ WHERE
     </step>
 
   <step>
-    <name>Input?</name>
+    <name>Input&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1234,6 +1373,7 @@ WHERE
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1262,6 +1402,7 @@ WHERE
     <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1273,16 +1414,13 @@ WHERE
         <name>code</name>
         <value>OUT</value>
         <mask/>
-        </field>
-      <field>
-        <name>name</name>
-        <value>Output Zone</value>
-        <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       <field>
         <name>create_uid_target</name>
         <value>0</value>
         <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       </fields>
      <cluster_schema/>
@@ -1298,6 +1436,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1333,27 +1472,14 @@ WHERE
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	ho.lot_output_id AS output
-FROM
-		stock_location AS l
-	JOIN
-		stock_warehouse AS ho
-			ON (l.id = ho.lot_output_id)
-WHERE
-	location_id in (
-		SELECT
-			id AS warehouse
-		FROM
-			stock_location
-		WHERE
-			location_id = (SELECT id FROM stock_location WHERE Name = &apos;Physical Locations&apos;))</sql>
+    <sql>SELECT&#xa;	ho.lot_output_id AS output&#xa;FROM&#xa;		stock_location AS l&#xa;	JOIN&#xa;		stock_warehouse AS ho&#xa;			ON &#x28;l.id &#x3d; ho.lot_output_id&#x29;&#xa;WHERE&#xa;	location_id in &#x28;&#xa;		SELECT&#xa;			id AS warehouse&#xa;		FROM&#xa;			stock_location&#xa;		WHERE&#xa;			location_id &#x3d; &#x28;SELECT id FROM stock_location WHERE Name &#x3d; &#x27;Physical Locations&#x27;&#x29;&#x29;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1368,10 +1494,11 @@ WHERE
     </step>
 
   <step>
-    <name>Output?</name>
+    <name>Output&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1405,6 +1532,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1440,18 +1568,14 @@ WHERE
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	id AS partner
-FROM
-	stock_location
-WHERE
-	location_id = (SELECT id FROM stock_location WHERE Name = &apos;Partner Locations&apos;)</sql>
+    <sql>SELECT&#xa;	id AS partner&#xa;FROM&#xa;	stock_location&#xa;WHERE&#xa;	location_id &#x3d; &#x28;SELECT id FROM stock_location WHERE Name &#x3d; &#x27;Partner Locations&#x27;&#x29;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1466,10 +1590,11 @@ WHERE
     </step>
 
   <step>
-    <name>Partner?</name>
+    <name>Partner&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1498,38 +1623,14 @@ WHERE
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	w.id AS warehouse_id,
-	s.id AS warehouse,
-	&apos;WH&apos; AS code,
-	il.id AS input_location,
-	ol.id AS output_location,
-	sl.id AS storage_location
-FROM
-		stock_warehouse AS w
-	JOIN
-		stock_location AS il
-			ON (w.lot_input_id = il.id)
-	JOIN
-		stock_location AS ol
-			ON (w.lot_output_id = ol.id)
-	JOIN
-		stock_location AS sl
-			ON (w.lot_stock_id = sl.id)
-	JOIN
-		stock_location AS s
-			ON (
-				s.id = il.location_id
-				AND
-				s.id = ol.location_id
-				AND
-				s.id = sl.location_id)</sql>
+    <sql>SELECT&#xa;	w.id AS warehouse_id,&#xa;	s.id AS warehouse,&#xa;	&#x27;WH&#x27; AS code,&#xa;	il.id AS input_location,&#xa;	ol.id AS output_location,&#xa;	sl.id AS storage_location&#xa;FROM&#xa;		stock_warehouse AS w&#xa;	JOIN&#xa;		stock_location AS il&#xa;			ON &#x28;w.lot_input_id &#x3d; il.id&#x29;&#xa;	JOIN&#xa;		stock_location AS ol&#xa;			ON &#x28;w.lot_output_id &#x3d; ol.id&#x29;&#xa;	JOIN&#xa;		stock_location AS sl&#xa;			ON &#x28;w.lot_stock_id &#x3d; sl.id&#x29;&#xa;	JOIN&#xa;		stock_location AS s&#xa;			ON &#x28;&#xa;				s.id &#x3d; il.location_id&#xa;				AND&#xa;				s.id &#x3d; ol.location_id&#xa;				AND&#xa;				s.id &#x3d; sl.location_id&#x29;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1548,6 +1649,7 @@ FROM
     <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1559,16 +1661,13 @@ FROM
         <name>code</name>
         <value>STO</value>
         <mask/>
-        </field>
-      <field>
-        <name>name</name>
-        <value>Storage Zone</value>
-        <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       <field>
         <name>create_uid_target</name>
         <value>0</value>
         <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       </fields>
      <cluster_schema/>
@@ -1584,6 +1683,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1604,6 +1704,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1631,6 +1732,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1658,6 +1760,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1685,6 +1788,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1712,6 +1816,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1733,6 +1838,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1740,7 +1846,6 @@ FROM
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>new_id</name>
-      </remove>      <remove>        <name>previous_target_id</name>
       </remove>      <remove>        <name>target_id</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -1755,6 +1860,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1775,6 +1881,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1797,6 +1904,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1809,6 +1919,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1821,6 +1934,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1833,6 +1949,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1851,6 +1970,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1871,6 +1991,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1886,6 +2007,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1898,6 +2022,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1910,6 +2037,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1922,6 +2052,9 @@ FROM
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1940,6 +2073,7 @@ FROM
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1962,6 +2096,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1990,6 +2125,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2014,6 +2150,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2038,6 +2175,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2062,6 +2200,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2086,6 +2225,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2110,6 +2250,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2134,6 +2275,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2162,6 +2304,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2186,6 +2329,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2214,6 +2358,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2242,6 +2387,7 @@ FROM
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2266,6 +2412,7 @@ FROM
     <type>SetValueConstant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2277,6 +2424,7 @@ FROM
         <name>active</name>
         <value>Y</value>
         <mask/>
+        <set_empty_string>N</set_empty_string>
         </field>
       </fields>
      <cluster_schema/>
@@ -2292,12 +2440,13 @@ FROM
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
       <prefix>out</prefix>
       <sort_size>1000000</sort_size>
       <free_memory/>
@@ -2306,57 +2455,16 @@ FROM
       <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>target_id</name>
+        <name>warehouse_id</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
-      </field>
-      <field>
-        <name>warehouse</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>692</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>target_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-      <field>
-        <name>parent</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1190</xloc>
-      <yloc>321</yloc>
+      <xloc>693</xloc>
+      <yloc>152</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2366,6 +2474,7 @@ FROM
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2401,6 +2510,7 @@ FROM
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2436,27 +2546,14 @@ FROM
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	hs.lot_stock_id AS stock
-FROM
-		stock_location AS l
-	JOIN
-		stock_warehouse AS hs
-			ON (l.id = hs.lot_stock_id)
-WHERE
-	location_id in (
-		SELECT
-			id AS warehouse
-		FROM
-			stock_location
-		WHERE
-			location_id = (SELECT id FROM stock_location WHERE Name = &apos;Physical Locations&apos;))</sql>
+    <sql>SELECT&#xa;	hs.lot_stock_id AS stock&#xa;FROM&#xa;		stock_location AS l&#xa;	JOIN&#xa;		stock_warehouse AS hs&#xa;			ON &#x28;l.id &#x3d; hs.lot_stock_id&#x29;&#xa;WHERE&#xa;	location_id in &#x28;&#xa;		SELECT&#xa;			id AS warehouse&#xa;		FROM&#xa;			stock_location&#xa;		WHERE&#xa;			location_id &#x3d; &#x28;SELECT id FROM stock_location WHERE Name &#x3d; &#x27;Physical Locations&#x27;&#x29;&#x29;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -2475,26 +2572,14 @@ WHERE
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	l.id AS internal
-FROM
-	stock_location AS l
-WHERE
-		location_id in (
-			SELECT
-				id AS warehouse
-			FROM
-				stock_location
-			WHERE
-				location_id = (SELECT id FROM stock_location WHERE Name = &apos;Physical Locations&apos;))
-	AND
-		chained_picking_type IS NULL</sql>
+    <sql>SELECT&#xa;	l.id AS internal&#xa;FROM&#xa;	stock_location AS l&#xa;WHERE&#xa;		location_id in &#x28;&#xa;			SELECT&#xa;				id AS warehouse&#xa;			FROM&#xa;				stock_location&#xa;			WHERE&#xa;				location_id &#x3d; &#x28;SELECT id FROM stock_location WHERE Name &#x3d; &#x27;Physical Locations&#x27;&#x29;&#x29;&#xa;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -2509,10 +2594,11 @@ WHERE
     </step>
 
   <step>
-    <name>Stock?</name>
+    <name>Stock&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2546,6 +2632,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2581,6 +2668,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2616,6 +2704,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2651,6 +2740,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2686,13 +2776,14 @@ WHERE
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM stock_location</sql>
+    <sql>SELECT &#x2a; FROM stock_location</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -2711,6 +2802,7 @@ WHERE
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2748,6 +2840,7 @@ WHERE
     <type>Update</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2765,7 +2858,7 @@ WHERE
       <key>
         <name>id</name>
         <field>id</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
         </key>
       <value>
@@ -2790,6 +2883,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2825,18 +2919,14 @@ WHERE
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	id AS virtual
-FROM
-	stock_location
-WHERE
-	location_id = (SELECT id FROM stock_location WHERE Name = &apos;Virtual Locations&apos;)</sql>
+    <sql>SELECT&#xa;	id AS virtual&#xa;FROM&#xa;	stock_location&#xa;WHERE&#xa;	location_id &#x3d; &#x28;SELECT id FROM stock_location WHERE Name &#x3d; &#x27;Virtual Locations&#x27;&#x29;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -2851,10 +2941,11 @@ WHERE
     </step>
 
   <step>
-    <name>Virtual?</name>
+    <name>Virtual&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2879,16 +2970,17 @@ WHERE
     </step>
 
   <step>
-    <name>Warehouse?</name>
+    <name>Warehouse&#x3f;</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Database lookup</send_true_to>
+<send_true_to>Sort rows</send_true_to>
 <send_false_to>Block this step until steps finish</send_false_to>
     <compare>
 <condition>
@@ -2916,6 +3008,7 @@ WHERE
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -2981,6 +3074,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -2999,7 +3093,7 @@ WHERE
       <key>
         <name>address_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -3022,6 +3116,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -3040,7 +3135,7 @@ WHERE
       <key>
         <name>create_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -3063,6 +3158,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3081,6 +3177,7 @@ WHERE
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3132,6 +3229,7 @@ WHERE
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3159,6 +3257,7 @@ WHERE
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3186,6 +3285,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3204,6 +3304,7 @@ WHERE
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3241,6 +3342,7 @@ WHERE
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3278,6 +3380,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -3296,6 +3399,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -3314,7 +3418,7 @@ WHERE
       <key>
         <name>write_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -3349,4 +3453,5 @@ WHERE
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
    <slave_transformation>N</slave_transformation>
+
 </transformation>

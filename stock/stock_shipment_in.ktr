@@ -7,7 +7,7 @@
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
-    <directory>&#47;</directory>
+    <directory>&#x2f;</directory>
     <parameters>
     </parameters>
     <log>
@@ -17,7 +17,7 @@
 <size_limit_lines/>
 <interval/>
 <timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field></trans-log-table>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
 <perf-log-table><connection/>
 <schema/>
 <table/>
@@ -34,6 +34,11 @@
 <table/>
 <timeout_days/>
 <field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+<metrics-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
     </log>
     <maxdate>
       <connection/>
@@ -62,21 +67,42 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2012&#47;12&#47;04 18:29:42.918</created_date>
+  <created_date>2012&#x2f;12&#x2f;04 18&#x3a;29&#x3a;42.918</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2012&#47;12&#47;04 18:29:42.918</modified_date>
+  <modified_date>2012&#x2f;12&#x2f;04 18&#x3a;29&#x3a;42.918</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Diferences between OpenERP5 and OpenERP6&#xa;&#xa;OpenERP 6 has a partner_id field on stock.picking model&#xa;OpenERP 5 has no partner_id field on stock.picking model</note>
+      <xloc>587</xloc>
+      <yloc>20</yloc>
+      <width>349</width>
+      <heigth>74</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>source</name>
-    <server>${source_host}</server>
+    <server>&#x24;&#x7b;source_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${source}</database>
-    <port>${source_port}</port>
-    <username>${source_user}</username>
-    <password>${source_password}</password>
+    <database>&#x24;&#x7b;source&#x7d;</database>
+    <port>&#x24;&#x7b;source_port&#x7d;</port>
+    <username>&#x24;&#x7b;source_user&#x7d;</username>
+    <password>&#x24;&#x7b;source_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -84,21 +110,23 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;source_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <connection>
     <name>target</name>
-    <server>${target_host}</server>
+    <server>&#x24;&#x7b;target_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${target}</database>
-    <port>${target_port}</port>
-    <username>${target_user}</username>
-    <password>${target_password}</password>
+    <database>&#x24;&#x7b;target&#x7d;</database>
+    <port>&#x24;&#x7b;target_port&#x7d;</port>
+    <username>&#x24;&#x7b;target_user&#x7d;</username>
+    <password>&#x24;&#x7b;target_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -106,19 +134,47 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;target_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>state</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>address 2</to><enabled>Y</enabled> </hop>  <hop> <from>address 2</from><to>party</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Picking Type</from><to>Stream lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup</from><to>Filter rows</to><enabled>Y</enabled> </hop>  <hop> <from>Join Rows (cartesian product)</from><to>Set field value 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>  <hop> <from>Table input 2</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>partner is null</from><to>Join Rows (cartesian product)</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows</from><to>partner is null</to><enabled>Y</enabled> </hop>  <hop> <from>partner is null</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Dummy (do nothing)</to><enabled>Y</enabled> </hop>  <hop> <from>Stream lookup 2</from><to>location 2</to><enabled>Y</enabled> </hop>  <hop> <from>get location</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>Dummy (do nothing)</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>  <hop> <from>location 2</from><to>state</to><enabled>Y</enabled> </hop>  <hop> <from>address</from><to>Select values</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>
+  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>party</from><to>address</to><enabled>Y</enabled> </hop>
+  <hop> <from>target</from><to>Table output</to><enabled>N</enabled> </hop>
+  <hop> <from>Select values</from><to>target</to><enabled>Y</enabled> </hop>
+  <hop> <from>state</from><to>Add constants</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants</from><to>create_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>write_uid</from><to>address 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>address 2</from><to>party</to><enabled>Y</enabled> </hop>
+  <hop> <from>source</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Picking Type</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup</from><to>Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Join Rows &#x28;cartesian product&#x29;</from><to>Set field value 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value 2</from><to>Select values 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input 2</from><to>Join Rows &#x28;cartesian product&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>partner is null</from><to>Join Rows &#x28;cartesian product&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>partner is null</to><enabled>Y</enabled> </hop>
+  <hop> <from>partner is null</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 2</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup 2</from><to>location 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>get location</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>Stream lookup 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>address</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>location 2</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 2</from><to>state</to><enabled>Y</enabled> </hop>
+  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -135,21 +191,23 @@
         <nullif>1</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>731</xloc>
+      <xloc>809</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Dummy (do nothing)</name>
+    <name>Dummy &#x28;do nothing&#x29;</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -168,6 +226,7 @@
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -182,7 +241,7 @@
   <condition>
    <negated>N</negated>
    <leftvalue>picking_type</leftvalue>
-   <function>=</function>
+   <function>&#x3d;</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>in</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
@@ -197,16 +256,46 @@
     </step>
 
   <step>
-    <name>Join Rows (cartesian product)</name>
-    <type>JoinRows</type>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>%%java.io.tmpdir%%</directory>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>warehouse</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>633</xloc>
+      <yloc>245</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Join Rows &#x28;cartesian product&#x29;</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
       <prefix>out</prefix>
       <cache_size>500</cache_size>
       <main>partner is null</main>
@@ -214,7 +303,7 @@
 <condition>
  <negated>N</negated>
  <leftvalue>id</leftvalue>
- <function>=</function>
+ <function>&#x3d;</function>
  <rightvalue>id</rightvalue>
  </condition>
     </compare>
@@ -231,22 +320,14 @@
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT 
-	p.id AS picking_id,
-	&apos;in&apos; AS picking_type
-FROM stock_picking p 
-	JOIN stock_move m ON m.picking_id=p.id 
-	JOIN stock_location l_o ON l_o.id=m.location_id 
-WHERE p.type = &apos;in&apos; 
-GROUP BY p.id
-HAVING MIN(l_o.usage)=&apos;supplier&apos;
-ORDER BY p.id</sql>
+    <sql>SELECT &#xa;	p.id AS picking_id,&#xa;	&#x27;in&#x27; AS picking_type&#xa;FROM stock_picking p &#xa;	JOIN stock_move m ON m.picking_id&#x3d;p.id &#xa;	JOIN stock_location l_o ON l_o.id&#x3d;m.location_id &#xa;WHERE p.type &#x3d; &#x27;in&#x27;&#xa;GROUP BY p.id&#xa;HAVING MIN&#x28;l_o.name&#x29;&#x3d;&#x27;Suppliers&#x27;&#xa;ORDER BY p.id</sql>
     <limit/>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -265,6 +346,7 @@ ORDER BY p.id</sql>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -280,6 +362,9 @@ ORDER BY p.id</sql>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -292,6 +377,9 @@ ORDER BY p.id</sql>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -304,6 +392,9 @@ ORDER BY p.id</sql>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -316,6 +407,9 @@ ORDER BY p.id</sql>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -328,6 +422,9 @@ ORDER BY p.id</sql>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -340,6 +437,9 @@ ORDER BY p.id</sql>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -352,6 +452,9 @@ ORDER BY p.id</sql>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -359,11 +462,14 @@ ORDER BY p.id</sql>
         <storage_type/>
       </meta>      <meta>        <name>date</name>
         <rename>planned_date</rename>
-        <type>-</type>
+        <type>None</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -371,7 +477,7 @@ ORDER BY p.id</sql>
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1277</xloc>
+      <xloc>1355</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -382,6 +488,7 @@ ORDER BY p.id</sql>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -389,7 +496,6 @@ ORDER BY p.id</sql>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
       <remove>        <name>default_address_id</name>
-      </remove>      <remove>        <name>default_partner_id</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>727</xloc>
@@ -403,6 +509,7 @@ ORDER BY p.id</sql>
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -412,10 +519,6 @@ ORDER BY p.id</sql>
       <field>
         <name>address_id</name>
         <replaceby>default_address_id</replaceby>
-        </field>
-      <field>
-        <name>partner_id</name>
-        <replaceby>default_partner_id</replaceby>
         </field>
       </fields>
      <cluster_schema/>
@@ -431,6 +534,7 @@ ORDER BY p.id</sql>
     <type>StreamLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -462,18 +566,55 @@ ORDER BY p.id</sql>
     </step>
 
   <step>
+    <name>Stream lookup 2</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>get location</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>id</name>
+        <field>picking_id</field>
+      </key>
+      <value>
+        <name>source_warehouse</name>
+        <rename>source_warehouse</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>458</xloc>
+      <yloc>244</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM stock_picking ORDER BY id</sql>
-    <limit>0100</limit>
+    <sql>SELECT &#x2a;&#xa;FROM stock_picking &#xa;WHERE id &#x3d; 68340&#xa;ORDER BY id</sql>
+    <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
@@ -491,19 +632,14 @@ ORDER BY p.id</sql>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT
-	partner_id AS default_partner_id,
-	id AS default_address_id
-FROM 
-	res_partner_address
-WHERE
-	name = &apos;Client TPV&apos;</sql>
+    <sql>SELECT&#xa;	id AS default_address_id&#xa;FROM &#xa;	res_partner_address&#xa;WHERE&#xa;	name &#x3d; &#x27;Client TPV&#x27;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -522,6 +658,7 @@ WHERE
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -548,7 +685,7 @@ WHERE
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1459</xloc>
+      <xloc>1537</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -559,6 +696,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -577,7 +715,7 @@ WHERE
       <key>
         <name>address_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -589,7 +727,7 @@ WHERE
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1186</xloc>
+      <xloc>1264</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -600,6 +738,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -618,7 +757,7 @@ WHERE
       <key>
         <name>address_id</name>
         <field>id</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -630,7 +769,7 @@ WHERE
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1004</xloc>
+      <xloc>1082</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -641,6 +780,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -659,7 +799,7 @@ WHERE
       <key>
         <name>create_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -671,7 +811,75 @@ WHERE
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>822</xloc>
+      <xloc>900</xloc>
+      <yloc>244</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>get location</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT&#xa;	m.picking_id,&#xa;	CASE WHEN l.location_id IS NOT NULL&#xa;		THEN l.location_id&#xa;	WHEN l.id IS NOT NULL AND l.usage &#x3c;&#x3e; &#x27;view&#x27;&#xa;		THEN l.id&#xa;	ELSE&#xa;		&#x28;&#xa;		SELECT MIN&#x28;id&#x29;&#xa;		FROM stock_location&#xa;		WHERE location_id &#x3d; &#x28;&#xa;			SELECT id &#xa;			FROM stock_location &#xa;			WHERE name &#x3d; &#x27;Physical Locations&#x27;&#xa;			&#x29;&#xa;		&#x29;&#xa;	END AS source_warehouse&#xa;FROM&#xa;		stock_location AS l&#xa;	JOIN&#xa;		stock_move AS m&#xa;			ON &#x28;m.location_dest_id &#x3d; l.id&#x29;&#xa;GROUP BY&#xa;	l.id,&#xa;	m.picking_id,&#xa;	l.location_id&#xa;HAVING&#xa;	m.picking_id IS NOT NULL&#xa;ORDER BY&#xa;	m.picking_id&#xa;&#xa;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>455</xloc>
+      <yloc>346</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>location 2</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>migration</schema>
+      <table>stock_location_mapping</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>source_warehouse</name>
+        <field>source</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>target</name>
+        <rename>warehouse</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>549</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -682,23 +890,18 @@ WHERE
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Join Rows (cartesian product)</send_true_to>
-<send_false_to>Dummy (do nothing)</send_false_to>
+<send_true_to>Join Rows &#x28;cartesian product&#x29;</send_true_to>
+<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
  <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>partner_id</leftvalue>
-   <function>IS NULL</function>
-   <rightvalue/>
-   </condition>
   <condition>
    <negated>N</negated>
    <operator>OR</operator>
@@ -722,6 +925,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -740,7 +944,7 @@ WHERE
       <key>
         <name>partner_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -752,7 +956,7 @@ WHERE
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1095</xloc>
+      <xloc>1173</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -763,6 +967,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -781,6 +986,7 @@ WHERE
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -813,7 +1019,7 @@ WHERE
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>640</xloc>
+      <xloc>718</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -824,6 +1030,7 @@ WHERE
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -831,7 +1038,7 @@ WHERE
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1368</xloc>
+      <xloc>1446</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -842,6 +1049,7 @@ WHERE
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -860,7 +1068,7 @@ WHERE
       <key>
         <name>write_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -872,122 +1080,7 @@ WHERE
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>913</xloc>
-      <yloc>244</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Stream lookup 2</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>get location</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>id</name>
-        <field>picking_id</field>
-      </key>
-      <value>
-        <name>source_warehouse</name>
-        <rename>source_warehouse</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>458</xloc>
-      <yloc>244</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>get location</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>source</connection>
-    <sql>SELECT
-	m.picking_id,
-	l.location_id AS source_warehouse
-FROM
-		stock_location AS l
-	JOIN
-		stock_move AS m
-			ON (m.location_dest_id = l.id)
-GROUP BY
-	m.picking_id,
-	l.location_id
-ORDER BY
-	m.picking_id
-
-</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>431</xloc>
-      <yloc>332</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>location 2</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>migration</schema>
-      <table>stock_location_mapping</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>source_warehouse</name>
-        <field>source</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>target</name>
-        <rename>warehouse</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>549</xloc>
+      <xloc>991</xloc>
       <yloc>244</yloc>
       <draw>Y</draw>
       </GUI>
@@ -998,4 +1091,5 @@ ORDER BY
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
    <slave_transformation>N</slave_transformation>
+
 </transformation>
