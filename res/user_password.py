@@ -52,18 +52,19 @@ if __name__ == '__main__':
 
     targetCR = target_db.cursor()
 
-    targetCR.execute("SELECT id, password, salt from res_user where "
+    targetCR.execute("SELECT id, password_hash from res_user where "
         "login not like 'user_cron%' and login != 'root'")
     users = targetCR.fetchall()
-    for uid, password, salt in users:
-        if salt is not None or password is None:
+    for uid, password in users:
+        if not password or '$' in password:
             continue
         salt = ''.join(random.sample(string.ascii_letters + string.digits, 8))
         password += salt
         if isinstance(password, unicode):
             password = password.encode('utf-8')
         password = hashlib.sha1(password).hexdigest()
-        targetCR.execute("UPDATE res_user SET password=%s, salt=%s WHERE id=%s",
-            (password, salt, uid))
+        password_hash = '$'.join(['sha1', password, salt])
+        targetCR.execute("UPDATE res_user SET password_hash=%s WHERE id=%s",
+            (password_hash, uid))
     target_db.commit()
     target_db.close()
