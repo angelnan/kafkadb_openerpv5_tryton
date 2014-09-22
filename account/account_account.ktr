@@ -6,7 +6,7 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <directory>&#47;</directory>
+    <directory>&#x2f;</directory>
     <parameters>
     </parameters>
     <log>
@@ -16,7 +16,7 @@
 <size_limit_lines/>
 <interval/>
 <timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field></trans-log-table>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
 <perf-log-table><connection/>
 <schema/>
 <table/>
@@ -33,6 +33,11 @@
 <table/>
 <timeout_days/>
 <field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+<metrics-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
     </log>
     <maxdate>
       <connection/>
@@ -61,13 +66,13 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2012&#47;12&#47;22 11:21:53.267</created_date>
+  <created_date>2012&#x2f;12&#x2f;22 11&#x3a;21&#x3a;53.267</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2012&#47;12&#47;22 11:21:53.267</modified_date>
+  <modified_date>2012&#x2f;12&#x2f;22 11&#x3a;21&#x3a;53.267</modified_date>
   </info>
   <notepads>
     <notepad>
-      <note>TODO: map user_type =&gt; type</note>
+      <note>TODO&#x3a; map user_type &#x3d;&#x3e; type</note>
       <xloc>250</xloc>
       <yloc>392</yloc>
       <width>191</width>
@@ -90,13 +95,13 @@
   </notepads>
   <connection>
     <name>source</name>
-    <server>${source_host}</server>
+    <server>&#x24;&#x7b;source_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${source}</database>
-    <port>${source_port}</port>
-    <username>${source_user}</username>
-    <password>${source_password}</password>
+    <database>&#x24;&#x7b;source&#x7d;</database>
+    <port>&#x24;&#x7b;source_port&#x7d;</port>
+    <username>&#x24;&#x7b;source_user&#x7d;</username>
+    <password>&#x24;&#x7b;source_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -104,21 +109,23 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${source_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;source_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <connection>
     <name>target</name>
-    <server>${target_host}</server>
+    <server>&#x24;&#x7b;target_host&#x7d;</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>${target}</database>
-    <port>${target_port}</port>
-    <username>${target_user}</username>
-    <password>${target_password}</password>
+    <database>&#x24;&#x7b;target&#x7d;</database>
+    <port>&#x24;&#x7b;target_port&#x7d;</port>
+    <username>&#x24;&#x7b;target_user&#x7d;</username>
+    <password>&#x24;&#x7b;target_password&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -126,19 +133,55 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${target_port}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;target_port&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>  <hop> <from>write_uid</from><to>target_account</to><enabled>Y</enabled> </hop>  <hop> <from>account_id</from><to>wait</to><enabled>Y</enabled> </hop>  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>  <hop> <from>account_id</from><to>prep2</to><enabled>Y</enabled> </hop>  <hop> <from>prep</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>prep2</from><to>union</to><enabled>Y</enabled> </hop>  <hop> <from>union</from><to>mapping</to><enabled>Y</enabled> </hop>  <hop> <from>wait</from><to>parent</to><enabled>Y</enabled> </hop>  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>  <hop> <from>rename_id</from><to>Tax Map</to><enabled>Y</enabled> </hop>  <hop> <from>Tax Map</from><to>create_uid</to><enabled>Y</enabled> </hop>  <hop> <from>target_account</from><to>exist</to><enabled>Y</enabled> </hop>  <hop> <from>exist</from><to>account_id</to><enabled>Y</enabled> </hop>  <hop> <from>exist</from><to>copy</to><enabled>Y</enabled> </hop>  <hop> <from>copy</from><to>prep</to><enabled>Y</enabled> </hop>  <hop> <from>copy</from><to>Update fields</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>parent</from><to>sibling</to><enabled>Y</enabled> </hop>  <hop> <from>Database join 3</from><to>Set field value</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Database join 3</to><enabled>Y</enabled> </hop>  <hop> <from>Filter rows 2</from><to>Value Mapper</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 4</from><to>Select values 3</to><enabled>Y</enabled> </hop>  <hop> <from>Set field value</from><to>Select values 4</to><enabled>Y</enabled> </hop>  <hop> <from>Value Mapper</from><to>Add constants</to><enabled>Y</enabled> </hop>  <hop> <from>sibling</from><to>Database lookup</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3</from><to>target</to><enabled>Y</enabled> </hop>  <hop> <from>Database lookup</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>  <hop> <from>Add constants</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>  <hop> <from>Select values 3 2</from><to>Select values 3</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Table input</from><to>source</to><enabled>N</enabled> </hop>
+  <hop> <from>create_uid</from><to>write_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>write_uid</from><to>target_account</to><enabled>Y</enabled> </hop>
+  <hop> <from>account_id</from><to>wait</to><enabled>Y</enabled> </hop>
+  <hop> <from>source</from><to>rename_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>account_id</from><to>prep2</to><enabled>Y</enabled> </hop>
+  <hop> <from>prep</from><to>union</to><enabled>Y</enabled> </hop>
+  <hop> <from>prep2</from><to>union</to><enabled>Y</enabled> </hop>
+  <hop> <from>union</from><to>mapping</to><enabled>Y</enabled> </hop>
+  <hop> <from>wait</from><to>parent</to><enabled>Y</enabled> </hop>
+  <hop> <from>target</from><to>Select values 2</to><enabled>N</enabled> </hop>
+  <hop> <from>rename_id</from><to>Tax Map</to><enabled>Y</enabled> </hop>
+  <hop> <from>Tax Map</from><to>create_uid</to><enabled>Y</enabled> </hop>
+  <hop> <from>target_account</from><to>exist</to><enabled>Y</enabled> </hop>
+  <hop> <from>exist</from><to>account_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>exist</from><to>copy</to><enabled>Y</enabled> </hop>
+  <hop> <from>copy</from><to>prep</to><enabled>Y</enabled> </hop>
+  <hop> <from>copy</from><to>Update fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 2</from><to>Table output</to><enabled>N</enabled> </hop>
+  <hop> <from>Database join 3</from><to>Set field value</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 2</from><to>Database join 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 2</from><to>Value Mapper</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 4</from><to>Select values 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set field value</from><to>Select values 4</to><enabled>Y</enabled> </hop>
+  <hop> <from>Value Mapper</from><to>Add constants</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants</from><to>Select values 3 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3 2</from><to>Select values 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 3</from><to>Set company&#x3d;1</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set company&#x3d;1</from><to>target</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input 2</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>parent</from><to>Strings cut</to><enabled>Y</enabled> </hop>
+  <hop> <from>Strings cut</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -155,6 +198,7 @@
         <nullif>2</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>deferral</name>
@@ -166,6 +210,7 @@
         <nullif>True</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
@@ -181,6 +226,7 @@
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -188,21 +234,13 @@
            </partitioning>
     <connection>target</connection>
     <rowlimit>0</rowlimit>
-    <sql>SELECT
-	kind,
-	type AS sibling_type,
-	reconcile AS sibling_reconcile,
-	deferral
-FROM
-	account_account
-WHERE
-	id = ?</sql>
+    <sql>SELECT&#xa;	kind,&#xa;	type AS sibling_type,&#xa;	reconcile AS sibling_reconcile,&#xa;	deferral&#xa;FROM&#xa;	account_account&#xa;WHERE&#xa;	id &#x3d; &#x3f;</sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
         <name>sibling_id</name>
-        <type>-</type>
+        <type>None</type>
       </field>
     </parameter>
      <cluster_schema/>
@@ -214,51 +252,11 @@ WHERE
     </step>
 
   <step>
-    <name>Database lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>target</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>public</schema>
-      <table>account_account</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>sibling_code</name>
-        <field>code</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>sibling_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>911</xloc>
-      <yloc>265</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Filter rows 2</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -287,6 +285,7 @@ WHERE
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -374,6 +373,7 @@ WHERE
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -389,6 +389,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -401,6 +404,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -413,6 +419,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -425,6 +434,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -437,6 +449,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -449,6 +464,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -467,6 +485,7 @@ WHERE
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -483,6 +502,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -501,6 +523,7 @@ WHERE
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -518,6 +541,9 @@ WHERE
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -532,10 +558,39 @@ WHERE
     </step>
 
   <step>
+    <name>Set company&#x3d;1</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>company</name>
+        <value>1</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1492</xloc>
+      <yloc>266</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Set field value</name>
     <type>SetValueField</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -556,17 +611,81 @@ WHERE
     </step>
 
   <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>Table input 2</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>sibling_code</name>
+        <field>substring</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>sibling_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>923</xloc>
+      <yloc>266</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Strings cut</name>
+    <type>StringCut</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>code</in_stream_name>
+        <out_stream_name>sibling_code</out_stream_name>
+        <cut_from>0</cut_from>
+        <cut_to>5</cut_to>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>837</xloc>
+      <yloc>266</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Table input</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT * FROM account_account WHERE id = 1647</sql>
+    <sql>SELECT &#x2a; FROM account_account&#xa;WHERE code LIKE &#x27;6010&#x25;&#x27;</sql>
     <limit>0100</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -581,10 +700,37 @@ WHERE
     </step>
 
   <step>
+    <name>Table input 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>target</connection>
+    <sql>SELECT&#xa;	id,&#xa;	substring&#x28;code from 0 for 6&#x29;&#xa;FROM&#xa;	account_account</sql>
+    <limit>2000</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>920</xloc>
+      <yloc>173</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Table output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -622,6 +768,7 @@ WHERE
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -631,18 +778,7 @@ WHERE
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#47;&#47;Script here
-
-var code = source_code;
-if (source_code.length &gt; 4) {
-    var start = substr(source_code,0,4);
-    if (start == &apos;4720&apos; || start == &apos;4721&apos; || start == &apos;4770&apos; || start == &apos;4771&apos; || start == &apos;4730&apos; || start == &apos;4751&apos;){
-	    var digit = substr(source_code,4,2);
-		if (digit != &apos;00&apos;) {
-	    	code = rpad(substr(source_code,0,4),&apos;0&apos;, source_code.length-2) + digit;
-		}
-    }
-}</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var code &#x3d; source_code&#x3b;&#xa;if &#x28;source_code.length &#x3e; 4&#x29; &#x7b;&#xa;    var start &#x3d; substr&#x28;source_code,0,4&#x29;&#x3b;&#xa;    if &#x28;start &#x3d;&#x3d; &#x27;4720&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4721&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4770&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4771&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4730&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4751&#x27;&#x29;&#x7b;&#xa;	    var digit &#x3d; substr&#x28;source_code,4,2&#x29;&#x3b;&#xa;		if &#x28;digit &#x21;&#x3d; &#x27;00&#x27;&#x29; &#x7b;&#xa;	    	code &#x3d; rpad&#x28;substr&#x28;source_code,0,4&#x29;,&#x27;0&#x27;, source_code.length-2&#x29; &#x2b; digit&#x3b;&#xa;		&#x7d;&#xa;    &#x7d;&#xa;&#x7d;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
         <rename>code</rename>
         <type>String</type>
@@ -662,6 +798,7 @@ if (source_code.length &gt; 4) {
     <type>Update</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -679,7 +816,7 @@ if (source_code.length &gt; 4) {
       <key>
         <name>target_account_id</name>
         <field>id</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
         </key>
       <value>
@@ -700,6 +837,7 @@ if (source_code.length &gt; 4) {
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -739,6 +877,7 @@ if (source_code.length &gt; 4) {
     <type>Sequence</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -767,6 +906,7 @@ if (source_code.length &gt; 4) {
     <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -785,6 +925,7 @@ if (source_code.length &gt; 4) {
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -803,7 +944,7 @@ if (source_code.length &gt; 4) {
       <key>
         <name>create_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -826,6 +967,7 @@ if (source_code.length &gt; 4) {
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -843,8 +985,8 @@ if (source_code.length &gt; 4) {
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>543</xloc>
-      <yloc>264</yloc>
+      <xloc>545</xloc>
+      <yloc>263</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -854,6 +996,7 @@ if (source_code.length &gt; 4) {
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -891,6 +1034,7 @@ if (source_code.length &gt; 4) {
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -909,7 +1053,7 @@ if (source_code.length &gt; 4) {
       <key>
         <name>parent_id</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -921,8 +1065,8 @@ if (source_code.length &gt; 4) {
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>764</xloc>
-      <yloc>264</yloc>
+      <xloc>762</xloc>
+      <yloc>265</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -932,6 +1076,7 @@ if (source_code.length &gt; 4) {
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -959,6 +1104,7 @@ if (source_code.length &gt; 4) {
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -986,6 +1132,7 @@ if (source_code.length &gt; 4) {
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -999,6 +1146,9 @@ if (source_code.length &gt; 4) {
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1011,6 +1161,9 @@ if (source_code.length &gt; 4) {
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
         <encoding/>
         <decimal_symbol/>
         <grouping_symbol/>
@@ -1025,40 +1178,11 @@ if (source_code.length &gt; 4) {
     </step>
 
   <step>
-    <name>sibling</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>code</in_stream_name>
-        <out_stream_name>sibling_code</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>[0-9]$</replace_string>
-        <replace_by_string>0</replace_by_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>830</xloc>
-      <yloc>264</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>source</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1077,6 +1201,7 @@ if (source_code.length &gt; 4) {
     <type>Dummy</type>
     <description/>
     <distribute>N</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1095,6 +1220,7 @@ if (source_code.length &gt; 4) {
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1113,7 +1239,7 @@ if (source_code.length &gt; 4) {
       <key>
         <name>code</name>
         <field>code</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1136,6 +1262,7 @@ if (source_code.length &gt; 4) {
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1154,6 +1281,7 @@ if (source_code.length &gt; 4) {
     <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
@@ -1178,6 +1306,7 @@ if (source_code.length &gt; 4) {
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
     <copies>4</copies>
          <partitioning>
            <method>none</method>
@@ -1196,7 +1325,7 @@ if (source_code.length &gt; 4) {
       <key>
         <name>write_uid</name>
         <field>source</field>
-        <condition>=</condition>
+        <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
@@ -1219,4 +1348,5 @@ if (source_code.length &gt; 4) {
    <slave-step-copy-partition-distribution>
 </slave-step-copy-partition-distribution>
    <slave_transformation>N</slave_transformation>
+
 </transformation>
