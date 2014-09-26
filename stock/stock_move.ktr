@@ -93,6 +93,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>Internal moves of in shipments could not be&#xa;in draft state because when shipment will be&#xa;received, move will be duplicated.</note>
+      <xloc>907</xloc>
+      <yloc>649</yloc>
+      <width>267</width>
+      <heigth>58</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>source</name>
@@ -152,7 +173,6 @@
   <hop> <from>source</from><to>create_uid</to><enabled>Y</enabled> </hop>
   <hop> <from>prep</from><to>product_uom</to><enabled>Y</enabled> </hop>
   <hop> <from>Set to_location &#x3d; dest</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>
-  <hop> <from>Set to_location &#x3d; in</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy3</from><to>from location</to><enabled>Y</enabled> </hop>
   <hop> <from>Search company currency</from><to>Database lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>Set from_location &#x3d; orig</from><to>Set to_location &#x3d; in</to><enabled>Y</enabled> </hop>
@@ -174,7 +194,6 @@
   <hop> <from>Set to_location &#x3d; out</from><to>Delete sale_line</to><enabled>Y</enabled> </hop>
   <hop> <from>Delete sale_line</from><to>Delete out_location_id field</to><enabled>Y</enabled> </hop>
   <hop> <from>Set to_location &#x3d; internal</from><to>Delete purchase_line</to><enabled>Y</enabled> </hop>
-  <hop> <from>Delete purchase_line</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>
   <hop> <from>Is origin sale&#x3f;</from><to>Is origin purchase&#x3f;</to><enabled>Y</enabled> </hop>
   <hop> <from>Is origin purchase&#x3f;</from><to>Add origin purchase</to><enabled>Y</enabled> </hop>
   <hop> <from>Is origin purchase&#x3f;</from><to>Add constants</to><enabled>Y</enabled> </hop>
@@ -224,6 +243,9 @@
   <hop> <from>Out shipment&#x3f; 2</from><to>In return shipments</to><enabled>Y</enabled> </hop>
   <hop> <from>Set field value 3 2</from><to>Dummy1</to><enabled>Y</enabled> </hop>
   <hop> <from>Set field value 3</from><to>Dummy5</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set to_location &#x3d; in</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Delete purchase_line</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 2</from><to>Delete in_location_id field</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add constants</name>
@@ -653,8 +675,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1201</xloc>
-      <yloc>565</yloc>
+      <xloc>1194</xloc>
+      <yloc>563</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -835,6 +857,64 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>804</xloc>
       <yloc>562</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>shipment_type</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>in</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>698</xloc>
+      <yloc>774</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>state</leftvalue>
+ <function>&#x3c;&#x3e;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>draft</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1193</xloc>
+      <yloc>668</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1048,6 +1128,35 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>703</xloc>
       <yloc>254</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Out shipment&#x3f; 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Set field value 3 2</send_true_to>
+<send_false_to>In return shipments</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>shipment_type</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>out</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>703</xloc>
+      <yloc>353</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1461,6 +1570,56 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2224</xloc>
       <yloc>585</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value 3</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>lot_input_id</name>
+        <replaceby>location_dest_id</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>785</xloc>
+      <yloc>775</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set field value 3 2</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>lot_output_id</name>
+        <replaceby>location_id</replaceby>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>822</xloc>
+      <yloc>353</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1963,8 +2122,8 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT &#x2a; FROM stock_move&#xa;where picking_id &#x3d; 277</sql>
-    <limit>100</limit>
+    <sql>SELECT &#x2a; FROM stock_move</sql>
+    <limit>1000</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
@@ -2537,114 +2696,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>235</xloc>
       <yloc>251</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>shipment_type</leftvalue>
- <function>&#x3d;</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>in</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>698</xloc>
-      <yloc>774</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Set field value 3</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>lot_input_id</name>
-        <replaceby>location_dest_id</replaceby>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>785</xloc>
-      <yloc>775</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Out shipment&#x3f; 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Set field value 3 2</send_true_to>
-<send_false_to>In return shipments</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>shipment_type</leftvalue>
- <function>&#x3d;</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>out</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>703</xloc>
-      <yloc>353</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Set field value 3 2</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>lot_output_id</name>
-        <replaceby>location_id</replaceby>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>822</xloc>
-      <yloc>353</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
