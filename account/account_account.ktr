@@ -73,8 +73,8 @@
   <notepads>
     <notepad>
       <note>TODO&#x3a; map user_type &#x3d;&#x3e; type</note>
-      <xloc>250</xloc>
-      <yloc>392</yloc>
+      <xloc>459</xloc>
+      <yloc>380</yloc>
       <width>191</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -87,6 +87,27 @@
       <backgroundcolorred>255</backgroundcolorred>
       <backgroundcolorgreen>165</backgroundcolorgreen>
       <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Set the number of digits of the target&#xa;account account in Tax Map step.&#xa;6 by default.</note>
+      <xloc>144</xloc>
+      <yloc>322</yloc>
+      <width>223</width>
+      <heigth>58</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
       <bordercolorred>100</bordercolorred>
       <bordercolorgreen>100</bordercolorgreen>
       <bordercolorblue>100</bordercolorblue>
@@ -685,7 +706,7 @@
            <schema_name/>
            </partitioning>
     <connection>source</connection>
-    <sql>SELECT &#x2a; FROM account_account&#xa;WHERE code LIKE &#x27;6010&#x25;&#x27;</sql>
+    <sql>SELECT &#x2a; FROM account_account&#xa;WHERE code LIKE &#x27;4&#x25;&#x27;</sql>
     <limit>0100</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -778,7 +799,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var code &#x3d; source_code&#x3b;&#xa;if &#x28;source_code.length &#x3e; 4&#x29; &#x7b;&#xa;    var start &#x3d; substr&#x28;source_code,0,4&#x29;&#x3b;&#xa;    if &#x28;start &#x3d;&#x3d; &#x27;4720&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4721&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4770&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4771&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4730&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4751&#x27;&#x29;&#x7b;&#xa;	    var digit &#x3d; substr&#x28;source_code,4,2&#x29;&#x3b;&#xa;		if &#x28;digit &#x21;&#x3d; &#x27;00&#x27;&#x29; &#x7b;&#xa;	    	code &#x3d; rpad&#x28;substr&#x28;source_code,0,4&#x29;,&#x27;0&#x27;, source_code.length-2&#x29; &#x2b; digit&#x3b;&#xa;		&#x7d;&#xa;    &#x7d;&#xa;&#x7d;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var code &#x3d; source_code&#x3b;&#xa;target_length_code &#x3d; 6&#xa;if &#x28;source_code.length &#x3e; 4&#x29; &#x7b;&#xa;    var start &#x3d; substr&#x28;source_code,0,4&#x29;&#x3b;&#xa;    if &#x28;start &#x3d;&#x3d; &#x27;4720&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4721&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4770&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4771&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4730&#x27; &#x7c;&#x7c; start &#x3d;&#x3d; &#x27;4751&#x27;&#x29;&#x7b;&#xa;	    var digit &#x3d; substr&#x28;source_code,4,2&#x29;&#x3b;&#xa;		if &#x28;digit &#x21;&#x3d; &#x27;00&#x27;&#x29; &#x7b;&#xa;	    	code &#x3d; rpad&#x28;substr&#x28;source_code,0,4&#x29;,&#x27;0&#x27;, source_code.length-2&#x29; &#x2b; digit&#x3b;&#xa;		&#x7d;&#xa;    &#x7d;&#xa;	var middle_digits &#x3d; substr&#x28;code, source_code.length-4, 2&#x29;&#x3b;&#xa;	var end_digits &#x3d; substr&#x28;code, source_code.length-2, 2&#x29;&#x3b;&#xa;	if &#x28;middle_digits &#x3d;&#x3d; &#x27;00&#x27;&#x29; &#x7b;&#xa;		code &#x3d; substr&#x28;code, 0, target_length_code-2&#x29; &#x2b; substr&#x28;code, target_length_code, 2&#x29;&#x3b;&#xa;	&#x7d;&#xa;	else if &#x28;end_digits &#x3d;&#x3d; &#x27;00&#x27;&#x29;&#x7b;&#xa;		code &#x3d; substr&#x28;code, 0, target_length_code&#x29;&#x3b;&#xa;	&#x7d;&#xa;&#x7d;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>code</name>
         <rename>code</rename>
         <type>String</type>
