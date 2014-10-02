@@ -732,8 +732,14 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>name</name>
-        <field>name</field>
+        <name>type</name>
+        <field>type</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>code</name>
+        <field>code</field>
         <condition>&#x3d;</condition>
         <name2/>
       </key>
