@@ -46,7 +46,7 @@ oerp_xmlrpc_conf = {
 TrytonDB PostgreSQL Connection
 """
 tryton_db_conf = {
-    'username': 'jmartin',
+    'username': 'aneolf',
     'password': 'ForcaBarca',
     'dbname': 'try32_oarlan2',
     'host': 'localhost',

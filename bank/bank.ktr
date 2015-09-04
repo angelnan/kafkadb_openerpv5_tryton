@@ -119,7 +119,7 @@
     <access>Native</access>
     <database>try28_zikzakmedia</database>
     <port>5432</port>
-    <username>jmartin</username>
+    <username>aneolf</username>
     <password>Encrypted 2be98afc86aa7b48bb91aaf52df80acdb</password>
     <servername/>
     <data_tablespace/>
